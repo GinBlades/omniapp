@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20150323185853) do
     t.boolean  "home"
     t.boolean  "vegetarian"
     t.decimal  "cost",          precision: 12, scale: 2
+    t.string   "notes"
     t.datetime "created_at",                                         null: false
     t.datetime "updated_at",                                         null: false
   end

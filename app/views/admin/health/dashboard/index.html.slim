@@ -1,2 +1,31 @@
-h1 Admin::Health::Dashboard#index
-p Find me in app/views/admin/health/dashboard/index.html.slim
+.row
+  .col-md-4
+    .panel.panel-default
+      .panel-heading
+        h3 Entries
+      .panel-body
+        - Health::Entry.order(entry_date: :desc).each do |entry|
+          = entry.entry_date
+        .btn-group
+          = link_to 'New Entry', new_admin_health_entry_path, class: 'btn btn-primary'
+          = link_to 'All Entries', admin_health_entries_path, class: 'btn btn-default'
+  .col-md-4
+    .panel.panel-default
+      .panel-heading
+        h3 Meals
+      .panel-body
+        - Health::Meal.order(time: :desc).each do |meal|
+          = meal.time
+        .btn-group
+          = link_to 'New Meal', new_admin_health_meal_path, class: 'btn btn-primary'
+          = link_to 'All Meals', admin_health_meals_path, class: 'btn btn-default'
+  .col-md-4
+    .panel.panel-default
+      .panel-heading
+        h3 Workouts
+      .panel-body
+        - Health::Workout.order(start: :desc).each do |workout|
+          = workout.start
+        .btn-group
+          = link_to 'New Workout', new_admin_health_workout_path, class: 'btn btn-primary'
+          = link_to 'All Workouts', admin_health_workouts_path, class: 'btn btn-default'

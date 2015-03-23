@@ -10,6 +10,7 @@ class CreateHealthMeals < ActiveRecord::Migration
       t.boolean :home
       t.boolean :vegetarian
       t.decimal :cost, precision: 12, scale: 2
+      t.string :notes
 
       t.timestamps null: false
     end
