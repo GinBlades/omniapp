@@ -1,0 +1,14 @@
+table.table.table-striped
+  tr
+    th User:
+    td= @health_entry.user
+  tr
+    th Entry date:
+    td= @health_entry.entry_date
+  tr
+    th Notes:
+    td= @health_entry.notes
+
+.btn-group
+  = link_to 'Edit', edit_health_entry_path(@health_entry), class: 'btn btn-default'
+  = link_to 'Back', health_entries_path, class: 'btn btn-default'

@@ -1,0 +1,26 @@
+h1 
+  Health Entries
+  = link_to 'New Entry', new_health_entry_path, class: 'btn btn-primary'
+
+table.table.table-striped
+  thead
+    tr
+      th User
+      th Entry date
+      th Notes
+      th
+      th
+      
+  tbody
+    - @health_entries.each do |health_entry|
+      tr
+        td= health_entry.user
+        td= health_entry.entry_date
+        td= health_entry.notes
+        td= link_to 'Show', health_entry
+        td
+          = link_to 'Edit', edit_health_entry_path(health_entry)
+          '
+          |/
+          '
+          = link_to 'Destroy', health_entry, :method => :delete, :data => { :confirm => 'Are you sure?' }

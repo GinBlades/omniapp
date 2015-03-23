@@ -1,0 +1,9 @@
+= simple_form_for(@health_rating) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :health_category
+    = f.association :health_entry
+
+  .form-actions
+    = f.button :submit, class: 'btn btn-success'

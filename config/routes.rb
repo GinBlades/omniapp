@@ -1,7 +1,22 @@
 Rails.application.routes.draw do
 
   namespace :admin do
+  namespace :health do
+    end
+  end
+
+  namespace :health do
+    resources :ratings
+  end
+
+  namespace :admin do
     get '/' => 'dashboard#index'
+    namespace :health do
+      get '/' => 'dashboard#index'
+      resources :ratings
+      resources :categories
+      resources :entries
+    end
   end
   devise_for :users
   root 'pages#home'

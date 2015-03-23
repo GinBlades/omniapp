@@ -1,0 +1,8 @@
+table.table.table-striped
+  tr
+    th Name:
+    td= @health_category.name
+
+.btn-group
+  = link_to 'Edit', edit_health_category_path(@health_category), class: 'btn btn-default'
+  = link_to 'Back', health_categories_path, class: 'btn btn-default'

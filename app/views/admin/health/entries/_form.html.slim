@@ -1,0 +1,10 @@
+= simple_form_for(@health_entry) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :user
+    = f.input :entry_date
+    = f.input :notes
+
+  .form-actions
+    = f.button :submit, class: 'btn btn-success'

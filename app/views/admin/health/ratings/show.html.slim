@@ -1,0 +1,11 @@
+table.table.table-striped
+  tr
+    th Health category:
+    td= @health_rating.health_category
+  tr
+    th Health entry:
+    td= @health_rating.health_entry
+
+.btn-group
+  = link_to 'Edit', edit_health_rating_path(@health_rating), class: 'btn btn-default'
+  = link_to 'Back', health_ratings_path, class: 'btn btn-default'
