@@ -14,6 +14,6 @@ class CreateHealthMeals < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    add_foreign_key :health_workouts, :users
+    add_foreign_key :health_meals, :users
   end
 end

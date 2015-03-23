@@ -13,6 +13,7 @@ require 'mina/rbenv'  # for rbenv support. (http://rbenv.org)
 set :domain, 'aws'
 set :repository, 'git@gitlab.com:GinBlades/omniapp.git'
 
+# use `mina deploy` for staging OR mina deploy to=production
 case ENV['to']
 when 'production'
   set :deploy_to, '/home/ubuntu/sites/production/omniapp'

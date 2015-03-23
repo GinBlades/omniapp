@@ -111,9 +111,9 @@ ActiveRecord::Schema.define(version: 20150323185853) do
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
   add_foreign_key "health_entries", "users"
+  add_foreign_key "health_meals", "users"
   add_foreign_key "health_ratings", "health_categories"
   add_foreign_key "health_ratings", "health_entries"
   add_foreign_key "health_workouts", "health_workout_categories"
-  add_foreign_key "health_workouts", "users"
   add_foreign_key "health_workouts", "users"
 end
