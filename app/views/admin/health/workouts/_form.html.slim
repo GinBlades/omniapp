@@ -1,0 +1,13 @@
+= simple_form_for([:admin,@health_workout]) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :health_workout_category
+    = f.input :start
+    = f.input :duration
+    = f.input :distance
+    = f.input :rating
+    = f.input :notes
+
+  .form-actions
+    = f.button :submit, class: 'btn btn-success'

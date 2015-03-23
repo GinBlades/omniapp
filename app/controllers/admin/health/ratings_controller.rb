@@ -1,4 +1,4 @@
-class Health::RatingsController < AdminController
+class Admin::Health::RatingsController < AdminController
   before_action :set_health_rating, only: [:show, :edit, :update, :destroy]
 
   def index

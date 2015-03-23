@@ -1,0 +1,36 @@
+h1 
+  Health Meals
+  = link_to 'New Meal', new_admin_health_meal_path, class: 'btn btn-primary'
+
+table.table.table-striped
+  thead
+    tr
+      th Time
+      th Meal category
+      th Calories
+      th Quality
+      th Healthiness
+      th Home
+      th Vegetarian
+      th Cost
+      th
+      th
+      
+  tbody
+    - @health_meals.each do |health_meal|
+      tr
+        td= health_meal.time
+        td= health_meal.meal_category
+        td= health_meal.calories
+        td= health_meal.quality
+        td= health_meal.healthiness
+        td= health_meal.home
+        td= health_meal.vegetarian
+        td= health_meal.cost
+        td= link_to 'Show', [:admin,health_meal]
+        td
+          = link_to 'Edit', edit_admin_health_meal_path(health_meal)
+          '
+          |/
+          '
+          = link_to 'Destroy', [:admin,health_meal], method: :delete, data: { confirm: 'Are you sure?' }

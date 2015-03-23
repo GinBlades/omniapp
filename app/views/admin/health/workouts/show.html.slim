@@ -1,0 +1,26 @@
+table.table.table-striped
+  tr
+    th Health workout category:
+    td= @health_workout.health_workout_category
+  tr
+    th User:
+    td= @health_workout.user
+  tr
+    th Start:
+    td= @health_workout.start
+  tr
+    th Duration:
+    td= @health_workout.duration
+  tr
+    th Distance:
+    td= @health_workout.distance
+  tr
+    th Rating:
+    td= @health_workout.rating
+  tr
+    th Notes:
+    td= @health_workout.notes
+
+.btn-group
+  = link_to 'Edit', edit_admin_health_workout_path(@health_workout), class: 'btn btn-default'
+  = link_to 'Back', admin_health_workouts_path, class: 'btn btn-default'

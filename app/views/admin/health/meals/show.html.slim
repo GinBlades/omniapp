@@ -1,0 +1,29 @@
+table.table.table-striped
+  tr
+    th Time:
+    td= @health_meal.time
+  tr
+    th Meal category:
+    td= @health_meal.meal_category
+  tr
+    th Calories:
+    td= @health_meal.calories
+  tr
+    th Quality:
+    td= @health_meal.quality
+  tr
+    th Healthiness:
+    td= @health_meal.healthiness
+  tr
+    th Home:
+    td= @health_meal.home
+  tr
+    th Vegetarian:
+    td= @health_meal.vegetarian
+  tr
+    th Cost:
+    td= @health_meal.cost
+
+.btn-group
+  = link_to 'Edit', edit_admin_health_meal_path(@health_meal), class: 'btn btn-default'
+  = link_to 'Back', admin_health_meals_path, class: 'btn btn-default'

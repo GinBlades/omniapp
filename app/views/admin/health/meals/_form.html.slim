@@ -1,0 +1,15 @@
+= simple_form_for([:admin,@health_meal]) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :time
+    = f.input :meal_category
+    = f.input :calories
+    = f.input :quality
+    = f.input :healthiness
+    = f.input :home
+    = f.input :vegetarian
+    = f.input :cost
+
+  .form-actions
+    = f.button :submit, class: 'btn btn-success'

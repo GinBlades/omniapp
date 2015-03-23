@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150323032105) do
+ActiveRecord::Schema.define(version: 20150323185853) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,15 +35,56 @@ ActiveRecord::Schema.define(version: 20150323032105) do
 
   add_index "health_entries", ["user_id"], name: "index_health_entries_on_user_id", using: :btree
 
+  create_table "health_meals", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "time"
+    t.integer  "meal_category",                          default: 0
+    t.integer  "calories"
+    t.integer  "quality"
+    t.integer  "healthiness"
+    t.boolean  "home"
+    t.boolean  "vegetarian"
+    t.decimal  "cost",          precision: 12, scale: 2
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
+  end
+
+  add_index "health_meals", ["user_id"], name: "index_health_meals_on_user_id", using: :btree
+
   create_table "health_ratings", force: :cascade do |t|
     t.integer  "health_category_id"
     t.integer  "health_entry_id"
+    t.integer  "value"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
   end
 
   add_index "health_ratings", ["health_category_id"], name: "index_health_ratings_on_health_category_id", using: :btree
   add_index "health_ratings", ["health_entry_id"], name: "index_health_ratings_on_health_entry_id", using: :btree
+
+  create_table "health_workout_categories", force: :cascade do |t|
+    t.string   "name"
+    t.string   "slug",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "health_workout_categories", ["slug"], name: "index_health_workout_categories_on_slug", unique: true, using: :btree
+
+  create_table "health_workouts", force: :cascade do |t|
+    t.integer  "health_workout_category_id"
+    t.integer  "user_id"
+    t.datetime "start"
+    t.float    "duration"
+    t.float    "distance"
+    t.integer  "rating"
+    t.string   "notes"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "health_workouts", ["health_workout_category_id"], name: "index_health_workouts_on_health_workout_category_id", using: :btree
+  add_index "health_workouts", ["user_id"], name: "index_health_workouts_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -71,4 +112,7 @@ ActiveRecord::Schema.define(version: 20150323032105) do
   add_foreign_key "health_entries", "users"
   add_foreign_key "health_ratings", "health_categories"
   add_foreign_key "health_ratings", "health_entries"
+  add_foreign_key "health_workouts", "health_workout_categories"
+  add_foreign_key "health_workouts", "users"
+  add_foreign_key "health_workouts", "users"
 end

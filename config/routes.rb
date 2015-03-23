@@ -1,14 +1,4 @@
 Rails.application.routes.draw do
-
-  namespace :admin do
-  namespace :health do
-    end
-  end
-
-  namespace :health do
-    resources :ratings
-  end
-
   namespace :admin do
     get '/' => 'dashboard#index'
     namespace :health do
@@ -16,6 +6,9 @@ Rails.application.routes.draw do
       resources :ratings
       resources :categories
       resources :entries
+      resources :meals
+      resources :workouts
+      resources :workout_categories
     end
   end
   devise_for :users

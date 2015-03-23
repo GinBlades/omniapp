@@ -1,0 +1,11 @@
+table.table.table-striped
+  tr
+    th Name:
+    td= @health_workout_category.name
+  tr
+    th Slug:
+    td= @health_workout_category.slug
+
+.btn-group
+  = link_to 'Edit', edit_admin_health_workout_category_path(@health_workout_category), class: 'btn btn-default'
+  = link_to 'Back', admin_health_workout_categories_path, class: 'btn btn-default'
