@@ -11,9 +11,18 @@ require 'mina/rbenv'  # for rbenv support. (http://rbenv.org)
 #   branch       - Branch name to deploy. (needed by mina/git)
 
 set :domain, 'aws'
-set :deploy_to, '/home/ubuntu/sites/production/omniapp'
 set :repository, 'git@gitlab.com:GinBlades/omniapp.git'
-set :branch, 'master'
+
+case ENV['to']
+when 'production'
+  set :deploy_to, '/home/ubuntu/sites/production/omniapp'
+  set :branch, 'master'
+  set :rails_env, 'production'
+else
+  set :deploy_to, '/home/ubuntu/sites/staging/omniapp'
+  set :branch, 'master'
+  set :rails_env, 'staging'
+end
 
 # For system-wide RVM install.
 #   set :rvm_path, '/usr/local/rvm/bin/rvm'
@@ -27,6 +36,7 @@ set :shared_paths, ['config/database.yml', 'config/secrets.yml', 'log']
 #   set :port, '30000'     # SSH port number.
 #   set :forward_agent, true     # SSH forward_agent.
 
+set :bundle_path, "~/bundle/#{RUBY_VERSION}"
 # This task is the environment that is loaded for most commands, such as
 # `mina deploy` or `mina rake`.
 task :environment do
