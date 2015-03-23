@@ -5,4 +5,8 @@ class PagesController < ApplicationController
     ]
     @quote = quotes.sample.capitalize
   end
+
+  def jihye
+    @arrive = Time.new(2015,04,28,15,49,00,'-05:00')
+  end
 end

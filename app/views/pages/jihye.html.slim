@@ -1,0 +1,37 @@
+- seconds = @arrive - Time.now.in_time_zone('Central Time (US & Canada)')
+- minutes = seconds/60
+- hours = minutes/60
+- days = hours/24
+- weeks = days/7
+- months = days/31
+h3 Now: #{Time.now.in_time_zone('Central Time (US & Canada)').strftime('%e %b %Y %I:%M:%S%p')}
+h3 Arrival: #{ @arrive.strftime('%e %b %Y %I:%M:%S%p')}
+
+h3 Difference:
+= pluralize(months.floor, 'month')
+'
+= pluralize((days.floor - (months.floor*31)), 'day')
+'
+= pluralize((hours.floor - (days.floor*24)), 'hour')
+'
+= pluralize((minutes.floor - (hours.floor*60)), 'minute')
+'
+= pluralize((seconds.floor - (minutes.floor*60)), 'second')
+
+
+h3 Distance in:
+
+dl
+  dt Seconds
+  dd= seconds.floor
+  dt Minutes
+  dd= minutes.floor
+  dt Hours
+  dd= hours.floor
+  dt Days
+  dd= days.floor
+  dt Weeks
+  dd= weeks.floor
+  dt Months
+  dd= months.floor
+
