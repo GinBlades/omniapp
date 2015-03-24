@@ -37,3 +37,6 @@ gem 'mina'
 gem 'quiet_assets'
 gem 'slim-rails'
 gem 'devise'
+
+gem 'carrierwave'
+gem 'mini_magick'
