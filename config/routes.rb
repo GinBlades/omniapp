@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
   namespace :admin do
     get '/' => 'dashboard#index'
     namespace :health do

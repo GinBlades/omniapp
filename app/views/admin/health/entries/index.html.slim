@@ -16,7 +16,7 @@ table.table.table-striped
       tr
         td= health_entry.user
         td= health_entry.entry_date
-        td= health_entry.notes
+        td= strip_tags(health_entry.notes).truncate(25)
         td= link_to 'Show', [:admin,health_entry]
         td
           = link_to 'Edit', edit_admin_health_entry_path(health_entry)

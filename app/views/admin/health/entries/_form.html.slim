@@ -3,7 +3,7 @@
 
   .form-inputs
     = f.input :entry_date
-    = f.input :notes
+    = f.input :notes, as: :ckeditor
 
   .form-actions
     = f.button :submit, class: 'btn btn-success'
