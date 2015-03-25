@@ -2,15 +2,15 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :time
+    = f.input :time, as: :string, input_html: { class: 'datetimepicker' }
     = f.input :meal_category, as: :radio_buttons, collection: Health::Meal.meal_categories.keys.to_a
     = f.input :calories
-    = f.input :quality
-    = f.input :healthiness
+    = f.input :quality, as: :radio_buttons, collection: 1..10
+    = f.input :healthiness, as: :radio_buttons, collection: 1..10
     = f.input :home
     = f.input :vegetarian
     = f.input :cost
-    = f.input :notes, as: :text
+    = f.input :notes, as: :ckeditor
 
   .form-actions
     = f.button :submit, class: 'btn btn-success'

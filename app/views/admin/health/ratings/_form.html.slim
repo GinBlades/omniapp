@@ -4,6 +4,7 @@
   .form-inputs
     = f.association :health_category
     = f.association :health_entry
+    = f.value, as: :radio_buttons, collection: 1..10
 
   .form-actions
     = f.button :submit, class: 'btn btn-success'

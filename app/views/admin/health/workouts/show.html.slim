@@ -1,6 +1,6 @@
 table.table.table-striped
   tr
-    th Health workout category:
+    th Workout category:
     td= @health_workout.health_workout_category
   tr
     th User:
@@ -19,7 +19,7 @@ table.table.table-striped
     td= @health_workout.rating
   tr
     th Notes:
-    td= @health_workout.notes
+    td= raw @health_workout.notes
 
 .btn-group
   = link_to 'Edit', edit_admin_health_workout_path(@health_workout), class: 'btn btn-default'

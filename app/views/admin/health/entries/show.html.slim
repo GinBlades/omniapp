@@ -7,7 +7,7 @@ table.table.table-striped
     td= @health_entry.entry_date
   tr
     th Notes:
-    td= @health_entry.notes
+    td= raw @health_entry.notes
 
 .btn-group
   = link_to 'Edit', edit_admin_health_entry_path(@health_entry), class: 'btn btn-default'

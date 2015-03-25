@@ -3,11 +3,11 @@
 
   .form-inputs
     = f.association :health_workout_category
-    = f.input :start
-    = f.input :duration
+    = f.input :start, as: :string, input_html: { class: 'datetimepicker', value: @health_workout.start || Time.now } 
+    = f.input :duration, label: "Duration (in minutes)"
     = f.input :distance
-    = f.input :rating
-    = f.input :notes
+    = f.input :rating, as: :radio_buttons, collection: 1..10
+    = f.input :notes, as: :ckeditor
 
   .form-actions
     = f.button :submit, class: 'btn btn-success'

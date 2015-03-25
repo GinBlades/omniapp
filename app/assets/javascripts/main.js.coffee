@@ -1,2 +1,4 @@
 window.initialize = ->
-  console.log "Let's do this."
+  $('.datetimepicker').datetimepicker()
+  $('.datepicker').datetimepicker
+    timepicker: false

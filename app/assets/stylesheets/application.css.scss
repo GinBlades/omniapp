@@ -1,3 +1,7 @@
+/*
+ *= require jquery.datetimepicker
+ */
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -7,5 +11,12 @@
   }
   .alert.alert {
     @extend .alert-danger;
+  }
+}
+
+.radio_buttons {
+  .radio {
+    display: inline;
+    margin-left: 20px;
   }
 }
