@@ -1,10 +1,13 @@
 = simple_form_for([:admin,@health_rating]) do |f|
   = f.error_notification
 
+  = f.association :health_entry
   .form-inputs
-    = f.association :health_category
-    = f.association :health_entry
-    = f.value, as: :radio_buttons, collection: 1..10
+    .row
+      .col-sm-4
+        = f.association :health_category
+      .col-sm-8
+        = f.input :value, as: :radio_buttons, collection: 1..10
 
   .form-actions
     = f.button :submit, class: 'btn btn-success'

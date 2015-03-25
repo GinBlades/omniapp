@@ -3,6 +3,12 @@
 
   .form-inputs
     = f.input :entry_date, as: :string, input_html: { class: 'datepicker' }
+    .form-group
+      = link_to '#', id: 'add-health-rating'
+        i.glyphicon.glyphicon-plus-sign
+        '
+        | Add Health Rating
+      #health-ratings
     = f.input :notes, as: :ckeditor
 
   .form-actions

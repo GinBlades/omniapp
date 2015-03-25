@@ -3,5 +3,5 @@ h1 Editing Rating
 = render 'form'
 
 .btn-group
-  = link_to 'Show', @health_rating, class: 'btn btn-default'
-  = link_to 'Back', health_ratings_path, class: 'btn btn-default'
+  = link_to 'Show', [:admin,@health_rating], class: 'btn btn-default'
+  = link_to 'Back', admin_health_ratings_path, class: 'btn btn-default'

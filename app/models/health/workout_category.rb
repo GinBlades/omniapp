@@ -1,5 +1,5 @@
 class Health::WorkoutCategory < ActiveRecord::Base
-  has_many :health_workouts
+  has_many :health_workouts, class_name: '::Health::Workout'
 
   before_save :make_slug
 
