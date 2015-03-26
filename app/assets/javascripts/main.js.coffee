@@ -1,14 +1,15 @@
 window.initialize = ->
-  $('.datetimepicker').datetimepicker()
-  $('.datepicker').datetimepicker
-    timepicker: false
+  if $('html').hasClass('no-touch')
+    datetimeFields = $('input[type=datetime-local]')
+    dateFields = $('input[type=date]')
 
-  $('#add-health-rating').on 'click', (e)->
-    e.preventDefault()
-    $.ajax '/admin/health/ratings/new',
-      success: (data) ->
-        ratingForm = $(data).find('.form-inputs').html()
-        $('#health-ratings').append(ratingForm)
-        console.log 'Success!'
-      error: ->
-        console.log 'there was a problem connecting to the form.'
+    if datetimeFields.length > 0 || dateFields.length > 0
+      datetimeFields.attr('type','text')
+      datetimeFields.datetimepicker
+        format: 'Y-m-d H:i'
+
+      dateFields.attr('type','text')
+      dateFields.datetimepicker
+        timepicker: false,
+        format: 'Y-m-d'
+

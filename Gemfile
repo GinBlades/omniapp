@@ -28,11 +28,12 @@ group :development, :test do
   gem 'simplecov', require: false
 end
 
-gem 'dotenv-rails'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
-gem 'simple_form'
 gem 'modernizr-rails'
+gem 'jquery-datetimepicker-rails'
+
+gem 'dotenv-rails'
 gem 'mina'
 gem 'quiet_assets'
 gem 'slim-rails'
@@ -41,5 +42,6 @@ gem 'devise'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'ckeditor'
-gem 'jquery-datetimepicker-rails'
+
+gem 'simple_form'
 gem 'cocoon'
