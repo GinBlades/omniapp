@@ -4,12 +4,9 @@
   .form-inputs
     = f.input :entry_date, as: :string, input_html: { type: 'date', value: date_form(@health_entry.entry_date) || date_form(Time.now) }
 
-    h3 Ratings
     #health_ratings
-    = f.simple_fields_for :health_ratings do |hr|
-      = render 'health_rating_fields', f: hr
-    .links
-      = link_to_add_association 'Add Rating', f, :health_ratings
+    .form-group
+      = link_to_add_association "#{add_icon} Add Rating".html_safe, f, :health_ratings, class: 'btn btn-primary'
 
     = f.input :notes, as: :ckeditor
 

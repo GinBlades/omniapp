@@ -3,10 +3,14 @@
 
   .form-inputs
     = f.association :health_workout_category
-    = f.input :start, as: :string, input_html: { type: 'datetime-local', value: time_form(@health_workout.start) || time_form(Time.now) } 
-    = f.input :duration, label: "Duration (in minutes)"
-    = f.input :distance
-    = f.input :rating, as: :radio_buttons, collection: 1..10
+    .row
+      .col-md-4
+        = f.input :start, as: :string, input_html: { type: 'datetime-local', value: time_form(@health_workout.start) || time_form(Time.now) } 
+      .col-md-4
+        = f.input :duration, label: "Duration (in minutes)"
+      .col-md-4
+        = f.input :distance
+    = f.input :rating, as: :select, collection: 1..10
     = f.input :notes, as: :ckeditor
 
   .form-actions

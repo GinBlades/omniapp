@@ -1,7 +1,8 @@
 .nested-fields
-  .row
-    .col-sm-4
-      = f.association :health_category
-    .col-sm-8
-      = f.input :value, as: :radio_buttons, collection: 1..10
-  = link_to_remove_association 'Remove Rating', f
+  .form-group
+    .row
+      .col-xs-10.col-md-4
+        = f.association :health_category
+      .col-xs-2.col-md-2
+        = f.input :value, as: :select, collection: 1..10
+    = link_to_remove_association "#{remove_icon} Remove Rating".html_safe, f, class: 'btn btn-danger'

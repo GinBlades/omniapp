@@ -15,4 +15,12 @@ module ApplicationHelper
   def time_form(time)
     time.try(:strftime, '%Y-%m-%dT%H:%M:00')
   end
+
+  def add_icon
+    content_tag :span, '', class: 'glyphicon glyphicon-plus-sign'
+  end
+
+  def remove_icon
+    content_tag :span, '', class: 'glyphicon glyphicon-remove-sign'
+  end
 end
