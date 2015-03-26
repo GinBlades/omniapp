@@ -15,6 +15,7 @@
 //= require bootstrap-sprockets
 //= require ckeditor/init
 //= require jquery.datetimepicker
+//= require cocoon
 //= require turbolinks
 //= require_tree .
 

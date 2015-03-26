@@ -55,6 +55,6 @@ class Admin::Health::EntriesController < AdminController
     end
 
     def health_entry_params
-      params.require(:health_entry).permit(:entry_date, :notes)
+      params.require(:health_entry).permit(:entry_date, :notes, health_ratings_attributes: [:id, :health_category_id, :value, :_destroy])
     end
 end

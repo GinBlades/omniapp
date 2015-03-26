@@ -3,15 +3,14 @@
 
   .form-inputs
     = f.input :entry_date, as: :string, input_html: { class: 'datepicker' }
-    = f.simple_fields_for :health_ratings do |r|
-      = r.input :health_category, as: :select, collection: Health::Category.all
-      = r.input :value, as: :radio_buttons, collection: 1..10
-    .form-group
-      #health-ratings
-      = link_to '#', id: 'add-health-rating'
-        i.glyphicon.glyphicon-plus-sign
-        '
-        | Add Health Rating
+
+    h3 Ratings
+    #health_ratings
+    = f.simple_fields_for :health_ratings do |hr|
+      = render 'health_rating_fields', f: hr
+    .links
+      = link_to_add_association 'Add Rating', f, :health_ratings
+
     = f.input :notes, as: :ckeditor
 
   .form-actions

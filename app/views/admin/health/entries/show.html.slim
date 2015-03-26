@@ -8,6 +8,13 @@ table.table.table-striped
   tr
     th Notes:
     td= raw @health_entry.notes
+  tr
+    th Ratings:
+    td
+      dl.dl-horizontal
+        - @health_entry.health_ratings.each do |health_rating|
+          dt= health_rating.health_category
+          dd= health_rating.value
 
 .btn-group
   = link_to 'Edit', edit_admin_health_entry_path(@health_entry), class: 'btn btn-default'

@@ -6,4 +6,8 @@ class Health::Category < ActiveRecord::Base
   def make_slug
     self.slug = name.parameterize
   end
+
+  def to_s
+    name
+  end
 end
