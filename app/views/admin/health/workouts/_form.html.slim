@@ -3,7 +3,7 @@
 
   .form-inputs
     = f.association :health_workout_category
-    = f.input :start, as: :string, input_html: { class: 'datetimepicker', value: @health_workout.start || Time.now } 
+    = f.input :start, as: :string, input_html: { type: 'datetime-local', value: time_form(@health_workout.start) || time_form(Time.now) } 
     = f.input :duration, label: "Duration (in minutes)"
     = f.input :distance
     = f.input :rating, as: :radio_buttons, collection: 1..10
