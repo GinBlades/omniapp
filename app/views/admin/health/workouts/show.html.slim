@@ -6,8 +6,14 @@ table.table.table-striped
     th User:
     td= @health_workout.user
   tr
+    th Date:
+    td= date_form(@health_workout.start)
+  tr
     th Start:
-    td= @health_workout.start
+    td= just_time(@health_workout.start)
+  tr
+    th Finish:
+    td= just_time(@health_workout.finish)
   tr
     th Duration:
     td= @health_workout.duration

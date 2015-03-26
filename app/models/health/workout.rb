@@ -6,6 +6,10 @@ class Health::Workout < ActiveRecord::Base
 
   validates :health_workout_category_id, :start, :duration, :rating, presence: true
 
+  def finish
+    start + duration.minutes
+  end
+
   def to_s
     "#{start.try(:strftime, "%Y/%m/%d")}-#{name}"
   end

@@ -16,6 +16,14 @@ module ApplicationHelper
     time.try(:strftime, '%Y-%m-%dT%H:%M:00')
   end
 
+  def time_display(time)
+    time.try(:strftime, '%Y-%m-%d %I:%M%P')
+  end
+
+  def just_time(time)
+    time.try(:strftime, '%I:%M%P')
+  end
+
   def add_icon
     content_tag :span, '', class: 'glyphicon glyphicon-plus-sign'
   end

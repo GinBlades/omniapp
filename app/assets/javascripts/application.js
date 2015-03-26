@@ -12,9 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require moment
 //= require bootstrap-sprockets
 //= require ckeditor/init
 //= require jquery.datetimepicker
+//= require fullcalendar
 //= require cocoon
 //= require turbolinks
 //= require_tree .

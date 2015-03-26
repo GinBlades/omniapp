@@ -32,6 +32,8 @@ gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'modernizr-rails'
 gem 'jquery-datetimepicker-rails'
+gem 'momentjs-rails'
+gem 'fullcalendar-rails'
 
 gem 'dotenv-rails'
 gem 'mina'

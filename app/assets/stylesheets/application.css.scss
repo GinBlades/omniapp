@@ -1,5 +1,7 @@
 /*
  *= require jquery.datetimepicker
+ *= require fullcalendar
+ *= require fullcalendar.print
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
@@ -17,5 +19,11 @@
   .radio {
     display: inline;
     margin-left: 20px;
+  }
+}
+
+#fullcalendar {
+  .fc-button-group, button {
+    display: block;
   }
 }
