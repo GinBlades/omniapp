@@ -3,21 +3,21 @@ h1
   '
   = link_to 'New Category', new_admin_health_category_path, class: 'btn btn-primary'
 
-table.table.table-striped
-  thead
-    tr
-      th Name
-      th
-      th
-      
-  tbody
-    - @health_categories.each do |health_category|
-      tr
-        td= health_category.name
-        td= link_to 'Show', [:admin,health_category]
-        td
-          = link_to 'Edit', edit_admin_health_category_path(health_category)
-          '
-          |/
-          '
-          = link_to 'Destroy', [:admin,health_category], method: :delete, data: { confirm: 'Are you sure?' }
+.row
+  .col-sm-6
+    table.table.table-striped
+      thead
+        tr
+          th Name
+          th
+          
+      tbody
+        - @health_categories.each do |health_category|
+          tr
+            td= health_category.name
+            td
+              = link_to 'Edit', edit_admin_health_category_path(health_category)
+              '
+              |/
+              '
+              = link_to 'Destroy', [:admin,health_category], method: :delete, data: { confirm: 'Are you sure?' }

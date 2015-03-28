@@ -3,30 +3,26 @@ h1
   '
   = link_to 'New Workout', new_admin_health_workout_path, class: 'btn btn-primary'
 
-table.table.table-striped
+table.table.table-striped.table-index
   thead
     tr
+      th Start
+      th.extra Duration
       th Health workout category
       th User
-      th Start
-      th Duration
-      th Distance
-      th Rating
-      th Notes
-      th
+      th.extra Distance
+      th.extra Rating
       th
       
   tbody
     - @health_workouts.each do |health_workout|
       tr
+        td= link_to time_display(health_workout.start), [:admin,health_workout]
+        td= health_workout.duration
         td= health_workout.health_workout_category
         td= health_workout.user
-        td= health_workout.start
-        td= health_workout.duration
-        td= health_workout.distance
-        td= health_workout.rating
-        td= health_workout.notes
-        td= link_to 'Show', [:admin,health_workout]
+        td.extra= health_workout.distance
+        td.extra= health_workout.rating
         td
           = link_to 'Edit', edit_admin_health_workout_path(health_workout)
           '

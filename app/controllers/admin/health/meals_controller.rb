@@ -55,6 +55,6 @@ class Admin::Health::MealsController < AdminController
     end
 
     def health_meal_params
-      params.require(:health_meal).permit(:time, :meal_category, :calories, :quality, :healthiness, :home, :vegetarian, :cost)
+      params.require(:health_meal).permit(:time, :meal_category, :calories, :quality, :healthiness, :home, :vegetarian, :cost, :notes)
     end
 end

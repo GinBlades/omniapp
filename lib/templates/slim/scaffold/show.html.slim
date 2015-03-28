@@ -7,4 +7,4 @@ table.table.table-striped
 
 .btn-group
   = link_to 'Edit', edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: 'btn btn-default'
-  = link_to 'Back', <%= index_helper %>_path, class: 'btn btn-default'
+  = link_to 'All <%= plural_table_name.titleize %>', <%= index_helper %>_path, class: 'btn btn-default'

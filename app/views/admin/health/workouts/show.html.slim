@@ -1,32 +1,26 @@
-table.table.table-striped
-  tr
-    th Workout category:
-    td= @health_workout.health_workout_category
-  tr
-    th User:
-    td= @health_workout.user
-  tr
-    th Date:
-    td= date_form(@health_workout.start)
-  tr
-    th Start:
-    td= just_time(@health_workout.start)
-  tr
-    th Finish:
-    td= just_time(@health_workout.finish)
-  tr
-    th Duration:
-    td= @health_workout.duration
-  tr
-    th Distance:
-    td= @health_workout.distance
-  tr
-    th Rating:
-    td= @health_workout.rating
-  tr
-    th Notes:
-    td= raw @health_workout.notes
+.row
+  .col-sm-6
+    h2
+      = @health_workout.health_workout_category
+      '
+      small = date_form(@health_workout.start)
+    = raw @health_workout.notes
+  .col-sm-6
+    .panel.panel-default
+      table.table.table-striped
+        tr
+          th User:
+          td= @health_workout.user
+        tr
+          th Time
+          td #{just_time(@health_workout.start)} - #{just_time(@health_workout.finish)} (#{@health_workout.duration.floor} min)
+        tr
+          th Distance:
+          td= @health_workout.distance
+        tr
+          th Rating:
+          td= @health_workout.rating
 
 .btn-group
   = link_to 'Edit', edit_admin_health_workout_path(@health_workout), class: 'btn btn-default'
-  = link_to 'Back', admin_health_workouts_path, class: 'btn btn-default'
+  = link_to 'All Workouts', admin_health_workouts_path, class: 'btn btn-default'

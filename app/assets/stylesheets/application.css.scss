@@ -1,7 +1,6 @@
 /*
  *= require jquery.datetimepicker
  *= require fullcalendar
- *= require fullcalendar.print
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
@@ -25,5 +24,13 @@
 #fullcalendar {
   .fc-button-group, button {
     display: block;
+  }
+}
+
+@media (max-width: 768px) {
+  .table-index {
+    .extra {
+      display: none;
+    }
   }
 }
