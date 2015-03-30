@@ -1,0 +1,11 @@
+table.table.table-striped
+  tr
+    th Name:
+    td= @budget_payee.name
+  tr
+    th Slug:
+    td= @budget_payee.slug
+
+.btn-group
+  = link_to 'Edit', edit_admin_budget_payee_path(@budget_payee), class: 'btn btn-default'
+  = link_to 'All Budget Payees', admin_budget_payees_path, class: 'btn btn-default'

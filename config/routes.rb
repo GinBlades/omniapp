@@ -11,6 +11,13 @@ Rails.application.routes.draw do
       resources :workouts
       resources :workout_categories
     end
+    namespace :budget do
+      get '/' => 'dashboard#index'
+      resources :entries
+      resources :subcategories
+      resources :payees
+      resources :categories
+    end
   end
   devise_for :users
   get '/jihye' => 'pages#jihye'

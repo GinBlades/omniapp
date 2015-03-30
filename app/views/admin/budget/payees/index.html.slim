@@ -1,0 +1,25 @@
+h1 
+  Budget Payees
+  '
+  = link_to 'New Payee', new_admin_budget_payee_path, class: 'btn btn-primary'
+
+table.table.table-striped
+  thead
+    tr
+      th Name
+      th Slug
+      th
+      th
+      
+  tbody
+    - @budget_payees.each do |budget_payee|
+      tr
+        td= budget_payee.name
+        td= budget_payee.slug
+        td= link_to 'Show', [:admin,budget_payee]
+        td
+          = link_to 'Edit', edit_admin_budget_payee_path(budget_payee)
+          '
+          |/
+          '
+          = link_to 'Delete', [:admin,budget_payee], :method => :delete, :data => { :confirm => 'Are you sure?' }

@@ -1,0 +1,31 @@
+h1 
+  Budget Entries
+  '
+  = link_to 'New Entry', new_admin_budget_entry_path, class: 'btn btn-primary'
+
+table.table.table-striped
+  thead
+    tr
+      th Budget payee
+      th Budget subcategory
+      th Price
+      th Note
+      th Entry date
+      th
+      th
+      
+  tbody
+    - @budget_entries.each do |budget_entry|
+      tr
+        td= budget_entry.budget_payee
+        td= budget_entry.budget_subcategory
+        td= budget_entry.price
+        td= budget_entry.notes
+        td= budget_entry.entry_date
+        td= link_to 'Show', [:admin,budget_entry]
+        td
+          = link_to 'Edit', edit_admin_budget_entry_path(budget_entry)
+          '
+          |/
+          '
+          = link_to 'Delete', [:admin,budget_entry], :method => :delete, :data => { :confirm => 'Are you sure?' }

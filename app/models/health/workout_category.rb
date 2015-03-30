@@ -1,11 +1,7 @@
 class Health::WorkoutCategory < ActiveRecord::Base
-  has_many :health_workouts, class_name: '::Health::Workout'
+  include Sluggable
 
-  before_save :make_slug
-
-  def make_slug
-    self.slug = name.parameterize
-  end
+  has_many :health_workouts, class_name: '::Health::Workout', foreign_key: 'health_workout_category_id'
 
   def to_s
     name

@@ -1,0 +1,9 @@
+= simple_form_for([:admin,@budget_category]) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :slug
+
+  .form-actions
+    = f.button :submit, class: 'btn btn-success'

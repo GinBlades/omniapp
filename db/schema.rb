@@ -11,10 +11,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150324075608) do
+ActiveRecord::Schema.define(version: 20150330152152) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "budget_categories", force: :cascade do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "budget_entries", force: :cascade do |t|
+    t.integer  "budget_payee_id"
+    t.integer  "budget_subcategory_id"
+    t.decimal  "price",                 precision: 12, scale: 2
+    t.string   "notes"
+    t.date     "entry_date"
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
+  end
+
+  add_index "budget_entries", ["budget_payee_id"], name: "index_budget_entries_on_budget_payee_id", using: :btree
+  add_index "budget_entries", ["budget_subcategory_id"], name: "index_budget_entries_on_budget_subcategory_id", using: :btree
+
+  create_table "budget_payees", force: :cascade do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "budget_subcategories", force: :cascade do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.integer  "budget_category_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "budget_subcategories", ["budget_category_id"], name: "index_budget_subcategories_on_budget_category_id", using: :btree
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string   "data_file_name",               null: false
@@ -126,6 +163,9 @@ ActiveRecord::Schema.define(version: 20150324075608) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
+  add_foreign_key "budget_entries", "budget_payees"
+  add_foreign_key "budget_entries", "budget_subcategories"
+  add_foreign_key "budget_subcategories", "budget_categories"
   add_foreign_key "health_entries", "users"
   add_foreign_key "health_meals", "users"
   add_foreign_key "health_ratings", "health_categories"

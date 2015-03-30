@@ -1,0 +1,11 @@
+table.table.table-striped
+  tr
+    th Name:
+    td= @budget_category.name
+  tr
+    th Slug:
+    td= @budget_category.slug
+
+.btn-group
+  = link_to 'Edit', edit_admin_budget_category_path(@budget_category), class: 'btn btn-default'
+  = link_to 'All Budget Categories', admin_budget_categories_path, class: 'btn btn-default'
