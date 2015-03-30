@@ -6,12 +6,12 @@ h1
 table.table.table-striped.table-index
   thead
     tr
-      th Start
-      th.extra Duration
-      th Health workout category
-      th User
-      th.extra Distance
-      th.extra Rating
+      th = sort_link @q, :start
+      th.extra = sort_link @q, :duration
+      th = sort_link @q, :health_workout_category_name
+      th = sort_link @q, :user_first_name
+      th.extra = sort_link @q, :distance
+      th.extra = sort_link @q, :rating
       th
       
   tbody

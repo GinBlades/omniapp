@@ -6,7 +6,7 @@
       .panel-body
         ul.list-unstyled
           - Health::Entry.order(entry_date: :desc).each do |entry|
-            li = entry.entry_date
+            li = link_to "#{entry.user} - #{entry.entry_date}", [:admin,entry]
         .btn-group
           = link_to 'New Entry', new_admin_health_entry_path, class: 'btn btn-primary'
           = link_to 'All Entries', admin_health_entries_path, class: 'btn btn-default'
@@ -17,7 +17,7 @@
       .panel-body
         ul.list-unstyled
           - Health::Meal.order(time: :desc).each do |meal|
-            li = meal.time
+            li = link_to "#{meal.user} - #{time_display(meal.time)}", [:admin,meal]
         .btn-group
           = link_to 'New Meal', new_admin_health_meal_path, class: 'btn btn-primary'
           = link_to 'All Meals', admin_health_meals_path, class: 'btn btn-default'
@@ -28,7 +28,7 @@
       .panel-body
         ul.list-unstyled
           - Health::Workout.order(start: :desc).each do |workout|
-            li = workout
+            li = link_to "#{workout.user} - #{workout}", [:admin,workout]
         .btn-group
           = link_to 'New Workout', new_admin_health_workout_path, class: 'btn btn-primary'
           = link_to 'All Workouts', admin_health_workouts_path, class: 'btn btn-default'

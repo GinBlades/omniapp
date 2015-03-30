@@ -47,3 +47,4 @@ gem 'ckeditor'
 
 gem 'simple_form'
 gem 'cocoon'
+gem 'ransack'

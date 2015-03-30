@@ -1,3 +1,11 @@
+
+colors =
+  green: '#449d44'
+  grey: '#737373'
+  blue: '#337ab7'
+
+colors.list = [colors.green, colors.grey, colors.blue]
+
 window.initialize = ->
   events = []
   $.getJSON '/admin/health/workouts.json', (data) ->
@@ -7,7 +15,7 @@ window.initialize = ->
         url: obj.url
         start: obj.start
         end: obj.finish
-        color: '#337ab7'
+        color: colors.list[0]
   .done ->
     $.getJSON '/admin/health/entries.json', (data) ->
       $.each data, (idx, obj) ->
@@ -15,7 +23,7 @@ window.initialize = ->
           title: obj.name
           url: obj.url
           start: obj.entry_date
-          color: '#F5F5F5'
+          color: colors.list[1]
     .done ->
       $('#fullcalendar').fullCalendar
         header:

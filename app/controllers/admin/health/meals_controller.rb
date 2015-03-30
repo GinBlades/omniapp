@@ -2,7 +2,8 @@ class Admin::Health::MealsController < AdminController
   before_action :set_health_meal, only: [:show, :edit, :update, :destroy]
 
   def index
-    @health_meals = ::Health::Meal.all
+    @q = ::Health::Meal.ransack(params[:q])
+    @health_meals = @q.result(uniq: true)
   end
 
   def show

@@ -6,14 +6,14 @@ h1
 table.table.table-striped.table-index
   thead
     tr
-      th Time
-      th Meal category
-      th.extra Calories
-      th.extra Quality
-      th.extra Healthiness
-      th.extra Home
-      th.extra Vegetarian
-      th Cost
+      th = sort_link @q, :time
+      th = sort_link @q, :meal_category
+      th.extra = sort_link @q, :calories
+      th.extra = sort_link @q, :quality
+      th.extra = sort_link @q, :healthiness
+      th.extra = sort_link @q, :home
+      th.extra = sort_link @q, :vegetarian
+      th = sort_link @q, :cost
       th
       
   tbody
@@ -24,8 +24,8 @@ table.table.table-striped.table-index
         td.extra= health_meal.calories
         td.extra= health_meal.quality
         td.extra= health_meal.healthiness
-        td.extra= health_meal.home
-        td.extra= health_meal.vegetarian
+        td.extra= health_meal.home ? 'Yes' : 'No'
+        td.extra= health_meal.vegetarian ? 'Yes' : 'No'
         td= health_meal.cost
         td
           = link_to 'Edit', edit_admin_health_meal_path(health_meal)

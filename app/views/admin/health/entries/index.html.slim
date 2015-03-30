@@ -6,9 +6,9 @@ h1
 table.table.table-striped
   thead
     tr
-      th User
-      th Entry date
-      th Notes
+      th = sort_link @q, :user_first_name, 'User'
+      th = sort_link @q, :entry_date
+      th = sort_link @q, :notes
       th
       th
       

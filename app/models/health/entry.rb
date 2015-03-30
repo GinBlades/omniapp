@@ -3,6 +3,8 @@ class Health::Entry < ActiveRecord::Base
   has_many :health_ratings, class_name: '::Health::Rating', foreign_key: 'health_entry_id'
   accepts_nested_attributes_for :health_ratings, reject_if: :all_blank, allow_destroy: true
 
+  default_scope { order(entry_date: :desc) }
+
   def day_length
     entry_date.beginning_of_day..entry_date.end_of_day
   end
