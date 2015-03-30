@@ -7,7 +7,7 @@ table.table.table-striped
     td= @budget_entry.budget_subcategory
   tr
     th Price:
-    td= @budget_entry.price
+    td= number_to_currency(@budget_entry.price)
   tr
     th Note:
     td= @budget_entry.notes

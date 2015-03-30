@@ -2,11 +2,11 @@
   = f.error_notification
 
   .form-inputs
+    = f.input :entry_date, as: :string, input_html: { type: 'date', value: date_form(@budget_entry.entry_date) || date_form(Time.now) }
     = f.association :budget_payee
-    = f.association :budget_subcategory
+    = f.association :budget_subcategory, label_method: :label
     = f.input :price
-    = f.input :notes
-    = f.input :entry_date
+    = f.input :notes, as: :ckeditor
 
   .form-actions
     = f.button :submit, class: 'btn btn-success'

@@ -19,7 +19,7 @@ table.table.table-striped
       tr
         td= budget_entry.budget_payee
         td= budget_entry.budget_subcategory
-        td= budget_entry.price
+        td= number_to_currency(budget_entry.price)
         td= budget_entry.notes
         td= budget_entry.entry_date
         td= link_to 'Show', [:admin,budget_entry]

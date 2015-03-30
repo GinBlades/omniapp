@@ -4,19 +4,20 @@ Rails.application.routes.draw do
     get '/' => 'dashboard#index'
     namespace :health do
       get '/' => 'dashboard#index'
-      resources :ratings
       resources :categories
       resources :entries
       resources :meals
-      resources :workouts
+      resources :ratings
       resources :workout_categories
+      resources :workouts
     end
     namespace :budget do
       get '/' => 'dashboard#index'
-      resources :entries
-      resources :subcategories
-      resources :payees
       resources :categories
+      resources :entries
+      resources :events
+      resources :payees
+      resources :subcategories
     end
   end
   devise_for :users

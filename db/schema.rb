@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150330152152) do
+ActiveRecord::Schema.define(version: 20150330163041) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,21 @@ ActiveRecord::Schema.define(version: 20150330152152) do
 
   add_index "budget_entries", ["budget_payee_id"], name: "index_budget_entries_on_budget_payee_id", using: :btree
   add_index "budget_entries", ["budget_subcategory_id"], name: "index_budget_entries_on_budget_subcategory_id", using: :btree
+
+  create_table "budget_events", force: :cascade do |t|
+    t.integer  "budget_payee_id"
+    t.date     "event_date"
+    t.decimal  "price",              precision: 12, scale: 2
+    t.boolean  "recurring"
+    t.integer  "recurring_interval"
+    t.string   "event_action"
+    t.string   "url"
+    t.date     "alert_date"
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+  end
+
+  add_index "budget_events", ["budget_payee_id"], name: "index_budget_events_on_budget_payee_id", using: :btree
 
   create_table "budget_payees", force: :cascade do |t|
     t.string   "name"
@@ -165,6 +180,7 @@ ActiveRecord::Schema.define(version: 20150330152152) do
 
   add_foreign_key "budget_entries", "budget_payees"
   add_foreign_key "budget_entries", "budget_subcategories"
+  add_foreign_key "budget_events", "budget_payees"
   add_foreign_key "budget_subcategories", "budget_categories"
   add_foreign_key "health_entries", "users"
   add_foreign_key "health_meals", "users"
