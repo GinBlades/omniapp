@@ -1,0 +1,17 @@
+table.table.table-striped
+  tr
+    th Name:
+    td= @notes_entry.name
+  tr
+    th Slug:
+    td= @notes_entry.slug
+  tr
+    th Body:
+    td= md_render(@notes_entry.body)
+  tr
+    th Notes category:
+    td= @notes_entry.notes_category
+
+.btn-group
+  = link_to 'Edit', edit_notes_entry_path(@notes_entry), class: 'btn btn-default'
+  = link_to 'All Notes Entries', notes_entries_path, class: 'btn btn-default'

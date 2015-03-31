@@ -31,4 +31,9 @@ module ApplicationHelper
   def remove_icon
     content_tag :span, '', class: 'glyphicon glyphicon-remove-sign'
   end
+
+  def md_render(content)
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, tables: true)
+    markdown.render(content).html_safe
+  end
 end

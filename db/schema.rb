@@ -11,10 +11,62 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150324075608) do
+ActiveRecord::Schema.define(version: 20150331205450) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "budget_categories", force: :cascade do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "budget_entries", force: :cascade do |t|
+    t.integer  "budget_payee_id"
+    t.integer  "budget_subcategory_id"
+    t.decimal  "price",                 precision: 12, scale: 2
+    t.string   "notes"
+    t.date     "entry_date"
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
+  end
+
+  add_index "budget_entries", ["budget_payee_id"], name: "index_budget_entries_on_budget_payee_id", using: :btree
+  add_index "budget_entries", ["budget_subcategory_id"], name: "index_budget_entries_on_budget_subcategory_id", using: :btree
+
+  create_table "budget_events", force: :cascade do |t|
+    t.integer  "budget_payee_id"
+    t.date     "event_date"
+    t.decimal  "price",              precision: 12, scale: 2
+    t.boolean  "recurring"
+    t.integer  "recurring_interval"
+    t.string   "event_action"
+    t.string   "url"
+    t.date     "alert_date"
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+  end
+
+  add_index "budget_events", ["budget_payee_id"], name: "index_budget_events_on_budget_payee_id", using: :btree
+
+  create_table "budget_payees", force: :cascade do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "budget_subcategories", force: :cascade do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.integer  "budget_category_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "budget_subcategories", ["budget_category_id"], name: "index_budget_subcategories_on_budget_category_id", using: :btree
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string   "data_file_name",               null: false
@@ -103,6 +155,24 @@ ActiveRecord::Schema.define(version: 20150324075608) do
   add_index "health_workouts", ["health_workout_category_id"], name: "index_health_workouts_on_health_workout_category_id", using: :btree
   add_index "health_workouts", ["user_id"], name: "index_health_workouts_on_user_id", using: :btree
 
+  create_table "notes_categories", force: :cascade do |t|
+    t.string   "name"
+    t.string   "slug",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "notes_entries", force: :cascade do |t|
+    t.string   "name"
+    t.string   "slug",              null: false
+    t.string   "body"
+    t.integer  "notes_category_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "notes_entries", ["notes_category_id"], name: "index_notes_entries_on_notes_category_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "username",               default: "", null: false
@@ -126,10 +196,15 @@ ActiveRecord::Schema.define(version: 20150324075608) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
+  add_foreign_key "budget_entries", "budget_payees"
+  add_foreign_key "budget_entries", "budget_subcategories"
+  add_foreign_key "budget_events", "budget_payees"
+  add_foreign_key "budget_subcategories", "budget_categories"
   add_foreign_key "health_entries", "users"
   add_foreign_key "health_meals", "users"
   add_foreign_key "health_ratings", "health_categories"
   add_foreign_key "health_ratings", "health_entries"
   add_foreign_key "health_workouts", "health_workout_categories"
   add_foreign_key "health_workouts", "users"
+  add_foreign_key "notes_entries", "notes_categories"
 end
