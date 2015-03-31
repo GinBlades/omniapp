@@ -26,7 +26,7 @@ table.table.table-striped.table-index
         td.extra= health_meal.healthiness
         td.extra= health_meal.home ? 'Yes' : 'No'
         td.extra= health_meal.vegetarian ? 'Yes' : 'No'
-        td= health_meal.cost
+        td= number_to_currency(health_meal.cost)
         td
           = link_to 'Edit', edit_admin_health_meal_path(health_meal)
           '

@@ -1,0 +1,26 @@
+table.table.table-striped
+  tr
+    th Payee:
+    td= @budget_event.budget_payee
+  tr
+    th Event date:
+    td= @budget_event.event_date
+  tr
+    th Price:
+    td= @budget_event.price
+  tr
+    th Recurring:
+    td= @budget_event.recurring
+  tr
+    th Event action:
+    td= @budget_event.event_action
+  tr
+    th Url:
+    td= @budget_event.url
+  tr
+    th Alert date:
+    td= @budget_event.alert_date
+
+.btn-group
+  = link_to 'Edit', edit_admin_budget_event_path(@budget_event), class: 'btn btn-default'
+  = link_to 'All Budget Events', admin_budget_events_path, class: 'btn btn-default'

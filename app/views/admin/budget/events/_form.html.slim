@@ -1,0 +1,15 @@
+= simple_form_for([:admin,@budget_event]) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :budget_payee
+    = f.input :event_date, as: :string, input_html: { type: 'date', value: date_form(@budget_event.event_date) || date_form(Time.now) }
+    = f.input :price
+    = f.input :event_action, as: :ckeditor
+    = f.input :url
+    = f.input :recurring
+    = f.input :recurring_interval, as: :radio_buttons, collection: Budget::Event.recurring_intervals.keys.map{|n| [n.titleize, n]}
+    = f.input :alert_before, as: :radio_buttons, collection: Budget::Event.before_times, checked: @budget_event.alert_difference
+
+  .form-actions
+    = f.button :submit, class: 'btn btn-success'

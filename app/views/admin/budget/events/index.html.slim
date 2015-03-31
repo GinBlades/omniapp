@@ -1,0 +1,35 @@
+h1 
+  Budget Events
+  '
+  = link_to 'New Event', new_admin_budget_event_path, class: 'btn btn-primary'
+
+table.table.table-striped
+  thead
+    tr
+      th Payee
+      th Event date
+      th Price
+      th Recurring
+      th Event action
+      th Url
+      th Alert date
+      th
+      th
+      
+  tbody
+    - @budget_events.each do |budget_event|
+      tr
+        td= budget_event.budget_payee
+        td= budget_event.event_date
+        td= budget_event.price
+        td= budget_event.recurring
+        td= budget_event.event_action
+        td= budget_event.url
+        td= budget_event.alert_date
+        td= link_to 'Show', [:admin,budget_event]
+        td
+          = link_to 'Edit', edit_admin_budget_event_path(budget_event)
+          '
+          |/
+          '
+          = link_to 'Delete', [:admin,budget_event], :method => :delete, :data => { :confirm => 'Are you sure?' }
