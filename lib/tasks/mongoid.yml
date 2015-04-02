@@ -1,8 +1,0 @@
-production:
-  sessions:
-    default:
-      hosts:
-        - oceanic.mongohq.com:10037
-      database: app23573608
-      username: backup
-      password: nosqlnolife
