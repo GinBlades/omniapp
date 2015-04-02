@@ -21,7 +21,7 @@ when 'production'
   set :rails_env, 'production'
 else
   set :deploy_to, '/home/ubuntu/sites/staging/omniapp'
-  set :branch, 'master'
+  set :branch, 'ace'
   set :rails_env, 'staging'
 end
 
