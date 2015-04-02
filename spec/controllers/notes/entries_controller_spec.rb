@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Notes::EntriesController, :type => :controller do
+RSpec.describe Notes::EntriesController, type: :controller do
 
   
   describe "Standard CRUD" do

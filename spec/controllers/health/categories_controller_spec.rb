@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Health::CategoriesController, :type => :controller do
+RSpec.describe Health::CategoriesController, type: :controller do
 
   
   describe "Standard CRUD" do

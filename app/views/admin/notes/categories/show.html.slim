@@ -18,7 +18,7 @@ table.table.table-striped
           '
           |/
           '
-          = link_to 'Delete', notes_entry, :method => :delete, :data => { :confirm => 'Are you sure?' }
+          = link_to 'Delete', [:admin,notes_entry], method: :delete, data: { confirm: 'Are you sure?' }
 
 .btn-group
   = link_to 'Edit', edit_admin_notes_category_path(@notes_category), class: 'btn btn-default'
