@@ -4,7 +4,8 @@
   .form-inputs
     = f.input :entry_date, as: :string, input_html: { type: 'date', value: date_form(@budget_entry.entry_date) || date_form(Time.now) }
     = f.association :budget_payee
-    = f.association :budget_subcategory, label_method: :label
+    = f.input :budget_subcategory, as: :string
+    = f.hidden_field :budget_subcategory_id
     = f.input :price
     = f.input :notes, as: :ckeditor
 

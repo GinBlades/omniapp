@@ -2,7 +2,7 @@ class Admin::Health::WorkoutsController < AdminController
   before_action :set_health_workout, only: [:show, :edit, :update, :destroy]
 
   def index
-    @q = ::Health::Workout.ransack(params[:q])
+    @q = ::Health::Workout.includes(:user, :health_workout_category).ransack(params[:q])
     @health_workouts = @q.result(uniq: true)
   end
 

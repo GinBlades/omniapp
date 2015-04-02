@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require moment
 //= require bootstrap-sprockets
 //= require ckeditor/init
@@ -27,3 +28,5 @@
 
 $(document).ready(initialize);
 $(document).on('page:load', initialize);
+$(document).on('page:fetch', startSpinner);
+$(document).on('page:receive', stopSpinner);

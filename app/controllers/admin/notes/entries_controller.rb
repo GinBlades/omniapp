@@ -2,7 +2,7 @@ class Admin::Notes::EntriesController < AdminController
   before_action :set_notes_entry, only: [:show, :edit, :update, :destroy]
 
   def index
-    @notes_entries = ::Notes::Entry.all
+    @notes_entries = ::Notes::Entry.includes(:notes_category)
   end
 
   def show

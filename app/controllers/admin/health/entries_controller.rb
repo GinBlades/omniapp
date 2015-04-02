@@ -2,7 +2,7 @@ class Admin::Health::EntriesController < AdminController
   before_action :set_health_entry, only: [:show, :edit, :update, :destroy]
 
   def index
-    @q = ::Health::Entry.ransack(params[:q])
+    @q = ::Health::Entry.includes(:user).ransack(params[:q])
     @health_entries = @q.result(uniq: true)
   end
 

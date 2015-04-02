@@ -1,9 +1,11 @@
 /*
+ *= require jquery-ui
  *= require jquery.datetimepicker
  *= require fullcalendar
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "animation";
 
 .flash {
   .alert.notice {
@@ -46,4 +48,13 @@ textarea.notes {
   right: 0;
   bottom: 0;
   left: 0;
+}
+
+#spinner {
+  position: absolute;
+  color: #fff;
+  left: 0;
+  top: 0;
+  font-size: 1.5em;
+  display: none;
 }

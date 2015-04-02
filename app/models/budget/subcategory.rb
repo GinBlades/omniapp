@@ -5,6 +5,8 @@ class Budget::Subcategory < ActiveRecord::Base
 
   validates :name, presence: true
 
+  default_scope { joins(:budget_category).order('budget_categories.name ASC', :name) }
+
   def label
     "#{budget_category.name}: #{name}"
   end
