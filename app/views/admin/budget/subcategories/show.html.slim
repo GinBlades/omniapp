@@ -1,13 +1,27 @@
+h1
+  | #{@budget_subcategory.budget_category}: #{@budget_subcategory.name}
+  '
+  small = @budget_subcategory.slug
+
 table.table.table-striped
-  tr
-    th Name:
-    td= @budget_subcategory.name
-  tr
-    th Slug:
-    td= @budget_subcategory.slug
-  tr
-    th Budget category:
-    td= @budget_subcategory.budget_category
+  thead
+    tr
+      th Payee
+      th Subcategory
+      th Price
+      th Note
+      th Entry date
+      th
+      
+  tbody
+    - @budget_subcategory.budget_entries.each do |budget_entry|
+      tr
+        td= budget_entry.budget_payee
+        td= budget_entry.budget_subcategory
+        td= number_to_currency(budget_entry.price)
+        td= budget_entry.notes
+        td= budget_entry.entry_date
+        td= link_to 'Show', [:admin,budget_entry]
 
 .btn-group
   = link_to 'Edit', edit_admin_budget_subcategory_path(@budget_subcategory), class: 'btn btn-default'

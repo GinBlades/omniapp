@@ -2,7 +2,7 @@ class Admin::Budget::SubcategoriesController < AdminController
   before_action :set_budget_subcategory, only: [:show, :edit, :update, :destroy]
 
   def index
-    @budget_subcategories = ::Budget::Subcategory.all
+    @budget_subcategories = ::Budget::Subcategory.includes(:budget_category)
   end
 
   def show

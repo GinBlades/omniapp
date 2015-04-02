@@ -3,25 +3,23 @@ h1
   '
   = link_to 'New Subcategory', new_admin_budget_subcategory_path, class: 'btn btn-primary'
 
-table.table.table-striped
-  thead
-    tr
-      th Name
-      th Slug
-      th Budget category
-      th
-      th
-      
-  tbody
-    - @budget_subcategories.each do |budget_subcategory|
-      tr
-        td= budget_subcategory.name
-        td= budget_subcategory.slug
-        td= budget_subcategory.budget_category
-        td= link_to 'Show', [:admin,budget_subcategory]
-        td
-          = link_to 'Edit', edit_admin_budget_subcategory_path(budget_subcategory)
-          '
-          |/
-          '
-          = link_to 'Delete', [:admin,budget_subcategory], :method => :delete, :data => { :confirm => 'Are you sure?' }
+.row
+  .col-md-6
+    table.table.table-striped
+      thead
+        tr
+          th Name
+          th Budget category
+          th
+          
+      tbody
+        - @budget_subcategories.each do |budget_subcategory|
+          tr
+            td= link_to budget_subcategory.name, [:admin,budget_subcategory]
+            td= budget_subcategory.budget_category
+            td
+              = link_to 'Edit', edit_admin_budget_subcategory_path(budget_subcategory)
+              '
+              |/
+              '
+              = link_to 'Delete', [:admin,budget_subcategory], :method => :delete, :data => { :confirm => 'Are you sure?' }
