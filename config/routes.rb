@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
+
   namespace :notes do
+    get '/' => 'dashboard#index'
     resources :entries
-  end
-  namespace :notes do
     resources :categories
   end
   mount Ckeditor::Engine => '/ckeditor'

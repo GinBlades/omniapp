@@ -34,7 +34,9 @@ namespace :import do
         name: entry.title,
         slug: entry.title.parameterize,
         body: entry.body,
-        notes_category: category
+        notes_category: category,
+        created_at: entry.created_at,
+        updated_at: entry.updated_at
       )
     end
   end
