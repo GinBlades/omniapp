@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150330163041) do
+ActiveRecord::Schema.define(version: 20150331205450) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -155,6 +155,24 @@ ActiveRecord::Schema.define(version: 20150330163041) do
   add_index "health_workouts", ["health_workout_category_id"], name: "index_health_workouts_on_health_workout_category_id", using: :btree
   add_index "health_workouts", ["user_id"], name: "index_health_workouts_on_user_id", using: :btree
 
+  create_table "notes_categories", force: :cascade do |t|
+    t.string   "name"
+    t.string   "slug",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "notes_entries", force: :cascade do |t|
+    t.string   "name"
+    t.string   "slug",              null: false
+    t.string   "body"
+    t.integer  "notes_category_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "notes_entries", ["notes_category_id"], name: "index_notes_entries_on_notes_category_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "username",               default: "", null: false
@@ -188,4 +206,5 @@ ActiveRecord::Schema.define(version: 20150330163041) do
   add_foreign_key "health_ratings", "health_entries"
   add_foreign_key "health_workouts", "health_workout_categories"
   add_foreign_key "health_workouts", "users"
+  add_foreign_key "notes_entries", "notes_categories"
 end

@@ -44,7 +44,11 @@ gem 'devise'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'ckeditor'
+gem 'ace-rails-ap'
+gem 'redcarpet'
 
 gem 'simple_form'
 gem 'cocoon'
 gem 'ransack'
+
+gem 'whenever', require: false

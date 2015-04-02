@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :health_meal, :class => 'Health::Meal' do
+  factory :health_meal, class: 'Health::Meal' do
     time "2015-03-23 13:58:53"
 meal_category 1
 calories 1

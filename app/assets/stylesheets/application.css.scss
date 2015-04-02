@@ -34,3 +34,16 @@
     }
   }
 }
+
+textarea.notes {
+  font-family: "Courier New", Courier, monospace;
+}
+
+#notes_entry_editor {
+  min-height: 400px;
+  position: relative;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}

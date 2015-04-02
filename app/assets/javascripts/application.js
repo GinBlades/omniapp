@@ -15,6 +15,10 @@
 //= require moment
 //= require bootstrap-sprockets
 //= require ckeditor/init
+//= require ace/ace
+//= require ace/worker-html
+//= require ace/theme-github
+//= require ace/mode-markdown
 //= require jquery.datetimepicker
 //= require fullcalendar
 //= require cocoon

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Health::WorkoutsController, :type => :controller do
+RSpec.describe Health::WorkoutsController, type: :controller do
 
   
   describe "Standard CRUD" do

@@ -1,0 +1,11 @@
+= simple_form_for([:admin,@notes_entry]) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :body, as: :text
+    #notes_entry_editor
+    = f.association :notes_category
+
+  .form-actions
+    = f.button :submit, class: 'btn btn-success'
