@@ -1,0 +1,13 @@
+= link_to "&larr; Back to #{@notes_entry.notes_category} notes".html_safe, [:admin,@notes_entry.notes_category]
+h1
+  = @notes_entry.name
+  '
+  small = @notes_entry.notes_category
+  '
+  .btn-group
+    = link_to 'Edit', edit_admin_notes_entry_path(@notes_entry), class: 'btn btn-default btn-sm'
+    = link_to 'Delete', [:admin,@notes_entry], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default btn-sm btn-danger'
+
+.row
+  .col-md-12
+    = md_render(@notes_entry.body)

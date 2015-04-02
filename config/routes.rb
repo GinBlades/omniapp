@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :notes do
-    get '/' => 'dashboard#index'
-    resources :entries
-    resources :categories
-  end
   mount Ckeditor::Engine => '/ckeditor'
   namespace :admin do
     get '/' => 'dashboard#index'
@@ -16,6 +11,11 @@ Rails.application.routes.draw do
       resources :meals
       resources :workouts
       resources :workout_categories
+    end
+    namespace :notes do
+      get '/' => 'dashboard#index'
+      resources :entries
+      resources :categories
     end
   end
   devise_for :users

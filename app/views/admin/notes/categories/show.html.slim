@@ -12,14 +12,14 @@ table.table.table-striped
   tbody
     - @notes_category.notes_entries.each do |notes_entry|
       tr
-        td= link_to notes_entry.name, notes_entry
+        td= link_to notes_entry.name, [:admin,notes_entry]
         td
-          = link_to 'Edit', edit_notes_entry_path(notes_entry)
+          = link_to 'Edit', edit_admin_notes_entry_path(notes_entry)
           '
           |/
           '
           = link_to 'Delete', notes_entry, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 .btn-group
-  = link_to 'Edit', edit_notes_category_path(@notes_category), class: 'btn btn-default'
-  = link_to 'All Notes Categories', notes_categories_path, class: 'btn btn-default'
+  = link_to 'Edit', edit_admin_notes_category_path(@notes_category), class: 'btn btn-default'
+  = link_to 'All Notes Categories', admin_notes_categories_path, class: 'btn btn-default'
