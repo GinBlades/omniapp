@@ -1,4 +1,5 @@
 class Health::Category < ActiveRecord::Base
+  include Sluggable
   has_many :health_ratings, class_name: '::Health::Rating'
 
   before_save :make_slug
