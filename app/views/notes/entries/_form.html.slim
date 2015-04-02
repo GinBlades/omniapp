@@ -3,7 +3,8 @@
 
   .form-inputs
     = f.input :name
-    = f.input :body, as: :text, input_html: { rows: 30, class: 'notes'}
+    = f.input :body, as: :text
+    #notes_entry_editor
     = f.association :notes_category
 
   .form-actions

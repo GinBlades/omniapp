@@ -18,3 +18,12 @@ window.initialize = ->
         timepicker: false,
         format: 'Y-m-d'
 
+  textarea = $('textarea#notes_entry_body').hide()
+  if textarea.length > 0
+    editor = ace.edit('notes_entry_editor')
+    editor.setTheme('ace/theme/github')
+    editor.getSession().setMode('ace/mode/markdown')
+    editor.getSession().setValue(textarea.val())
+    editor.getSession().on 'change', ->
+      textarea.val(editor.getSession().getValue())
+
