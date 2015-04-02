@@ -35,6 +35,8 @@ nav.navbar.navbar-inverse role="navigation"
               li = link_to 'Entries', admin_notes_entries_path
               li = link_to 'Categories', admin_notes_categories_path
         
+        - else
+          li = link_to 'Notes', notes_categories_path
         li = link_to '&#9536;'.html_safe, '#'
       ul.nav.navbar-nav.navbar-right
         - if user_signed_in?

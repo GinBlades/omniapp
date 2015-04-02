@@ -1,0 +1,9 @@
+= link_to "&larr; Back to #{@notes_entry.notes_category} notes".html_safe, @notes_entry.notes_category
+h1
+  = @notes_entry.name
+  '
+  small = @notes_entry.notes_category
+
+.row
+  .col-md-12
+    = md_render(@notes_entry.body)

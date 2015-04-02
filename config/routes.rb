@@ -1,5 +1,21 @@
 Rails.application.routes.draw do
 
+  namespace :notes do
+  get 'categories/index'
+  end
+
+  namespace :notes do
+  get 'categories/show'
+  end
+
+  namespace :notes do
+  get 'entries/index'
+  end
+
+  namespace :notes do
+  get 'entries/show'
+  end
+
   mount Ckeditor::Engine => '/ckeditor'
   namespace :admin do
     get '/' => 'dashboard#index'
@@ -19,6 +35,10 @@ Rails.application.routes.draw do
     end
   end
   devise_for :users
+  namespace :notes do
+    resources :entries, only: [:index, :show]
+    resources :categories, only: [:index, :show]
+  end
   get '/jihye' => 'pages#jihye'
   root 'pages#home'
 
