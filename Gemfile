@@ -51,4 +51,4 @@ gem 'simple_form'
 gem 'cocoon'
 gem 'ransack'
 
-gem 'whenever'
+gem 'whenever', require: false
