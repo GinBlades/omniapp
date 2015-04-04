@@ -100,7 +100,7 @@ def budget_categories
   entertainment.budget_subcategories.create(name: 'Toys/Gadgets')
   entertainment.budget_subcategories.create(name: 'Other')
 
-  subscriptions = ::Budget::Category.create(name: 'subscriptions.subscriptions')
+  subscriptions = ::Budget::Category.create(name: 'Subscriptions')
   subscriptions.budget_subcategories.create(name: 'Newspaper')
   subscriptions.budget_subcategories.create(name: 'Magazines')
   subscriptions.budget_subcategories.create(name: 'Dues')
@@ -108,12 +108,12 @@ def budget_categories
   subscriptions.budget_subcategories.create(name: 'Other')
 
   vacation = ::Budget::Category.create(name: 'Vacation')
-  subscriptions.budget_subcategories.create(name: 'Travel')
-  subscriptions.budget_subcategories.create(name: 'Lodging')
-  subscriptions.budget_subcategories.create(name: 'Food')
-  subscriptions.budget_subcategories.create(name: 'Rental Car')
-  subscriptions.budget_subcategories.create(name: 'Entertainment')
-  subscriptions.budget_subcategories.create(name: 'Other')
+  vacation.budget_subcategories.create(name: 'Travel')
+  vacation.budget_subcategories.create(name: 'Lodging')
+  vacation.budget_subcategories.create(name: 'Food')
+  vacation.budget_subcategories.create(name: 'Rental Car')
+  vacation.budget_subcategories.create(name: 'Entertainment')
+  vacation.budget_subcategories.create(name: 'Other')
 
   miscellaneous = ::Budget::Category.create(name: 'Miscellaneous')
   miscellaneous.budget_subcategories.create(name: 'Bank Fees')
