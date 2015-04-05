@@ -8,11 +8,8 @@ table.table.table-striped
     tr
       th User
       th Title
-      th Slug
-      th Excerpt
-      th Body
       th Published at
-      th
+      th Tags
       th
       
   tbody
@@ -20,10 +17,8 @@ table.table.table-striped
       tr
         td= blog_post.user
         td= blog_post.title
-        td= blog_post.slug
-        td= blog_post.excerpt
-        td= blog_post.body
         td= blog_post.published_at
+        td= blog_post.tag_list.join(', ')
         td= link_to 'Show', [:admin,blog_post]
         td
           = link_to 'Edit', edit_admin_blog_post_path(blog_post)

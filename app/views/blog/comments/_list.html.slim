@@ -1,0 +1,7 @@
+- @post.blog_comments.where(approved: true).each do |comment|
+  .panel.panel-default
+    .panel-body
+      h4 = comment.name
+      p = comment.body
+      - if user_signed_in?
+        = link_to 'Delete', comment, method: :delete, data: { confirm: 'Are you sure?' }

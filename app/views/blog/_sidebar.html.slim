@@ -1,0 +1,30 @@
+.panel.panel-default
+  .panel-heading
+    h3.panel-title About Me
+  .panel-body
+    p Lorem laboriosam eveniet veritatis itaque magnam explicabo doloremque saepe saepe id tempore. Et illo eum explicabo optio est. Earum asperiores perferendis quasi possimus natus optio atque. Qui dolor iure quisquam!
+
+.panel.panel-default
+  .panel-heading
+    h3.panel-title Latest Posts
+  .panel-body
+    dl
+      - ::Blog::Post.where('published_at < ?', Time.now).each do |post|
+        dt = link_to post.title, post
+        dd = post.published_at.strftime("%m/%d/%y")
+
+.panel.panel-default
+  .panel-heading
+    h3.panel-title Latest Comments
+  .panel-body
+    ul.list-unstyled
+      - ::Blog::Comment.where(approved: true).each do |comment|
+        li
+          = link_to comment.post do
+            ul.list-unstyled
+              li
+                b = comment.post.title.truncate(25)
+              li
+              li = comment.body.truncate(25)
+              li = comment.created_at.strftime("%m/%d/%y")
+  .panel-body

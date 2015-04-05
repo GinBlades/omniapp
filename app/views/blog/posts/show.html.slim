@@ -1,0 +1,26 @@
+.row
+  .col-md-9
+    h2
+      = link_to @post.title, @post
+    p.meta
+      | Posted by #{@post.user}
+      '
+      | on #{@post.published_at.strftime("%m/%d/%y")}
+    = raw @post.body
+    hr
+    .row
+      .col-md-12
+        h3 Comments
+        = render 'blog/comments/list'
+    .row
+      .col-md-12
+        h3 Leave a comment
+        .panel.panel-default
+          .panel-body
+            = render 'blog/comments/form'
+
+  .col-md-3
+    = render 'blog/sidebar'
+
+- content_for :title
+  = @post.title

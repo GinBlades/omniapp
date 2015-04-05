@@ -55,6 +55,6 @@ class Admin::Blog::CommentsController < AdminController
     end
 
     def blog_comment_params
-      params.require(:blog_comment).permit(:name, :email, :body, :approved, :post_id)
+      params.require(:blog_comment).permit(:name, :email, :body, :approved, :blog_post_id)
     end
 end

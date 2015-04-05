@@ -16,6 +16,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'shoulda-matchers'
   gem 'factory_girl_rails'
+  gem 'faker'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'spring-commands-rspec'
@@ -35,6 +36,7 @@ gem 'jquery-datetimepicker-rails'
 gem 'jquery-ui-rails'
 gem 'momentjs-rails'
 gem 'fullcalendar-rails'
+gem 'jquery-validation-rails'
 
 gem 'dotenv-rails'
 gem 'mina'
@@ -51,5 +53,7 @@ gem 'redcarpet'
 gem 'simple_form'
 gem 'cocoon'
 gem 'ransack'
+gem 'negative_captcha'
+gem 'acts-as-taggable-on'
 
 gem 'whenever', require: false

@@ -60,6 +60,7 @@ nav.navbar.navbar-inverse role="navigation"
         
         - else
           li = link_to 'Notes', notes_categories_path
+          li = link_to 'Blog', blog_path
         li = link_to '&#9536;'.html_safe, '#'
       ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
