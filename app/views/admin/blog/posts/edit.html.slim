@@ -1,0 +1,7 @@
+h1 Editing blog_post
+
+= render 'form'
+
+.btn-group
+  = link_to 'Show', [:admin,@blog_post], class: 'btn btn-default'
+  = link_to 'Back', admin_blog_posts_path, class: 'btn btn-default'

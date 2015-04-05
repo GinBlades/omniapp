@@ -11,10 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150331205450) do
+ActiveRecord::Schema.define(version: 20150405134656) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "blog_comments", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email",                        null: false
+    t.string   "body",                         null: false
+    t.boolean  "approved",     default: false
+    t.integer  "blog_post_id"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "blog_comments", ["blog_post_id"], name: "index_blog_comments_on_blog_post_id", using: :btree
+
+  create_table "blog_posts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "title",        null: false
+    t.string   "slug",         null: false
+    t.string   "excerpt"
+    t.string   "body"
+    t.datetime "published_at"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "blog_posts", ["user_id"], name: "index_blog_posts_on_user_id", using: :btree
 
   create_table "budget_categories", force: :cascade do |t|
     t.string   "name"
@@ -196,6 +221,8 @@ ActiveRecord::Schema.define(version: 20150331205450) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
+  add_foreign_key "blog_comments", "blog_posts"
+  add_foreign_key "blog_posts", "users"
   add_foreign_key "budget_entries", "budget_payees"
   add_foreign_key "budget_entries", "budget_subcategories"
   add_foreign_key "budget_events", "budget_payees"

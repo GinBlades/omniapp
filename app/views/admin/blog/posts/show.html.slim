@@ -1,0 +1,23 @@
+table.table.table-striped
+  tr
+    th User:
+    td= @blog_post.user
+  tr
+    th Title:
+    td= @blog_post.title
+  tr
+    th Slug:
+    td= @blog_post.slug
+  tr
+    th Excerpt:
+    td= @blog_post.excerpt
+  tr
+    th Body:
+    td= @blog_post.body
+  tr
+    th Published at:
+    td= @blog_post.published_at
+
+.btn-group
+  = link_to 'Edit', edit_admin_blog_post_path(@blog_post), class: 'btn btn-default'
+  = link_to 'All Blog Posts', admin_blog_posts_path, class: 'btn btn-default'

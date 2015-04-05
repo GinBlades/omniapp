@@ -1,0 +1,38 @@
+h1 Blog Dashboard
+
+.row
+  .col-md-6
+    .panel.panel-default
+      .panel-heading
+        h1.panel-title
+          | Recent Posts
+          '
+          = link_to 'New Post', new_admin_blog_post_path, class: 'btn btn-default btn-xs'
+      table.table.table-striped
+        thead
+          tr
+            th Title
+            th Published At
+        - @posts.each do |post|
+          tbody
+            tr
+              td = link_to post.title, [:admin,post]
+              td = post.published_at.try(:strftime, '%Y-%m-%d')
+  .col-md-6
+    .panel.panel-default
+      .panel-heading
+        h1.panel-title Recent Comments
+      table.table.table-striped
+        thead
+          tr
+            th Name
+            th Date
+        - @comments.each do |comment|
+          tbody
+            tr
+              td = link_to comment.name, [:admin,comment]
+              td = comment.created_at.try(:strftime, '%Y-%m-%d')
+          
+        
+          
+        

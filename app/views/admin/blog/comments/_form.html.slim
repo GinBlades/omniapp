@@ -1,0 +1,12 @@
+= simple_form_for([:admin,@blog_comment]) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :email
+    = f.input :body
+    = f.input :approved
+    = f.association :blog_post
+
+  .form-actions
+    = f.button :submit, class: 'btn btn-success'

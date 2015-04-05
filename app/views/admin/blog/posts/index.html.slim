@@ -1,0 +1,33 @@
+h1 
+  Blog Posts
+  '
+  = link_to 'New Post', new_admin_blog_post_path, class: 'btn btn-primary'
+
+table.table.table-striped
+  thead
+    tr
+      th User
+      th Title
+      th Slug
+      th Excerpt
+      th Body
+      th Published at
+      th
+      th
+      
+  tbody
+    - @blog_posts.each do |blog_post|
+      tr
+        td= blog_post.user
+        td= blog_post.title
+        td= blog_post.slug
+        td= blog_post.excerpt
+        td= blog_post.body
+        td= blog_post.published_at
+        td= link_to 'Show', [:admin,blog_post]
+        td
+          = link_to 'Edit', edit_admin_blog_post_path(blog_post)
+          '
+          |/
+          '
+          = link_to 'Delete', [:admin,blog_post], :method => :delete, :data => { :confirm => 'Are you sure?' }

@@ -1,0 +1,31 @@
+h1 
+  Blog Comments
+  '
+  = link_to 'New Comment', new_admin_blog_comment_path, class: 'btn btn-primary'
+
+table.table.table-striped
+  thead
+    tr
+      th Name
+      th Email
+      th Body
+      th Approved
+      th Post
+      th
+      th
+      
+  tbody
+    - @blog_comments.each do |blog_comment|
+      tr
+        td= blog_comment.name
+        td= blog_comment.email
+        td= blog_comment.body
+        td= blog_comment.approved
+        td= blog_comment.blog_post
+        td= link_to 'Show', [:admin,blog_comment]
+        td
+          = link_to 'Edit', edit_admin_blog_comment_path(blog_comment)
+          '
+          |/
+          '
+          = link_to 'Delete', [:admin,blog_comment], :method => :delete, :data => { :confirm => 'Are you sure?' }

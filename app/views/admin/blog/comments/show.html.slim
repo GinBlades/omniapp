@@ -1,0 +1,20 @@
+table.table.table-striped
+  tr
+    th Name:
+    td= @blog_comment.name
+  tr
+    th Email:
+    td= @blog_comment.email
+  tr
+    th Body:
+    td= @blog_comment.body
+  tr
+    th Approved:
+    td= @blog_comment.approved
+  tr
+    th Post:
+    td= @blog_comment.blog_post
+
+.btn-group
+  = link_to 'Edit', edit_admin_blog_comment_path(@blog_comment), class: 'btn btn-default'
+  = link_to 'All Blog Comments', admin_blog_comments_path, class: 'btn btn-default'
