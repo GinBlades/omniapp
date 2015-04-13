@@ -9,7 +9,7 @@
     h3.panel-title Latest Posts
   .panel-body
     dl
-      - ::Blog::Post.where('published_at < ?', Time.now).each do |post|
+      - ::Blog::Post.published.each do |post|
         dt = link_to post.title, post
         dd = post.published_at.strftime("%m/%d/%y")
 
@@ -18,7 +18,7 @@
     h3.panel-title Latest Comments
   .panel-body
     ul.list-unstyled
-      - ::Blog::Comment.where(approved: true).each do |comment|
+      - ::Blog::Comment.approved.each do |comment|
         li
           = link_to comment.post do
             ul.list-unstyled

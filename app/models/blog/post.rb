@@ -5,6 +5,8 @@ class Blog::Post < ActiveRecord::Base
   alias_attribute :name, :title
   acts_as_taggable
 
+  scope :published, -> { where('published_at < ?', Time.now) }
+
   validates :title, :body, :published_at, presence: true
 
   def to_s

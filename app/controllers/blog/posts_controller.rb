@@ -1,6 +1,10 @@
 class Blog::PostsController < ApplicationController
   def index
-    @posts = ::Blog::Post.where('published_at < ?', Time.now) 
+    if params[:tag]
+      @posts = ::Blog::Post.published.tagged_with(params[:tag])
+    else
+      @posts = ::Blog::Post.published
+    end
   end
 
   def show

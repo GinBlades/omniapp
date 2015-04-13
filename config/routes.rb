@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   end
   namespace :blog do
     get '/' => 'posts#index'
-    resources :posts, only: [:index, :show]
+    resources :posts, only: [:show]
     resources :comments, only: [:new, :create]
   end
   get '/jihye' => 'pages#jihye'

@@ -1,4 +1,4 @@
-- @post.blog_comments.where(approved: true).each do |comment|
+- @post.blog_comments.approved.each do |comment|
   .panel.panel-default
     .panel-body
       h4 = comment.name
