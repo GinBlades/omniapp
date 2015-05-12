@@ -2,7 +2,8 @@ class Admin::Notes::EntriesController < AdminController
   before_action :set_notes_entry, only: [:show, :edit, :update, :destroy]
 
   def index
-    @notes_entries = ::Notes::Entry.includes(:notes_category)
+    @q = ::Notes::Entry.ransack(params[:q])
+    @notes_entries = @q.result(distinct: true).includes(:notes_category)
   end
 
   def show
