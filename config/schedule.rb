@@ -28,6 +28,10 @@ env :PATH, ENV['PATH']
 set :environment, ENV['RAILS_ENV']
 set :output, "~/logs/omniapp-cron.log"
 
-every 1.day, at: '1:30am' do
+every 1.week, at: '1:30am' do
   rake 'backup:db'
+end
+
+every 1.month, at: 'start of the month at 1am' do
+  rake 'budget:allowance'
 end

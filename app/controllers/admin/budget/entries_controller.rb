@@ -16,7 +16,7 @@ class Admin::Budget::EntriesController < AdminController
   end
 
   def create
-    @budget_entry = ::Budget::Entry.new(budget_entry_params)
+    @budget_entry = current_user.budget_entries.build(budget_entry_params)
 
     respond_to do |format|
       if @budget_entry.save
@@ -55,6 +55,6 @@ class Admin::Budget::EntriesController < AdminController
     end
 
     def budget_entry_params
-      params.require(:budget_entry).permit(:budget_payee_id, :budget_subcategory_id, :price, :notes, :entry_date)
+      params.require(:budget_entry).permit(:budget_payee_id, :budget_subcategory_id, :price, :notes, :entry_date, :allowance)
     end
 end
