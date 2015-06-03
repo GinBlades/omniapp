@@ -9,10 +9,11 @@ namespace :backup do
     password         = config[Rails.env]["password"]
 
     puts "Dumping #{database} database..."
+    backup_string = "#{database} > #{backup_directory}/#{Time.now.strftime('%y%m%d')}-#{database}.sql"
     if username.present?
-      system "PGPASSWORD=#{password} pg_dump -h #{host} -U #{username} #{database} > #{Time.now.strftime('%y%m%d')}-#{database}.sql"
+      system "PGPASSWORD=#{password} pg_dump -h #{host} -U #{username} #{backup_string}"
     else
-      system "pg_dump #{database} > #{backup_directory}/#{Time.now.strftime('%y%m%d')}-#{database}.sql"
+      system "pg_dump #{backup_string}"
     end
   end
 
