@@ -63,7 +63,6 @@ textarea.notes {
   li {
     a {
       display: block;
-      text-align: center;
       line-height: 2em;
       font-size: 1.2em;
       color: #333333;
@@ -80,6 +79,43 @@ textarea.notes {
 
     &:last-child {
       border-bottom: 0;
+    }
+  }
+}
+
+@media (max-width: $screen-lg-min) {
+  .sidebar {
+    li {
+      display: inline;
+      float: left;
+      border: {
+        right: thin #ddd solid;
+        top: 0;
+        bottom: 0;
+      }
+
+      &:last-child {
+        border: 0;
+      }
+
+      a {
+        padding: 0 .5em;
+        line-height: 1.2em;
+      }
+    }
+  }
+}
+
+@media (max-width: $screen-sm-min) {
+  .sidebar {
+    li {
+      a {
+        font-size: 1.5em;
+        padding: .5em;
+        span {
+          display: none;
+        }
+      }
     }
   }
 }

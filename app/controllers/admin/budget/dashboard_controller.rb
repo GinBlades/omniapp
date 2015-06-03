@@ -1,5 +1,6 @@
-class Admin::Budget::DashboardController < ApplicationController
-  layout 'app_sidebar'
-  def index
+module Admin
+  class Budget::DashboardController < BudgetController
+    def index
+    end
   end
 end
