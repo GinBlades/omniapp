@@ -12,7 +12,7 @@ class Health::Entry < ActiveRecord::Base
   def meals
     user.health_meals.where(time: day_length)
   end
-  
+
   def workouts
     user.health_workouts.where(start: day_length)
   end

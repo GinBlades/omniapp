@@ -21,8 +21,8 @@ class Admin::Health::MealsController < AdminController
 
     respond_to do |format|
       if @health_meal.save
-        format.html { redirect_to [:admin,@health_meal], notice: 'Meal was successfully created.' }
-        format.json { render :show, status: :created, location: [:admin,@health_meal] }
+        format.html { redirect_to [:admin, @health_meal], notice: 'Meal was successfully created.' }
+        format.json { render :show, status: :created, location: [:admin, @health_meal] }
       else
         format.html { render :new }
         format.json { render json: @health_meal.errors, status: :unprocessable_entity }
@@ -33,8 +33,8 @@ class Admin::Health::MealsController < AdminController
   def update
     respond_to do |format|
       if @health_meal.update(health_meal_params)
-        format.html { redirect_to [:admin,@health_meal], notice: 'Meal was successfully updated.' }
-        format.json { render :show, status: :ok, location: [:admin,@health_meal] }
+        format.html { redirect_to [:admin, @health_meal], notice: 'Meal was successfully updated.' }
+        format.json { render :show, status: :ok, location: [:admin, @health_meal] }
       else
         format.html { render :edit }
         format.json { render json: @health_meal.errors, status: :unprocessable_entity }
@@ -51,11 +51,12 @@ class Admin::Health::MealsController < AdminController
   end
 
   private
-    def set_health_meal
-      @health_meal = ::Health::Meal.find(params[:id])
-    end
 
-    def health_meal_params
-      params.require(:health_meal).permit(:time, :meal_category, :calories, :quality, :healthiness, :home, :vegetarian, :cost, :notes)
-    end
+  def set_health_meal
+    @health_meal = ::Health::Meal.find(params[:id])
+  end
+
+  def health_meal_params
+    params.require(:health_meal).permit(:time, :meal_category, :calories, :quality, :healthiness, :home, :vegetarian, :cost, :notes)
+  end
 end

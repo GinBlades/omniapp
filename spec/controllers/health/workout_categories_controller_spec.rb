@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Health::WorkoutCategoriesController, type: :controller do
-
-  
   describe "Standard CRUD" do
     let(:instance_health_workout_category) { assigns(:health_workout_category) }
     let(:base_health_workout_category) { create(:health_workout_category) }
@@ -37,9 +35,9 @@ RSpec.describe Health::WorkoutCategoriesController, type: :controller do
     describe "POST create" do
       describe "with valid params" do
         it "creates a new Health::WorkoutCategory" do
-          expect {
+          expect do
             post :create, health_workout_category: attributes_for(:health_workout_category)
-          }.to change(Health::WorkoutCategory, :count).by(1)
+          end.to change(Health::WorkoutCategory, :count).by(1)
         end
 
         it "assigns a newly created health_workout_category as @health_workout_category" do
@@ -97,9 +95,9 @@ RSpec.describe Health::WorkoutCategoriesController, type: :controller do
     describe "DELETE destroy" do
       it "destroys the requested health_workout_category" do
         new_health_workout_category = create :health_workout_category
-        expect {
+        expect do
           delete :destroy, id: new_health_workout_category
-        }.to change(Health::WorkoutCategory, :count).by(-1)
+        end.to change(Health::WorkoutCategory, :count).by(-1)
       end
 
       it "redirects to the health_workout_category list" do
@@ -107,6 +105,5 @@ RSpec.describe Health::WorkoutCategoriesController, type: :controller do
         expect(response).to redirect_to(health_workout_categories_url)
       end
     end
-
   end
 end

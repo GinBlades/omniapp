@@ -11,6 +11,6 @@ class Health::Workout < ActiveRecord::Base
   end
 
   def to_s
-    "#{start.try(:strftime, "%Y/%m/%d")}-#{name}"
+    "#{start.try(:strftime, '%Y/%m/%d')}-#{name}"
   end
 end

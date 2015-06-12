@@ -21,8 +21,8 @@ class Admin::Notes::EntriesController < AdminController
 
     respond_to do |format|
       if @notes_entry.save
-        format.html { redirect_to [:admin,@notes_entry], notice: 'Entry was successfully created.' }
-        format.json { render :show, status: :created, location: [:admin,@notes_entry] }
+        format.html { redirect_to [:admin, @notes_entry], notice: 'Entry was successfully created.' }
+        format.json { render :show, status: :created, location: [:admin, @notes_entry] }
       else
         format.html { render :new }
         format.json { render json: @notes_entry.errors, status: :unprocessable_entity }
@@ -33,8 +33,8 @@ class Admin::Notes::EntriesController < AdminController
   def update
     respond_to do |format|
       if @notes_entry.update(notes_entry_params)
-        format.html { redirect_to [:admin,@notes_entry], notice: 'Entry was successfully updated.' }
-        format.json { render :show, status: :ok, location: [:admin,@notes_entry] }
+        format.html { redirect_to [:admin, @notes_entry], notice: 'Entry was successfully updated.' }
+        format.json { render :show, status: :ok, location: [:admin, @notes_entry] }
       else
         format.html { render :edit }
         format.json { render json: @notes_entry.errors, status: :unprocessable_entity }
@@ -51,11 +51,12 @@ class Admin::Notes::EntriesController < AdminController
   end
 
   private
-    def set_notes_entry
-      @notes_entry = ::Notes::Entry.find(params[:id])
-    end
 
-    def notes_entry_params
-      params.require(:notes_entry).permit(:name, :slug, :body, :notes_category_id)
-    end
+  def set_notes_entry
+    @notes_entry = ::Notes::Entry.find(params[:id])
+  end
+
+  def notes_entry_params
+    params.require(:notes_entry).permit(:name, :slug, :body, :notes_category_id)
+  end
 end

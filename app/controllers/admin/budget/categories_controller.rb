@@ -21,8 +21,8 @@ module Admin
 
       respond_to do |format|
         if @budget_category.save
-          format.html { redirect_to [:admin,@budget_category], notice: 'Category was successfully created.' }
-          format.json { render :show, status: :created, location: [:admin,@budget_category] }
+          format.html { redirect_to [:admin, @budget_category], notice: 'Category was successfully created.' }
+          format.json { render :show, status: :created, location: [:admin, @budget_category] }
         else
           format.html { render :new }
           format.json { render json: @budget_category.errors, status: :unprocessable_entity }
@@ -33,8 +33,8 @@ module Admin
     def update
       respond_to do |format|
         if @budget_category.update(budget_category_params)
-          format.html { redirect_to [:admin,@budget_category], notice: 'Category was successfully updated.' }
-          format.json { render :show, status: :ok, location: [:admin,@budget_category] }
+          format.html { redirect_to [:admin, @budget_category], notice: 'Category was successfully updated.' }
+          format.json { render :show, status: :ok, location: [:admin, @budget_category] }
         else
           format.html { render :edit }
           format.json { render json: @budget_category.errors, status: :unprocessable_entity }
@@ -51,12 +51,13 @@ module Admin
     end
 
     private
-      def set_budget_category
-        @budget_category = ::Budget::Category.find(params[:id])
-      end
 
-      def budget_category_params
-        params.require(:budget_category).permit(:name, :slug)
-      end
+    def set_budget_category
+      @budget_category = ::Budget::Category.find(params[:id])
+    end
+
+    def budget_category_params
+      params.require(:budget_category).permit(:name, :slug)
+    end
   end
 end

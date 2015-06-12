@@ -21,8 +21,8 @@ class Admin::Health::EntriesController < AdminController
 
     respond_to do |format|
       if @health_entry.save
-        format.html { redirect_to [:admin,@health_entry], notice: 'Entry was successfully created.' }
-        format.json { render :show, status: :created, location: [:admin,@health_entry] }
+        format.html { redirect_to [:admin, @health_entry], notice: 'Entry was successfully created.' }
+        format.json { render :show, status: :created, location: [:admin, @health_entry] }
       else
         format.html { render :new }
         format.json { render json: @health_entry.errors, status: :unprocessable_entity }
@@ -33,8 +33,8 @@ class Admin::Health::EntriesController < AdminController
   def update
     respond_to do |format|
       if @health_entry.update(health_entry_params)
-        format.html { redirect_to [:admin,@health_entry], notice: 'Entry was successfully updated.' }
-        format.json { render :show, status: :ok, location: [:admin,@health_entry] }
+        format.html { redirect_to [:admin, @health_entry], notice: 'Entry was successfully updated.' }
+        format.json { render :show, status: :ok, location: [:admin, @health_entry] }
       else
         format.html { render :edit }
         format.json { render json: @health_entry.errors, status: :unprocessable_entity }
@@ -51,11 +51,12 @@ class Admin::Health::EntriesController < AdminController
   end
 
   private
-    def set_health_entry
-      @health_entry = ::Health::Entry.find(params[:id])
-    end
 
-    def health_entry_params
-      params.require(:health_entry).permit(:entry_date, :notes, health_ratings_attributes: [:id, :health_category_id, :value, :_destroy])
-    end
+  def set_health_entry
+    @health_entry = ::Health::Entry.find(params[:id])
+  end
+
+  def health_entry_params
+    params.require(:health_entry).permit(:entry_date, :notes, health_ratings_attributes: [:id, :health_category_id, :value, :_destroy])
+  end
 end

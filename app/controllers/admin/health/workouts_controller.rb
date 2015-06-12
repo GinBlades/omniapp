@@ -21,8 +21,8 @@ class Admin::Health::WorkoutsController < AdminController
 
     respond_to do |format|
       if @health_workout.save
-        format.html { redirect_to [:admin,@health_workout], notice: 'Workout was successfully created.' }
-        format.json { render :show, status: :created, location: [:admin,@health_workout] }
+        format.html { redirect_to [:admin, @health_workout], notice: 'Workout was successfully created.' }
+        format.json { render :show, status: :created, location: [:admin, @health_workout] }
       else
         format.html { render :new }
         format.json { render json: @health_workout.errors, status: :unprocessable_entity }
@@ -33,8 +33,8 @@ class Admin::Health::WorkoutsController < AdminController
   def update
     respond_to do |format|
       if @health_workout.update(health_workout_params)
-        format.html { redirect_to [:admin,@health_workout], notice: 'Workout was successfully updated.' }
-        format.json { render :show, status: :ok, location: [:admin,@health_workout] }
+        format.html { redirect_to [:admin, @health_workout], notice: 'Workout was successfully updated.' }
+        format.json { render :show, status: :ok, location: [:admin, @health_workout] }
       else
         format.html { render :edit }
         format.json { render json: @health_workout.errors, status: :unprocessable_entity }
@@ -51,11 +51,12 @@ class Admin::Health::WorkoutsController < AdminController
   end
 
   private
-    def set_health_workout
-      @health_workout = ::Health::Workout.find(params[:id])
-    end
 
-    def health_workout_params
-      params.require(:health_workout).permit(:health_workout_category_id, :user_id, :start, :duration, :distance, :rating, :notes)
-    end
+  def set_health_workout
+    @health_workout = ::Health::Workout.find(params[:id])
+  end
+
+  def health_workout_params
+    params.require(:health_workout).permit(:health_workout_category_id, :user_id, :start, :duration, :distance, :rating, :notes)
+  end
 end

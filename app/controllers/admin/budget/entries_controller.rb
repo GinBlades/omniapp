@@ -21,8 +21,8 @@ module Admin
 
       respond_to do |format|
         if @budget_entry.save
-          format.html { redirect_to [:admin,@budget_entry], notice: 'Entry was successfully created.' }
-          format.json { render :show, status: :created, location: [:admin,@budget_entry] }
+          format.html { redirect_to [:admin, @budget_entry], notice: 'Entry was successfully created.' }
+          format.json { render :show, status: :created, location: [:admin, @budget_entry] }
         else
           format.html { render :new }
           format.json { render json: @budget_entry.errors, status: :unprocessable_entity }
@@ -33,8 +33,8 @@ module Admin
     def update
       respond_to do |format|
         if @budget_entry.update(budget_entry_params)
-          format.html { redirect_to [:admin,@budget_entry], notice: 'Entry was successfully updated.' }
-          format.json { render :show, status: :ok, location: [:admin,@budget_entry] }
+          format.html { redirect_to [:admin, @budget_entry], notice: 'Entry was successfully updated.' }
+          format.json { render :show, status: :ok, location: [:admin, @budget_entry] }
         else
           format.html { render :edit }
           format.json { render json: @budget_entry.errors, status: :unprocessable_entity }
@@ -51,12 +51,13 @@ module Admin
     end
 
     private
-      def set_budget_entry
-        @budget_entry = ::Budget::Entry.find(params[:id])
-      end
 
-      def budget_entry_params
-        params.require(:budget_entry).permit(:budget_payee_id, :budget_subcategory_id, :price, :notes, :entry_date, :allowance)
-      end
+    def set_budget_entry
+      @budget_entry = ::Budget::Entry.find(params[:id])
+    end
+
+    def budget_entry_params
+      params.require(:budget_entry).permit(:budget_payee_id, :budget_subcategory_id, :price, :notes, :entry_date, :allowance)
+    end
   end
 end

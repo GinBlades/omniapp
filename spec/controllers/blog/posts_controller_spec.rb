@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Blog::PostsController, type: :controller do
-
-  
   describe 'Standard CRUD' do
     let(:instance_blog_post) { assigns(:blog_post) }
     let(:base_blog_post) { create(:blog_post) }
@@ -37,9 +35,9 @@ RSpec.describe Blog::PostsController, type: :controller do
     describe 'POST create' do
       describe 'with valid params' do
         it 'creates a new Blog::Post' do
-          expect {
+          expect do
             post :create, blog_post: attributes_for(:blog_post)
-          }.to change(Blog::Post, :count).by(1)
+          end.to change(Blog::Post, :count).by(1)
         end
 
         it 'assigns a newly created blog_post as @blog_post' do
@@ -97,9 +95,9 @@ RSpec.describe Blog::PostsController, type: :controller do
     describe 'DELETE destroy' do
       it 'destroys the requested blog_post' do
         new_blog_post = create :blog_post
-        expect {
+        expect do
           delete :destroy, id: new_blog_post
-        }.to change(Blog::Post, :count).by(-1)
+        end.to change(Blog::Post, :count).by(-1)
       end
 
       it 'redirects to the blog_post list' do
@@ -107,6 +105,5 @@ RSpec.describe Blog::PostsController, type: :controller do
         expect(response).to redirect_to(blog_posts_url)
       end
     end
-
   end
 end

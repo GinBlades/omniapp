@@ -6,7 +6,7 @@ class Budget::Event < ActiveRecord::Base
   before_save :set_alert_date
 
   def self.before_times
-    [['None', ''],['On Time', 0],['One Day', 1],['One Week', 7],['One Month', 30]]
+    [['None', ''], ['On Time', 0], ['One Day', 1], ['One Week', 7], ['One Month', 30]]
   end
 
   def alert_difference

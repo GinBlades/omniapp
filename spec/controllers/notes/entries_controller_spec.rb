@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Notes::EntriesController, type: :controller do
-
-  
   describe "Standard CRUD" do
     let(:instance_notes_entry) { assigns(:notes_entry) }
     let(:base_notes_entry) { create(:notes_entry) }
@@ -37,9 +35,9 @@ RSpec.describe Notes::EntriesController, type: :controller do
     describe "POST create" do
       describe "with valid params" do
         it "creates a new Notes::Entry" do
-          expect {
+          expect do
             post :create, notes_entry: attributes_for(:notes_entry)
-          }.to change(Notes::Entry, :count).by(1)
+          end.to change(Notes::Entry, :count).by(1)
         end
 
         it "assigns a newly created notes_entry as @notes_entry" do
@@ -97,9 +95,9 @@ RSpec.describe Notes::EntriesController, type: :controller do
     describe "DELETE destroy" do
       it "destroys the requested notes_entry" do
         new_notes_entry = create :notes_entry
-        expect {
+        expect do
           delete :destroy, id: new_notes_entry
-        }.to change(Notes::Entry, :count).by(-1)
+        end.to change(Notes::Entry, :count).by(-1)
       end
 
       it "redirects to the notes_entry list" do
@@ -107,6 +105,5 @@ RSpec.describe Notes::EntriesController, type: :controller do
         expect(response).to redirect_to(notes_entries_url)
       end
     end
-
   end
 end

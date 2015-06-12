@@ -20,8 +20,8 @@ class Admin::Blog::CommentsController < AdminController
 
     respond_to do |format|
       if @blog_comment.save
-        format.html { redirect_to [:admin,@blog_comment], notice: 'Comment was successfully created.' }
-        format.json { render :show, status: :created, location: [:admin,@blog_comment] }
+        format.html { redirect_to [:admin, @blog_comment], notice: 'Comment was successfully created.' }
+        format.json { render :show, status: :created, location: [:admin, @blog_comment] }
       else
         format.html { render :new }
         format.json { render json: @blog_comment.errors, status: :unprocessable_entity }
@@ -32,8 +32,8 @@ class Admin::Blog::CommentsController < AdminController
   def update
     respond_to do |format|
       if @blog_comment.update(blog_comment_params)
-        format.html { redirect_to [:admin,@blog_comment], notice: 'Comment was successfully updated.' }
-        format.json { render :show, status: :ok, location: [:admin,@blog_comment] }
+        format.html { redirect_to [:admin, @blog_comment], notice: 'Comment was successfully updated.' }
+        format.json { render :show, status: :ok, location: [:admin, @blog_comment] }
       else
         format.html { render :edit }
         format.json { render json: @blog_comment.errors, status: :unprocessable_entity }
@@ -50,11 +50,12 @@ class Admin::Blog::CommentsController < AdminController
   end
 
   private
-    def set_blog_comment
-      @blog_comment = ::Blog::Comment.find(params[:id])
-    end
 
-    def blog_comment_params
-      params.require(:blog_comment).permit(:name, :email, :body, :approved, :blog_post_id)
-    end
+  def set_blog_comment
+    @blog_comment = ::Blog::Comment.find(params[:id])
+  end
+
+  def blog_comment_params
+    params.require(:blog_comment).permit(:name, :email, :body, :approved, :blog_post_id)
+  end
 end

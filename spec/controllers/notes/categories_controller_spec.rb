@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Notes::CategoriesController, type: :controller do
-
-  
   describe "Standard CRUD" do
     let(:instance_notes_category) { assigns(:notes_category) }
     let(:base_notes_category) { create(:notes_category) }
@@ -37,9 +35,9 @@ RSpec.describe Notes::CategoriesController, type: :controller do
     describe "POST create" do
       describe "with valid params" do
         it "creates a new Notes::Category" do
-          expect {
+          expect do
             post :create, notes_category: attributes_for(:notes_category)
-          }.to change(Notes::Category, :count).by(1)
+          end.to change(Notes::Category, :count).by(1)
         end
 
         it "assigns a newly created notes_category as @notes_category" do
@@ -97,9 +95,9 @@ RSpec.describe Notes::CategoriesController, type: :controller do
     describe "DELETE destroy" do
       it "destroys the requested notes_category" do
         new_notes_category = create :notes_category
-        expect {
+        expect do
           delete :destroy, id: new_notes_category
-        }.to change(Notes::Category, :count).by(-1)
+        end.to change(Notes::Category, :count).by(-1)
       end
 
       it "redirects to the notes_category list" do
@@ -107,6 +105,5 @@ RSpec.describe Notes::CategoriesController, type: :controller do
         expect(response).to redirect_to(notes_categories_url)
       end
     end
-
   end
 end

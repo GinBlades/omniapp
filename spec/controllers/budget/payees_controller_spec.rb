@@ -1,8 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Budget::PayeesController, :type => :controller do
-
-  
+RSpec.describe Budget::PayeesController, type: :controller do
   describe "Standard CRUD" do
     let(:instance_budget_payee) { assigns(:budget_payee) }
     let(:base_budget_payee) { create(:budget_payee) }
@@ -37,9 +35,9 @@ RSpec.describe Budget::PayeesController, :type => :controller do
     describe "POST create" do
       describe "with valid params" do
         it "creates a new Budget::Payee" do
-          expect {
+          expect do
             post :create, budget_payee: attributes_for(:budget_payee)
-          }.to change(Budget::Payee, :count).by(1)
+          end.to change(Budget::Payee, :count).by(1)
         end
 
         it "assigns a newly created budget_payee as @budget_payee" do
@@ -97,9 +95,9 @@ RSpec.describe Budget::PayeesController, :type => :controller do
     describe "DELETE destroy" do
       it "destroys the requested budget_payee" do
         new_budget_payee = create :budget_payee
-        expect {
+        expect do
           delete :destroy, id: new_budget_payee
-        }.to change(Budget::Payee, :count).by(-1)
+        end.to change(Budget::Payee, :count).by(-1)
       end
 
       it "redirects to the budget_payee list" do
@@ -107,6 +105,5 @@ RSpec.describe Budget::PayeesController, :type => :controller do
         expect(response).to redirect_to(budget_payees_url)
       end
     end
-
   end
 end

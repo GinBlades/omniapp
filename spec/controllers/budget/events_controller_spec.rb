@@ -1,8 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Budget::EventsController, :type => :controller do
-
-  
+RSpec.describe Budget::EventsController, type: :controller do
   describe "Standard CRUD" do
     let(:instance_budget_event) { assigns(:budget_event) }
     let(:base_budget_event) { create(:budget_event) }
@@ -37,9 +35,9 @@ RSpec.describe Budget::EventsController, :type => :controller do
     describe "POST create" do
       describe "with valid params" do
         it "creates a new Budget::Event" do
-          expect {
+          expect do
             post :create, budget_event: attributes_for(:budget_event)
-          }.to change(Budget::Event, :count).by(1)
+          end.to change(Budget::Event, :count).by(1)
         end
 
         it "assigns a newly created budget_event as @budget_event" do
@@ -97,9 +95,9 @@ RSpec.describe Budget::EventsController, :type => :controller do
     describe "DELETE destroy" do
       it "destroys the requested budget_event" do
         new_budget_event = create :budget_event
-        expect {
+        expect do
           delete :destroy, id: new_budget_event
-        }.to change(Budget::Event, :count).by(-1)
+        end.to change(Budget::Event, :count).by(-1)
       end
 
       it "redirects to the budget_event list" do
@@ -107,6 +105,5 @@ RSpec.describe Budget::EventsController, :type => :controller do
         expect(response).to redirect_to(budget_events_url)
       end
     end
-
   end
 end

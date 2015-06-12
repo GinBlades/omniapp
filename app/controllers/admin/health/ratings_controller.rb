@@ -20,8 +20,8 @@ class Admin::Health::RatingsController < AdminController
 
     respond_to do |format|
       if @health_rating.save
-        format.html { redirect_to [:admin,@health_rating], notice: 'Rating was successfully created.' }
-        format.json { render :show, status: :created, location: [:admin,@health_rating] }
+        format.html { redirect_to [:admin, @health_rating], notice: 'Rating was successfully created.' }
+        format.json { render :show, status: :created, location: [:admin, @health_rating] }
       else
         format.html { render :new }
         format.json { render json: @health_rating.errors, status: :unprocessable_entity }
@@ -32,8 +32,8 @@ class Admin::Health::RatingsController < AdminController
   def update
     respond_to do |format|
       if @health_rating.update(health_rating_params)
-        format.html { redirect_to [:admin,@health_rating], notice: 'Rating was successfully updated.' }
-        format.json { render :show, status: :ok, location: [:admin,@health_rating] }
+        format.html { redirect_to [:admin, @health_rating], notice: 'Rating was successfully updated.' }
+        format.json { render :show, status: :ok, location: [:admin, @health_rating] }
       else
         format.html { render :edit }
         format.json { render json: @health_rating.errors, status: :unprocessable_entity }
@@ -50,11 +50,12 @@ class Admin::Health::RatingsController < AdminController
   end
 
   private
-    def set_health_rating
-      @health_rating = ::Health::Rating.find(params[:id])
-    end
 
-    def health_rating_params
-      params.require(:health_rating).permit(:health_category_id, :health_entry_id)
-    end
+  def set_health_rating
+    @health_rating = ::Health::Rating.find(params[:id])
+  end
+
+  def health_rating_params
+    params.require(:health_rating).permit(:health_category_id, :health_entry_id)
+  end
 end

@@ -1,8 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Budget::CategoriesController, :type => :controller do
-
-  
+RSpec.describe Budget::CategoriesController, type: :controller do
   describe "Standard CRUD" do
     let(:instance_budget_category) { assigns(:budget_category) }
     let(:base_budget_category) { create(:budget_category) }
@@ -37,9 +35,9 @@ RSpec.describe Budget::CategoriesController, :type => :controller do
     describe "POST create" do
       describe "with valid params" do
         it "creates a new Budget::Category" do
-          expect {
+          expect do
             post :create, budget_category: attributes_for(:budget_category)
-          }.to change(Budget::Category, :count).by(1)
+          end.to change(Budget::Category, :count).by(1)
         end
 
         it "assigns a newly created budget_category as @budget_category" do
@@ -97,9 +95,9 @@ RSpec.describe Budget::CategoriesController, :type => :controller do
     describe "DELETE destroy" do
       it "destroys the requested budget_category" do
         new_budget_category = create :budget_category
-        expect {
+        expect do
           delete :destroy, id: new_budget_category
-        }.to change(Budget::Category, :count).by(-1)
+        end.to change(Budget::Category, :count).by(-1)
       end
 
       it "redirects to the budget_category list" do
@@ -107,6 +105,5 @@ RSpec.describe Budget::CategoriesController, :type => :controller do
         expect(response).to redirect_to(budget_categories_url)
       end
     end
-
   end
 end

@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Blog::CommentsController, type: :controller do
-
-  
   describe 'Standard CRUD' do
     let(:instance_blog_comment) { assigns(:blog_comment) }
     let(:base_blog_comment) { create(:blog_comment) }
@@ -37,9 +35,9 @@ RSpec.describe Blog::CommentsController, type: :controller do
     describe 'POST create' do
       describe 'with valid params' do
         it 'creates a new Blog::Comment' do
-          expect {
+          expect do
             post :create, blog_comment: attributes_for(:blog_comment)
-          }.to change(Blog::Comment, :count).by(1)
+          end.to change(Blog::Comment, :count).by(1)
         end
 
         it 'assigns a newly created blog_comment as @blog_comment' do
@@ -97,9 +95,9 @@ RSpec.describe Blog::CommentsController, type: :controller do
     describe 'DELETE destroy' do
       it 'destroys the requested blog_comment' do
         new_blog_comment = create :blog_comment
-        expect {
+        expect do
           delete :destroy, id: new_blog_comment
-        }.to change(Blog::Comment, :count).by(-1)
+        end.to change(Blog::Comment, :count).by(-1)
       end
 
       it 'redirects to the blog_comment list' do
@@ -107,6 +105,5 @@ RSpec.describe Blog::CommentsController, type: :controller do
         expect(response).to redirect_to(blog_comments_url)
       end
     end
-
   end
 end

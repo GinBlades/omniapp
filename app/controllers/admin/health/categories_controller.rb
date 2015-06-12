@@ -20,8 +20,8 @@ class Admin::Health::CategoriesController < AdminController
 
     respond_to do |format|
       if @health_category.save
-        format.html { redirect_to [:admin,@health_category], notice: 'Category was successfully created.' }
-        format.json { render :show, status: :created, location: [:admin,@health_category] }
+        format.html { redirect_to [:admin, @health_category], notice: 'Category was successfully created.' }
+        format.json { render :show, status: :created, location: [:admin, @health_category] }
       else
         format.html { render :new }
         format.json { render json: @health_category.errors, status: :unprocessable_entity }
@@ -32,8 +32,8 @@ class Admin::Health::CategoriesController < AdminController
   def update
     respond_to do |format|
       if @health_category.update(health_category_params)
-        format.html { redirect_to [:admin,@health_category], notice: 'Category was successfully updated.' }
-        format.json { render :show, status: :ok, location: [:admin,@health_category] }
+        format.html { redirect_to [:admin, @health_category], notice: 'Category was successfully updated.' }
+        format.json { render :show, status: :ok, location: [:admin, @health_category] }
       else
         format.html { render :edit }
         format.json { render json: @health_category.errors, status: :unprocessable_entity }
@@ -50,11 +50,12 @@ class Admin::Health::CategoriesController < AdminController
   end
 
   private
-    def set_health_category
-      @health_category = ::Health::Category.find(params[:id])
-    end
 
-    def health_category_params
-      params.require(:health_category).permit(:name)
-    end
+  def set_health_category
+    @health_category = ::Health::Category.find(params[:id])
+  end
+
+  def health_category_params
+    params.require(:health_category).permit(:name)
+  end
 end

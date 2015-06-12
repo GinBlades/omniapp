@@ -14,17 +14,15 @@ end
 
 if Notes::Entry.count < 1
   config           = Rails.configuration.database_configuration
-  host             = config[Rails.env]["host"]
-  database         = config[Rails.env]["database"]
-  username         = config[Rails.env]["username"]
-  password         = config[Rails.env]["password"]
+  host             = config[Rails.env]['host']
+  database         = config[Rails.env]['database']
+  username         = config[Rails.env]['username']
+  password         = config[Rails.env]['password']
   if username.present?
-    system %[PGPASSWORD=#{password} psql -h #{host} -U #{username} #{database} < #{Rails.root}/lib/assets/notes.sql]
+    system %(PGPASSWORD=#{password} psql -h #{host} -U #{username} #{database} < #{Rails.root}/lib/assets/notes.sql)
   else
-    system %[psql #{database} < #{Rails.root}/lib/assets/notes.sql]
+    system %(psql #{database} < #{Rails.root}/lib/assets/notes.sql)
   end
 end
 
-if Budget::Category.count < 1
-  budget_categories
-end
+budget_categories if Budget::Category.count < 1

@@ -20,8 +20,8 @@ class Admin::Health::WorkoutCategoriesController < AdminController
 
     respond_to do |format|
       if @health_workout_category.save
-        format.html { redirect_to [:admin,@health_workout_category], notice: 'Workout category was successfully created.' }
-        format.json { render :show, status: :created, location: [:admin,@health_workout_category] }
+        format.html { redirect_to [:admin, @health_workout_category], notice: 'Workout category was successfully created.' }
+        format.json { render :show, status: :created, location: [:admin, @health_workout_category] }
       else
         format.html { render :new }
         format.json { render json: @health_workout_category.errors, status: :unprocessable_entity }
@@ -32,8 +32,8 @@ class Admin::Health::WorkoutCategoriesController < AdminController
   def update
     respond_to do |format|
       if @health_workout_category.update(health_workout_category_params)
-        format.html { redirect_to [:admin,@health_workout_category], notice: 'Workout category was successfully updated.' }
-        format.json { render :show, status: :ok, location: [:admin,@health_workout_category] }
+        format.html { redirect_to [:admin, @health_workout_category], notice: 'Workout category was successfully updated.' }
+        format.json { render :show, status: :ok, location: [:admin, @health_workout_category] }
       else
         format.html { render :edit }
         format.json { render json: @health_workout_category.errors, status: :unprocessable_entity }
@@ -50,11 +50,12 @@ class Admin::Health::WorkoutCategoriesController < AdminController
   end
 
   private
-    def set_health_workout_category
-      @health_workout_category = ::Health::WorkoutCategory.find(params[:id])
-    end
 
-    def health_workout_category_params
-      params.require(:health_workout_category).permit(:name)
-    end
+  def set_health_workout_category
+    @health_workout_category = ::Health::WorkoutCategory.find(params[:id])
+  end
+
+  def health_workout_category_params
+    params.require(:health_workout_category).permit(:name)
+  end
 end

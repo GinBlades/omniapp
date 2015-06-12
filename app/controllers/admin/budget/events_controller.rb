@@ -21,8 +21,8 @@ module Admin
 
       respond_to do |format|
         if @budget_event.save
-          format.html { redirect_to [:admin,@budget_event], notice: 'Event was successfully created.' }
-          format.json { render :show, status: :created, location: [:admin,@budget_event] }
+          format.html { redirect_to [:admin, @budget_event], notice: 'Event was successfully created.' }
+          format.json { render :show, status: :created, location: [:admin, @budget_event] }
         else
           format.html { render :new }
           format.json { render json: @budget_event.errors, status: :unprocessable_entity }
@@ -33,8 +33,8 @@ module Admin
     def update
       respond_to do |format|
         if @budget_event.update(budget_event_params)
-          format.html { redirect_to [:admin,@budget_event], notice: 'Event was successfully updated.' }
-          format.json { render :show, status: :ok, location: [:admin,@budget_event] }
+          format.html { redirect_to [:admin, @budget_event], notice: 'Event was successfully updated.' }
+          format.json { render :show, status: :ok, location: [:admin, @budget_event] }
         else
           format.html { render :edit }
           format.json { render json: @budget_event.errors, status: :unprocessable_entity }
@@ -51,12 +51,14 @@ module Admin
     end
 
     private
-      def set_budget_event
-        @budget_event = ::Budget::Event.find(params[:id])
-      end
 
-      def budget_event_params
-        params.require(:budget_event).permit(:budget_payee_id, :event_date, :price, :recurring, :event_action, :url, :alert_date, :alert_before, :recurring_interval)
-      end
+    def set_budget_event
+      @budget_event = ::Budget::Event.find(params[:id])
+    end
+
+    def budget_event_params
+      params.require(:budget_event).permit(:budget_payee_id, :event_date,
+        :price, :recurring, :event_action, :url, :alert_date, :alert_before, :recurring_interval)
+    end
   end
 end

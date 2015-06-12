@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Health::MealsController, type: :controller do
-
-  
   describe "Standard CRUD" do
     let(:instance_health_meal) { assigns(:health_meal) }
     let(:base_health_meal) { create(:health_meal) }
@@ -37,9 +35,9 @@ RSpec.describe Health::MealsController, type: :controller do
     describe "POST create" do
       describe "with valid params" do
         it "creates a new Health::Meal" do
-          expect {
+          expect do
             post :create, health_meal: attributes_for(:health_meal)
-          }.to change(Health::Meal, :count).by(1)
+          end.to change(Health::Meal, :count).by(1)
         end
 
         it "assigns a newly created health_meal as @health_meal" do
@@ -97,9 +95,9 @@ RSpec.describe Health::MealsController, type: :controller do
     describe "DELETE destroy" do
       it "destroys the requested health_meal" do
         new_health_meal = create :health_meal
-        expect {
+        expect do
           delete :destroy, id: new_health_meal
-        }.to change(Health::Meal, :count).by(-1)
+        end.to change(Health::Meal, :count).by(-1)
       end
 
       it "redirects to the health_meal list" do
@@ -107,6 +105,5 @@ RSpec.describe Health::MealsController, type: :controller do
         expect(response).to redirect_to(health_meals_url)
       end
     end
-
   end
 end

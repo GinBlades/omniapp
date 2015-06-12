@@ -40,9 +40,9 @@ RSpec.describe <%= controller_class_name %>Controller, type: :controller do
     describe 'POST create' do
       describe 'with valid params' do
         it 'creates a new <%= class_name %>' do
-          expect {
+          expect do
             post :create, <%= single_table %>: attributes_for(:<%= single_table %>)
-          }.to change(<%= class_name %>, :count).by(1)
+          end.to change(<%= class_name %>, :count).by(1)
         end
 
         it 'assigns a newly created <%= single_table %> as @<%= single_table %>' do
@@ -100,9 +100,9 @@ RSpec.describe <%= controller_class_name %>Controller, type: :controller do
     describe 'DELETE destroy' do
       it 'destroys the requested <%= single_table %>' do
         new_<%= single_table %> = create :<%= single_table %>
-        expect {
+        expect do
           delete :destroy, id: new_<%= single_table %>
-        }.to change(<%= class_name %>, :count).by(-1)
+        end.to change(<%= class_name %>, :count).by(-1)
       end
 
       it 'redirects to the <%= single_table %> list' do

@@ -20,8 +20,8 @@ class Admin::Notes::CategoriesController < AdminController
 
     respond_to do |format|
       if @notes_category.save
-        format.html { redirect_to [:admin,@notes_category], notice: 'Category was successfully created.' }
-        format.json { render :show, status: :created, location: [:admin,@notes_category] }
+        format.html { redirect_to [:admin, @notes_category], notice: 'Category was successfully created.' }
+        format.json { render :show, status: :created, location: [:admin, @notes_category] }
       else
         format.html { render :new }
         format.json { render json: @notes_category.errors, status: :unprocessable_entity }
@@ -32,8 +32,8 @@ class Admin::Notes::CategoriesController < AdminController
   def update
     respond_to do |format|
       if @notes_category.update(notes_category_params)
-        format.html { redirect_to [:admin,@notes_category], notice: 'Category was successfully updated.' }
-        format.json { render :show, status: :ok, location: [:admin,@notes_category] }
+        format.html { redirect_to [:admin, @notes_category], notice: 'Category was successfully updated.' }
+        format.json { render :show, status: :ok, location: [:admin, @notes_category] }
       else
         format.html { render :edit }
         format.json { render json: @notes_category.errors, status: :unprocessable_entity }
@@ -50,11 +50,12 @@ class Admin::Notes::CategoriesController < AdminController
   end
 
   private
-    def set_notes_category
-      @notes_category = ::Notes::Category.find(params[:id])
-    end
 
-    def notes_category_params
-      params.require(:notes_category).permit(:name, :slug)
-    end
+  def set_notes_category
+    @notes_category = ::Notes::Category.find(params[:id])
+  end
+
+  def notes_category_params
+    params.require(:notes_category).permit(:name, :slug)
+  end
 end

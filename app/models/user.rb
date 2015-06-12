@@ -16,11 +16,10 @@ class User < ActiveRecord::Base
   end
 
   def full_name
-    [first_name,last_name].select(&:present?).join(' ')
+    [first_name, last_name].select(&:present?).join(' ')
   end
 
   def to_s
     full_name || email
   end
-
 end
