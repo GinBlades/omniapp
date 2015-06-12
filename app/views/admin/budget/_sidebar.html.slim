@@ -1,0 +1,27 @@
+.panel.panel-default
+  .panel-body
+    ul.list-unstyled.sidebar
+      li = link_to admin_budget_path do
+        i.glyphicon.glyphicon-dashboard
+        '
+        span Dashboard
+      li = link_to admin_budget_entries_path do
+        i.glyphicon.glyphicon-pencil
+        '
+        span Entries
+      li = link_to admin_budget_categories_path do
+        i.glyphicon.glyphicon-th-list
+        '
+        span Categories
+      li = link_to admin_budget_subcategories_path do
+        i.glyphicon.glyphicon-th
+        '
+        span Subcategories
+      li = link_to admin_budget_payees_path do
+        i.glyphicon.glyphicon-inbox
+        '
+        span Payees
+      li = link_to admin_budget_events_path do
+        i.glyphicon.glyphicon-calendar
+        '
+        span Events

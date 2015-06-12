@@ -28,6 +28,10 @@ env :PATH, ENV['PATH']
 set :output, "#{RAILS_ROOT}/logs/cron.log"
 set :environment, ENV['RAILS_ENV']
 
-every 1.day, at: '1:30am' do
+every 1.week, at: '1:30am' do
   rake 'backup:db'
+end
+
+every 1.month, at: 'start of the month at 1am' do
+  rake 'budget:allowance'
 end

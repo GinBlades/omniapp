@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150405200141) do
+ActiveRecord::Schema.define(version: 20150603013932) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,12 +54,15 @@ ActiveRecord::Schema.define(version: 20150405200141) do
     t.decimal  "price",                 precision: 12, scale: 2
     t.string   "notes"
     t.date     "entry_date"
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
+    t.datetime "created_at",                                                     null: false
+    t.datetime "updated_at",                                                     null: false
+    t.boolean  "allowance",                                      default: false
+    t.integer  "user_id"
   end
 
   add_index "budget_entries", ["budget_payee_id"], name: "index_budget_entries_on_budget_payee_id", using: :btree
   add_index "budget_entries", ["budget_subcategory_id"], name: "index_budget_entries_on_budget_subcategory_id", using: :btree
+  add_index "budget_entries", ["user_id"], name: "index_budget_entries_on_user_id", using: :btree
 
   create_table "budget_events", force: :cascade do |t|
     t.integer  "budget_payee_id"
@@ -219,13 +222,13 @@ ActiveRecord::Schema.define(version: 20150405200141) do
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "username",               default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                                           default: "",  null: false
+    t.string   "username",                                        default: "",  null: false
+    t.string   "encrypted_password",                              default: "",  null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",                                   default: 0,   null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
@@ -235,6 +238,8 @@ ActiveRecord::Schema.define(version: 20150405200141) do
     t.string   "bio"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "past_allowance",         precision: 12, scale: 2, default: 0.0
+    t.decimal  "current_allowance",      precision: 12, scale: 2, default: 0.0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -245,6 +250,7 @@ ActiveRecord::Schema.define(version: 20150405200141) do
   add_foreign_key "blog_posts", "users"
   add_foreign_key "budget_entries", "budget_payees"
   add_foreign_key "budget_entries", "budget_subcategories"
+  add_foreign_key "budget_entries", "users"
   add_foreign_key "budget_events", "budget_payees"
   add_foreign_key "budget_subcategories", "budget_categories"
   add_foreign_key "health_entries", "users"

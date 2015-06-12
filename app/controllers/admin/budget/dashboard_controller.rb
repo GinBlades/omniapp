@@ -1,4 +1,6 @@
-class Admin::Budget::DashboardController < ApplicationController
-  def index
+module Admin
+  class Budget::DashboardController < BudgetController
+    def index
+    end
   end
 end
