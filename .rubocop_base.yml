@@ -1,0 +1,57 @@
+AllCops:
+  RunRailsCops: true
+  Exclude:
+    - 'bin/**/*'
+    - 'db/schema.rb'
+    - 'lib/templates/**/*'
+
+Metrics/AbcSize:
+  Exclude:
+    - 'db/migrate/**/*'
+
+Metrics/MethodLength:
+  Exclude:
+    - 'db/migrate/**/*'
+
+Rails/Output:
+  Exclude:
+    - 'db/seeds.rb'
+
+Metrics/LineLength:
+  Max: 160
+  Exclude:
+    - '**/*.jbuilder'
+
+Style/AlignParameters:
+  Enabled: false
+
+Style/AlignHash:
+  Enabled: false
+
+Style/AlignArray:
+  Enabled: false
+
+Style/BlockComments:
+  Exclude:
+    - 'spec/spec_helper.rb'
+
+Style/Documentation:
+  Enabled: false
+
+Style/SingleSpaceBeforeFirstArg:
+  Exclude:
+    - 'db/migrate/**/*'
+    - 'config/application.rb'
+
+Style/SpaceInsideBrackets:
+  Exclude:
+    - 'config/initializers/devise.rb'
+
+Style/StringLiterals:
+  Exclude:
+    - 'db/migrate/**/*'
+    - 'spec/**/*'
+
+Metrics/ClassLength:
+  Max: 120
+
