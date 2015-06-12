@@ -15,5 +15,5 @@ p = post.excerpt
     ul.list-inline.pull-right
       li = link_to 'Read More', post
       - if user_signed_in?
-        li = link_to 'Edit', edit_post_path(post)
-        li = link_to 'Destroy', post, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        li = link_to 'Edit', edit_admin_post_path(post)
+        li = link_to 'Destroy', [:admin,post], method: :delete, data: { confirm: 'Are you sure?' }

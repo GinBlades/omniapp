@@ -4,4 +4,4 @@
       h4 = comment.name
       p = comment.body
       - if user_signed_in?
-        = link_to 'Delete', comment, method: :delete, data: { confirm: 'Are you sure?' }
+        = link_to 'Delete', [:admin, comment], method: :delete, data: { confirm: 'Are you sure?' }

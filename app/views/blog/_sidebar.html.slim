@@ -2,7 +2,7 @@
   .panel-heading
     h3.panel-title About Me
   .panel-body
-    p I'm a curious developer.
+    p I'm a curious developer working on a Rails app that can manage a variety of things cleanly and efficiently.
 
 .panel.panel-default
   .panel-heading
@@ -20,10 +20,10 @@
     ul.list-unstyled
       - ::Blog::Comment.approved.each do |comment|
         li
-          = link_to comment.post do
+          = link_to comment.blog_post do
             ul.list-unstyled
               li
-                b = comment.post.title.truncate(25)
+                b = comment.blog_post.title.truncate(25)
               li
               li = comment.body.truncate(25)
               li = comment.created_at.strftime("%m/%d/%y")

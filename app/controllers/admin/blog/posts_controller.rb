@@ -20,8 +20,8 @@ class Admin::Blog::PostsController < AdminController
 
     respond_to do |format|
       if @blog_post.save
-        format.html { redirect_to [:admin,@blog_post], notice: 'Post was successfully created.' }
-        format.json { render :show, status: :created, location: [:admin,@blog_post] }
+        format.html { redirect_to [:admin, @blog_post], notice: 'Post was successfully created.' }
+        format.json { render :show, status: :created, location: [:admin, @blog_post] }
       else
         format.html { render :new }
         format.json { render json: @blog_post.errors, status: :unprocessable_entity }
@@ -32,8 +32,8 @@ class Admin::Blog::PostsController < AdminController
   def update
     respond_to do |format|
       if @blog_post.update(blog_post_params)
-        format.html { redirect_to [:admin,@blog_post], notice: 'Post was successfully updated.' }
-        format.json { render :show, status: :ok, location: [:admin,@blog_post] }
+        format.html { redirect_to [:admin, @blog_post], notice: 'Post was successfully updated.' }
+        format.json { render :show, status: :ok, location: [:admin, @blog_post] }
       else
         format.html { render :edit }
         format.json { render json: @blog_post.errors, status: :unprocessable_entity }
