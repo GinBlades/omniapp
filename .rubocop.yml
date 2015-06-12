@@ -1,3 +1,15 @@
 inherit_from:
   - '.rubocop_base.yml'
-  - '.rubocop_todo.yml'
+
+# TODO
+Metrics/AbcSize:
+  Max: 201
+
+# Wont Fix
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Metrics/MethodLength:
+  Exclude:
+    - 'db/**/*'
+    - 'app/controllers/pages_controller.rb'
