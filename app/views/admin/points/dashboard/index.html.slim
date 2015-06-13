@@ -5,8 +5,10 @@ h1 Point Tracker
     .panel.panel-default
       .panel-heading
         h2.panel-title.clearfix
-          | Goals
-          = link_to 'New Goal', new_points_goal_path, class: 'btn btn-default pull-right btn-sm'
+          | My Goals
+          .btn-group.pull-right
+            = link_to 'New Goal', new_points_goal_path, class: 'btn btn-default btn-sm'
+            = link_to 'All Goals', points_goals_path, class: 'btn btn-default btn-sm'
       table.table.table-striped
         thead
           tr
@@ -30,8 +32,10 @@ h1 Point Tracker
     .panel.panel-default
       .panel-heading
         h2.panel-title.clearfix
-          | Recent Activities
-          = link_to 'New Activity', new_points_activity_path, class: 'btn btn-default pull-right btn-sm'
+          | My Recent Activities
+          .btn-group.pull-right
+            = link_to 'New Activity', new_points_activity_path, class: 'btn btn-default btn-sm'
+            = link_to 'All Activities', points_activities_path, class: 'btn btn-default btn-sm'
       table.table.table-striped
         thead
           tr

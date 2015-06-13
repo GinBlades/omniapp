@@ -1,13 +1,4 @@
 Rails.application.routes.draw do
-  namespace :points do
-    get '/' => 'dashboard#index'
-    resources :goals do
-      resources :options do
-        resources :activities
-      end
-    end
-    resources :activities, only: [:new, :create]
-  end
   mount Ckeditor::Engine => '/ckeditor'
   namespace :admin do
     get '/' => 'dashboard#index'
@@ -49,6 +40,15 @@ Rails.application.routes.draw do
     resources :posts, only: [:show] do
       resources :comments, only: [:new, :create]
     end
+  end
+  namespace :points do
+    get '/' => 'dashboard#index'
+    resources :goals do
+      resources :options, except: [:index, :show] do
+        resources :activities, except: [:index, :show]
+      end
+    end
+    resources :activities, only: [:index, :new, :create]
   end
   get '/jihye' => 'pages#jihye'
   root 'pages#home'

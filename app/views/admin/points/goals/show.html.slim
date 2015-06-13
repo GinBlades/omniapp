@@ -1,0 +1,58 @@
+.row
+  .col-md-8
+    span.label.label-primary = @points_goal.user
+    h1 = @points_goal.target
+    .alert.alert-success
+      b Reward:
+      ' @points_goal.success
+  .col-md-4
+    .panel.panel-default
+      .panel-heading
+        h2.panel-title Progress
+.row
+  .col-md-8
+    .panel.panel-default
+      .panel-heading
+        h2.panel-title Activities
+      table.table.table-striped
+        thead
+          tr
+            th Entry Date
+            th Option
+            th
+        tbody
+          - @points_goal.points_activities.each do |activity|
+            tr
+              td = activity.entry_date
+              td #{activity.description} (#{activity.points})
+              td
+                = link_to 'Edit', edit_admin_points_goal_option_activity_path(@points_goal, @points_option, points_activity)
+                '
+                |/
+                '
+                = link_to 'Delete', [:admin, @points_goal, @points_option, points_activity], method: :delete, data: { confirm: 'Are you sure?' }
+
+  .col-md-4
+    .panel.panel-default
+      .panel-heading
+        h2.panel-title Options
+      table.table.table-striped
+        thead
+          tr
+            th Description
+            th Points
+            th
+        tbody
+          - @points_goal.points_options.each do |option|
+            tr
+              td = option.description
+              td = option.points
+                = link_to 'Edit', edit_admin_goal_option_path(@points_goal, option)
+                '
+                |/
+                '
+                = link_to 'Delete', [:admin, @points_goal, points_option], method: :delete, data: { confirm: 'Are you sure?' }
+
+.btn-group
+  = link_to 'Edit', edit_admin_points_goal_path(@points_goal), class: 'btn btn-default'
+  = link_to 'My Goals', admin_points_path, class: 'btn btn-default'
