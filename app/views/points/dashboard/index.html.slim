@@ -1,2 +1,51 @@
-h1 Points::Dashboard#index
-p Find me in app/views/points/dashboard/index.html.slim
+h1 Point Tracker
+
+.row
+  .col-md-6
+    .panel.panel-default
+      .panel-heading
+        h2.panel-title.clearfix
+          | Goals
+          = link_to 'New Goal', new_points_goal_path, class: 'btn btn-default pull-right btn-sm'
+      table.table.table-striped
+        thead
+          tr
+            th Target
+            th Reward
+            th Progress
+            th
+        tbody
+          - @points_goals.each do |goal|
+            td = link_to goal.target, goal
+            td = goal.reward
+            td = goal.progress_percent
+            td
+              = link_to 'Edit', edit_points_goal_path(goal)
+              '
+              |/
+              '
+              = link_to 'Delete', goal, method: :delete, data: { confirm: 'Are you sure?' }
+
+  .col-md-6
+    .panel.panel-default
+      .panel-heading
+        h2.panel-title.clearfix
+          | Recent Activities
+          = link_to 'New Activity', new_points_activity_path, class: 'btn btn-default pull-right btn-sm'
+      table.table.table-striped
+        thead
+          tr
+            th Entry Date
+            th Option
+            th
+        tbody
+          - @points_activities.each do |activity|
+            td = activity.entry_date
+            td #{activity.description} (#{activity.points})
+            td
+              = link_to 'Edit', '#'
+              '
+              |/
+              '
+              = link_to 'Delete', '#', method: :delete, data: { confirm: 'Are you sure?' }
+

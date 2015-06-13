@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
   namespace :points do
     get '/' => 'dashboard#index'
-    resources :goals
-    resources :options
-    resources :activities
+    resources :goals do
+      resources :options do
+        resources :activities
+      end
+    end
+    resources :activities, only: [:new, :create]
   end
   mount Ckeditor::Engine => '/ckeditor'
   namespace :admin do

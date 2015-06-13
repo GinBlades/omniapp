@@ -4,7 +4,7 @@ class Points::Activity < ActiveRecord::Base
   validates :points_option_id, :entry_date, presence: true
   validates :note, length: { maximum: 100 }
 
-  delegate :description, :points, to: :option
+  delegate :description, :points, to: :points_option
 
   def direct_goal
     ::Points::Goal.joins(points_options: :points_activities).where('points_activities.id = ?', id).first
