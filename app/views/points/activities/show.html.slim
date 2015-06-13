@@ -1,0 +1,14 @@
+table.table.table-striped
+  tr
+    th Points option:
+    td= @points_activity.points_option
+  tr
+    th Entry date:
+    td= @points_activity.entry_date
+  tr
+    th Note:
+    td= @points_activity.note
+
+.btn-group
+  = link_to 'Edit', edit_points_activity_path(@points_activity), class: 'btn btn-default'
+  = link_to 'All Points Activities', points_activities_path, class: 'btn btn-default'

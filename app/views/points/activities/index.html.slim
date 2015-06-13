@@ -1,0 +1,27 @@
+h1 
+  Points Activities
+  '
+  = link_to 'New Activity', new_points_activity_path, class: 'btn btn-primary'
+
+table.table.table-striped
+  thead
+    tr
+      th Points option
+      th Entry date
+      th Note
+      th
+      th
+      
+  tbody
+    - @points_activities.each do |points_activity|
+      tr
+        td= points_activity.points_option
+        td= points_activity.entry_date
+        td= points_activity.note
+        td= link_to 'Show', points_activity
+        td
+          = link_to 'Edit', edit_points_activity_path(points_activity)
+          '
+          |/
+          '
+          = link_to 'Delete', points_activity, :method => :delete, :data => { :confirm => 'Are you sure?' }

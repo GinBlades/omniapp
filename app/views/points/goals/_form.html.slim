@@ -1,0 +1,14 @@
+= simple_form_for(@points_goal) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :user
+    = f.input :target
+    = f.input :expiration, as: :string, input_html: { type: 'date' }
+    = f.input :completed
+    = f.input :current_points
+    = f.input :points_to_complete
+    = f.input :reward
+
+  .form-actions
+    = f.button :submit, class: 'btn btn-success'

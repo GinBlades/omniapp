@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150603013932) do
+ActiveRecord::Schema.define(version: 20150613024233) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -201,6 +201,40 @@ ActiveRecord::Schema.define(version: 20150603013932) do
 
   add_index "notes_entries", ["notes_category_id"], name: "index_notes_entries_on_notes_category_id", using: :btree
 
+  create_table "points_activities", force: :cascade do |t|
+    t.integer  "points_option_id"
+    t.date     "entry_date"
+    t.string   "note"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "points_activities", ["points_option_id"], name: "index_points_activities_on_points_option_id", using: :btree
+
+  create_table "points_goals", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "target",                             null: false
+    t.date     "expiration"
+    t.boolean  "completed",          default: false
+    t.integer  "current_points",     default: 0
+    t.integer  "points_to_complete", default: 50
+    t.string   "reward"
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
+
+  add_index "points_goals", ["user_id"], name: "index_points_goals_on_user_id", using: :btree
+
+  create_table "points_options", force: :cascade do |t|
+    t.integer  "points_goal_id"
+    t.string   "description",                null: false
+    t.integer  "points",         default: 1
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "points_options", ["points_goal_id"], name: "index_points_options_on_points_goal_id", using: :btree
+
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
@@ -260,4 +294,7 @@ ActiveRecord::Schema.define(version: 20150603013932) do
   add_foreign_key "health_workouts", "health_workout_categories"
   add_foreign_key "health_workouts", "users"
   add_foreign_key "notes_entries", "notes_categories"
+  add_foreign_key "points_activities", "points_options"
+  add_foreign_key "points_goals", "users"
+  add_foreign_key "points_options", "points_goals"
 end

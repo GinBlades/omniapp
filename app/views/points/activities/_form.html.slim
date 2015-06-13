@@ -1,0 +1,10 @@
+= simple_form_for(@points_activity) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :points_option
+    = f.input :entry_date, as: :string, input_html: { type: 'date', value: date_form(@points_activity.entry_date) || date_form(Time.now) }
+    = f.input :note
+
+  .form-actions
+    = f.button :submit, class: 'btn btn-success'

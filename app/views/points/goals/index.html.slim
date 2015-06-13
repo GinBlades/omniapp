@@ -1,0 +1,35 @@
+h1 
+  Points Goals
+  '
+  = link_to 'New Goal', new_points_goal_path, class: 'btn btn-primary'
+
+table.table.table-striped
+  thead
+    tr
+      th User
+      th Target
+      th Expiration
+      th Completed
+      th Current points
+      th Points to complete
+      th Reward
+      th
+      th
+      
+  tbody
+    - @points_goals.each do |points_goal|
+      tr
+        td= points_goal.user
+        td= points_goal.target
+        td= points_goal.expiration
+        td= points_goal.completed
+        td= points_goal.current_points
+        td= points_goal.points_to_complete
+        td= points_goal.reward
+        td= link_to 'Show', points_goal
+        td
+          = link_to 'Edit', edit_points_goal_path(points_goal)
+          '
+          |/
+          '
+          = link_to 'Delete', points_goal, :method => :delete, :data => { :confirm => 'Are you sure?' }

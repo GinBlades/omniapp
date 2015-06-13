@@ -1,0 +1,14 @@
+table.table.table-striped
+  tr
+    th Points goal:
+    td= @points_option.points_goal
+  tr
+    th Description:
+    td= @points_option.description
+  tr
+    th Points:
+    td= @points_option.points
+
+.btn-group
+  = link_to 'Edit', edit_points_option_path(@points_option), class: 'btn btn-default'
+  = link_to 'All Points Options', points_options_path, class: 'btn btn-default'

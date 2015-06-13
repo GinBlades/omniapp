@@ -1,0 +1,10 @@
+= simple_form_for(@points_option) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :points_goal
+    = f.input :description
+    = f.input :points
+
+  .form-actions
+    = f.button :submit, class: 'btn btn-success'

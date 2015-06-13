@@ -1,0 +1,27 @@
+h1 
+  Points Options
+  '
+  = link_to 'New Option', new_points_option_path, class: 'btn btn-primary'
+
+table.table.table-striped
+  thead
+    tr
+      th Points goal
+      th Description
+      th Points
+      th
+      th
+      
+  tbody
+    - @points_options.each do |points_option|
+      tr
+        td= points_option.points_goal
+        td= points_option.description
+        td= points_option.points
+        td= link_to 'Show', points_option
+        td
+          = link_to 'Edit', edit_points_option_path(points_option)
+          '
+          |/
+          '
+          = link_to 'Delete', points_option, :method => :delete, :data => { :confirm => 'Are you sure?' }
