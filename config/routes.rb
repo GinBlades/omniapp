@@ -29,6 +29,15 @@ Rails.application.routes.draw do
       resources :comments
       resources :posts
     end
+    namespace :points do
+      get '/' => 'dashboard#index'
+      resources :goals do
+        resources :options, except: [:index, :show] do
+          resources :activities, except: [:index, :show]
+        end
+      end
+      resources :activities, only: [:index, :new, :create]
+    end
   end
   devise_for :users
   namespace :notes do
@@ -40,15 +49,6 @@ Rails.application.routes.draw do
     resources :posts, only: [:show] do
       resources :comments, only: [:new, :create]
     end
-  end
-  namespace :points do
-    get '/' => 'dashboard#index'
-    resources :goals do
-      resources :options, except: [:index, :show] do
-        resources :activities, except: [:index, :show]
-      end
-    end
-    resources :activities, only: [:index, :new, :create]
   end
   get '/jihye' => 'pages#jihye'
   root 'pages#home'

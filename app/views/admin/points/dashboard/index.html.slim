@@ -7,8 +7,8 @@ h1 Point Tracker
         h2.panel-title.clearfix
           | My Goals
           .btn-group.pull-right
-            = link_to 'New Goal', new_points_goal_path, class: 'btn btn-default btn-sm'
-            = link_to 'All Goals', points_goals_path, class: 'btn btn-default btn-sm'
+            = link_to 'New Goal', new_admin_points_goal_path, class: 'btn btn-default btn-sm'
+            = link_to 'All Goals', admin_points_goals_path, class: 'btn btn-default btn-sm'
       table.table.table-striped
         thead
           tr
@@ -18,15 +18,15 @@ h1 Point Tracker
             th
         tbody
           - @points_goals.each do |goal|
-            td = link_to goal.target, goal
+            td = link_to goal.target, [:admin, goal]
             td = goal.reward
             td = goal.progress_percent
             td
-              = link_to 'Edit', edit_points_goal_path(goal)
+              = link_to 'Edit', edit_admin_points_goal_path(goal)
               '
               |/
               '
-              = link_to 'Delete', goal, method: :delete, data: { confirm: 'Are you sure?' }
+              = link_to 'Delete', [:admin, goal], method: :delete, data: { confirm: 'Are you sure?' }
 
   .col-md-6
     .panel.panel-default
@@ -34,8 +34,8 @@ h1 Point Tracker
         h2.panel-title.clearfix
           | My Recent Activities
           .btn-group.pull-right
-            = link_to 'New Activity', new_points_activity_path, class: 'btn btn-default btn-sm'
-            = link_to 'All Activities', points_activities_path, class: 'btn btn-default btn-sm'
+            = link_to 'New Activity', new_admin_points_activity_path, class: 'btn btn-default btn-sm'
+            = link_to 'All Activities', admin_points_activities_path, class: 'btn btn-default btn-sm'
       table.table.table-striped
         thead
           tr

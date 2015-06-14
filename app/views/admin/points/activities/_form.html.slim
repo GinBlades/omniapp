@@ -1,4 +1,5 @@
-= simple_form_for(@points_activity) do |f|
+- url = @points_goal ? admin_points_goal_option_activities_path(@points_goal, @points_option) : admin_points_activities_path
+= simple_form_for(@points_activity, url: url) do |f|
   = f.error_notification
 
   .form-inputs

@@ -1,8 +1,6 @@
-module Points
-  class DashboardController < ::AdminController
-    def index
-      @points_goals = Goal.find_by(user: current_user)
-      @points_activities = Activity.all
-    end
+class Admin::Points::DashboardController < AdminController
+  def index
+    @points_goals = ::Points::Goal.where(user: current_user)
+    @points_activities = ::Points::Activity.all
   end
 end
