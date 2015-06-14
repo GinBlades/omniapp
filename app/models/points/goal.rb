@@ -10,4 +10,8 @@ class Points::Goal < ActiveRecord::Base
   def progress_percent
     ((current_points / points_to_complete.to_f) * 100).to_i
   end
+
+  def to_s
+    target
+  end
 end

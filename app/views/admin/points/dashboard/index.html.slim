@@ -18,15 +18,16 @@ h1 Point Tracker
             th
         tbody
           - @points_goals.each do |goal|
-            td = link_to goal.target, [:admin, goal]
-            td = goal.reward
-            td = goal.progress_percent
-            td
-              = link_to 'Edit', edit_admin_points_goal_path(goal)
-              '
-              |/
-              '
-              = link_to 'Delete', [:admin, goal], method: :delete, data: { confirm: 'Are you sure?' }
+            tr
+              td = link_to goal.target, [:admin, goal]
+              td = goal.reward
+              td = goal.progress_percent
+              td
+                = link_to 'Edit', edit_admin_points_goal_path(goal)
+                '
+                |/
+                '
+                = link_to 'Delete', [:admin, goal], method: :delete, data: { confirm: 'Are you sure?' }
 
   .col-md-6
     .panel.panel-default

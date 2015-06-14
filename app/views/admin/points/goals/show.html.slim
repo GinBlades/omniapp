@@ -37,8 +37,10 @@
 
   .col-md-4
     .panel.panel-default
-      .panel-heading
-        h2.panel-title Options
+      .panel-heading.clearfix
+        h2.panel-title
+          | Options
+          = link_to 'Add Option', new_admin_points_goal_option_path(@points_goal), class: 'btn btn-default btn-sm pull-right'
       table.table.table-striped
         thead
           tr

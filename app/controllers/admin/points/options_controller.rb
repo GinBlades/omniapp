@@ -1,16 +1,16 @@
 class Admin::Points::OptionsController < AdminController
-  before_action :set_goal
+  before_action :set_points_goal
   before_action :set_points_option, only: [:edit, :update, :destroy]
 
   def new
-    @points_option = @points_goal.options.build
+    @points_option = @points_goal.points_options.build
   end
 
   def edit
   end
 
   def create
-    @points_option = @points_goal.options.build(points_option_params)
+    @points_option = @points_goal.points_options.build(points_option_params)
 
     respond_to do |format|
       if @points_option.save
