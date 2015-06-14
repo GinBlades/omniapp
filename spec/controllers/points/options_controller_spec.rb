@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Points::OptionsController, type: :controller do
-
-  
   describe 'Standard CRUD' do
     let(:instance_points_option) { assigns(:points_option) }
     let(:base_points_option) { create(:points_option) }
@@ -107,6 +105,5 @@ RSpec.describe Points::OptionsController, type: :controller do
         expect(response).to redirect_to(points_options_url)
       end
     end
-
   end
 end

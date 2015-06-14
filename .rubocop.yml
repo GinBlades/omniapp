@@ -13,3 +13,6 @@ Metrics/MethodLength:
   Exclude:
     - 'db/**/*'
     - 'app/controllers/pages_controller.rb'
+
+Rails/FindBy:
+  Enabled: false

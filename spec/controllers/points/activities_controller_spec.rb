@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Points::ActivitiesController, type: :controller do
-
-  
   describe 'Standard CRUD' do
     let(:instance_points_activity) { assigns(:points_activity) }
     let(:base_points_activity) { create(:points_activity) }
@@ -107,6 +105,5 @@ RSpec.describe Points::ActivitiesController, type: :controller do
         expect(response).to redirect_to(points_activities_url)
       end
     end
-
   end
 end

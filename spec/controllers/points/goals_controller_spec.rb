@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Points::GoalsController, type: :controller do
-
-  
   describe 'Standard CRUD' do
     let(:instance_points_goal) { assigns(:points_goal) }
     let(:base_points_goal) { create(:points_goal) }
@@ -107,6 +105,5 @@ RSpec.describe Points::GoalsController, type: :controller do
         expect(response).to redirect_to(points_goals_url)
       end
     end
-
   end
 end

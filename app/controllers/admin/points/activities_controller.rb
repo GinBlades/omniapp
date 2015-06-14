@@ -14,11 +14,7 @@ class Admin::Points::ActivitiesController < AdminController
   end
 
   def create
-    @points_activity = if params[:goal_id]
-      @points_goal.points_activities.build(points_activity_params)
-    else
-      ::Points::Activity.new(points_activity_params)
-    end
+    @points_activity = new_activity(params[:goal])
 
     respond_to do |format|
       if @points_activity.save
@@ -52,15 +48,24 @@ class Admin::Points::ActivitiesController < AdminController
   end
 
   private
-    def set_points_goal
-      @points_goal = params[:goal_id] ? ::Points::Goal.find(params[:goal_id]) : nil
-    end
 
-    def set_points_activity
-      @points_activity = ::Points::Activity.find(params[:id])
-    end
+  def set_points_goal
+    @points_goal = params[:goal_id] ? ::Points::Goal.find(params[:goal_id]) : nil
+  end
 
-    def points_activity_params
-      params.require(:points_activity).permit(:points_goal_id, :points_option_id, :entry_date, :note)
+  def new_activity(goal_id)
+    if goal_id
+      ::Points::Goal.find(goal_id).points_activities.build(points_activity_params)
+    else
+      ::Points::Activity.new(points_activity_params)
     end
+  end
+
+  def set_points_activity
+    @points_activity = ::Points::Activity.find(params[:id])
+  end
+
+  def points_activity_params
+    params.require(:points_activity).permit(:points_goal_id, :points_option_id, :entry_date, :note)
+  end
 end

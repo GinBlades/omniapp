@@ -11,6 +11,6 @@ class Points::Activity < ActiveRecord::Base
   end
 
   def direct_user
-    User.joins(points_goals: {points_options: :points_activities}).where('points_activities.id = ?', id).first
+    User.joins(points_goals: { points_options: :points_activities }).where('points_activities.id = ?', id).first
   end
 end

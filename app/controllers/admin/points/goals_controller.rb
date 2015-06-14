@@ -1,6 +1,6 @@
 class Admin::Points::GoalsController < AdminController
   before_action :set_points_goal, only: [:show, :edit, :update, :destroy]
-  
+
   def index
     @points_goals = ::Points::Goal.all
   end
@@ -50,11 +50,12 @@ class Admin::Points::GoalsController < AdminController
   end
 
   private
-    def set_points_goal
-      @points_goal = ::Points::Goal.find(params[:id])
-    end
 
-    def points_goal_params
-      params.require(:points_goal).permit(:target, :expiration, :completed, :current_points, :points_to_complete, :reward)
-    end
+  def set_points_goal
+    @points_goal = ::Points::Goal.find(params[:id])
+  end
+
+  def points_goal_params
+    params.require(:points_goal).permit(:target, :expiration, :completed, :current_points, :points_to_complete, :reward)
+  end
 end

@@ -45,15 +45,15 @@ class Admin::Points::OptionsController < AdminController
 
   private
 
-    def set_points_goal
-      @points_goal = ::Points::Goal.find(params[:goal_id])
-    end
+  def set_points_goal
+    @points_goal = ::Points::Goal.find(params[:goal_id])
+  end
 
-    def set_points_option
-      @points_option = ::Points::Option.find(params[:id])
-    end
+  def set_points_option
+    @points_option = ::Points::Option.find(params[:id])
+  end
 
-    def points_option_params
-      params.require(:points_option).permit(:description, :points)
-    end
+  def points_option_params
+    params.require(:points_option).permit(:description, :points)
+  end
 end
