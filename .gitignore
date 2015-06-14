@@ -11,3 +11,4 @@
 /config/secrets.yml
 
 /public/uploads/
+/lib/assets/data/

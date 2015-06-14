@@ -4,11 +4,11 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, # :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :health_entries, class_name: '::Health::Entry'
-  has_many :health_meals, class_name: '::Health::Meal'
-  has_many :health_workouts, class_name: '::Health::Workout'
-  has_many :budget_entries, class_name: '::Budget::Entry'
-  has_many :points_goals, class_name: '::Points::Goal'
+  has_many :health_entries, class_name: '::Health::Entry', dependent: :destroy
+  has_many :health_meals, class_name: '::Health::Meal', dependent: :destroy
+  has_many :health_workouts, class_name: '::Health::Workout', dependent: :destroy
+  has_many :budget_entries, class_name: '::Budget::Entry', dependent: :destroy
+  has_many :points_goals, class_name: '::Points::Goal', dependent: :destroy
 
   def budget_entries_for_month(date)
     month_start = date.beginning_of_month
