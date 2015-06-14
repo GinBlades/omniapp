@@ -44,12 +44,13 @@ h1 Point Tracker
             th
         tbody
           - @points_activities.each do |activity|
-            td = activity.entry_date
-            td #{activity.description} (#{activity.points})
-            td
-              = link_to 'Edit', '#'
-              '
-              |/
-              '
-              = link_to 'Delete', '#', method: :delete, data: { confirm: 'Are you sure?' }
+            tr
+              td = activity.entry_date
+              td #{activity.description} (#{activity.points})
+              td
+                = link_to 'Edit', '#'
+                '
+                |/
+                '
+                = link_to 'Delete', '#', method: :delete, data: { confirm: 'Are you sure?' }
 

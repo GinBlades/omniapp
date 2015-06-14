@@ -1,10 +1,11 @@
-- url = @points_goal ? admin_points_goal_option_activities_path(@points_goal, @points_option) : admin_points_activities_path
+- url = @points_goal ? admin_points_goal_activities_path(@points_goal) : admin_points_activities_path
 = simple_form_for(@points_activity, url: url) do |f|
   = f.error_notification
 
   .form-inputs
-    = f.association :points_option
-    = f.input :entry_date, as: :string, input_html: { type: 'date', value: date_form(@points_activity.entry_date) || date_form(Time.now) }
+    = f.association :points_option, label: 'Option'
+    = f.input :entry_date, as: :string,
+      input_html: { type: 'date', value: date_form(@points_activity.entry_date) || date_form(Time.now) }
     = f.input :note
 
   .form-actions

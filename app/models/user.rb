@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :health_meals, class_name: '::Health::Meal'
   has_many :health_workouts, class_name: '::Health::Workout'
   has_many :budget_entries, class_name: '::Budget::Entry'
+  has_many :points_goals, class_name: '::Points::Goal'
 
   def budget_entries_for_month(date)
     month_start = date.beginning_of_month

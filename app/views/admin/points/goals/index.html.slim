@@ -1,7 +1,7 @@
 h1 
   Points Goals
   '
-  = link_to 'New Goal', new_points_goal_path, class: 'btn btn-primary'
+  = link_to 'New Goal', new_admin_points_goal_path, class: 'btn btn-primary'
 
 table.table.table-striped
   thead
@@ -26,10 +26,10 @@ table.table.table-striped
         td= points_goal.current_points
         td= points_goal.points_to_complete
         td= points_goal.reward
-        td= link_to 'Show', points_goal
+        td= link_to 'Show', [:admin, points_goal]
         td
-          = link_to 'Edit', edit_points_goal_path(points_goal)
+          = link_to 'Edit', edit_admin_points_goal_path(points_goal)
           '
           |/
           '
-          = link_to 'Delete', points_goal, :method => :delete, :data => { :confirm => 'Are you sure?' }
+          = link_to 'Delete', [:admin, points_goal], method: :delete, data: { confirm: 'Are you sure?' }

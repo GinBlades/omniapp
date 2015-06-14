@@ -32,9 +32,8 @@ Rails.application.routes.draw do
     namespace :points do
       get '/' => 'dashboard#index'
       resources :goals do
-        resources :options, except: [:index, :show] do
-          resources :activities, except: [:index, :show]
-        end
+        resources :options, except: [:index, :show]
+        resources :activities, except: [:index, :show]
       end
       resources :activities, only: [:index, :new, :create]
     end

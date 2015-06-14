@@ -4,7 +4,8 @@
     h1 = @points_goal.target
     .alert.alert-success
       b Reward:
-      ' @points_goal.success
+      '
+      = @points_goal.reward
   .col-md-4
     .panel.panel-default
       .panel-heading
@@ -12,8 +13,10 @@
 .row
   .col-md-8
     .panel.panel-default
-      .panel-heading
-        h2.panel-title Activities
+      .panel-heading.clearfix
+        h2.panel-title
+          | Activities
+          = link_to 'Add Activity', new_admin_points_goal_activity_path(@points_goal), class: 'btn btn-default btn-sm pull-right'
       table.table.table-striped
         thead
           tr
@@ -26,11 +29,11 @@
               td = activity.entry_date
               td #{activity.description} (#{activity.points})
               td
-                = link_to 'Edit', edit_admin_points_goal_option_activity_path(@points_goal, activity.points_option, activity)
+                = link_to 'Edit', edit_admin_points_goal_activity_path(@points_goal, activity)
                 '
                 |/
                 '
-                = link_to 'Delete', admin_points_goal_option_activity_path(@points_goal, activity.points_option, activity), method: :delete, data: { confirm: 'Are you sure?' }
+                = link_to 'Delete', admin_points_goal_activity_path(@points_goal, activity), method: :delete, data: { confirm: 'Are you sure?' }
 
   .col-md-4
     .panel.panel-default

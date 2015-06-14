@@ -1,7 +1,7 @@
 h1 
   Points Activities
   '
-  = link_to 'New Activity', new_points_activity_path, class: 'btn btn-primary'
+  = link_to 'New Activity', new_admin_points_activity_path, class: 'btn btn-primary'
 
 table.table.table-striped
   thead
@@ -10,18 +10,19 @@ table.table.table-striped
       th Entry date
       th Note
       th
-      th
       
   tbody
-    - @points_activities.each do |points_activity|
+    - @points_activities.each do |activity|
       tr
-        td= points_activity.points_option
-        td= points_activity.entry_date
-        td= points_activity.note
-        td= link_to 'Show', points_activity
+        td= activity.points_option
+        td= activity.entry_date
+        td= activity.note
         td
-          = link_to 'Edit', edit_points_activity_path(points_activity)
+          = link_to 'Edit',
+            edit_admin_points_goal_activity_path(activity.direct_goal, activity)
           '
           |/
           '
-          = link_to 'Delete', points_activity, :method => :delete, :data => { :confirm => 'Are you sure?' }
+          = link_to 'Delete',
+            admin_points_goal_activity_path(activity.direct_goal, activity),
+            method: :delete, data: { confirm: 'Are you sure?' }

@@ -9,7 +9,7 @@ class Admin::Points::GoalsController < AdminController
   end
 
   def new
-    @points_goal = current_user.points_goals
+    @points_goal = current_user.points_goals.build
   end
 
   def edit
