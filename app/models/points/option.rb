@@ -3,10 +3,18 @@ class Points::Option < ActiveRecord::Base
   has_many :points_activities, dependent: :destroy,
     class_name: '::Points::Activity', foreign_key: 'points_option_id'
 
+  after_save :update_goal
+
   validates :points_goal_id, :points, :description, presence: true
   validates :description, length: { maximum: 100 }
 
   def to_s
-    description
+    "#{points_goal.target}: #{description}"
+  end
+
+  protected
+
+  def update_goal
+    points_goal.update_current_points
   end
 end

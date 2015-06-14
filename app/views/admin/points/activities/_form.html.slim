@@ -1,6 +1,5 @@
-- url = @points_goal ? admin_points_goal_activities_path(@points_goal) : admin_points_activities_path
-- collection = @points_goal ? @points_goal.points_options : ::Points::Option.all
-= simple_form_for(@points_activity, url: url) do |f|
+- collection = @points_goal ? @points_goal.points_options : ::Points::Option.joins(points_goal: :user).where('users.id = ?', current_user.id).order('points_goals.target ASC')
+= simple_form_for(@points_activity, url: @form_path) do |f|
   = f.error_notification
 
   .form-inputs

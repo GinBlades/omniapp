@@ -10,6 +10,8 @@
     .panel.panel-default
       .panel-heading
         h2.panel-title Progress
+      .panel-body
+        | #{@points_goal.current_points} / #{@points_goal.points_to_complete}
 .row
   .col-md-8
     .panel.panel-default
@@ -46,17 +48,20 @@
           tr
             th Description
             th Points
+            th Quick Entry
             th
         tbody
           - @points_goal.points_options.each do |option|
             tr
               td = option.description
               td = option.points
-                = link_to 'Edit', edit_admin_goal_option_path(@points_goal, option)
+              td = link_to '+', quick_entry_admin_points_goal_option_path(@points_goal, option), method: :post, class: 'btn btn-primary btn-sm'
+              td
+                = link_to 'Edit', edit_admin_points_goal_option_path(@points_goal, option)
                 '
                 |/
                 '
-                = link_to 'Delete', [:admin, @points_goal, points_option], method: :delete, data: { confirm: 'Are you sure?' }
+                = link_to 'Delete', admin_points_goal_option_path(@points_goal, option), method: :delete, data: { confirm: 'Are you sure?' }
 
 .btn-group
   = link_to 'Edit', edit_admin_points_goal_path(@points_goal), class: 'btn btn-default'

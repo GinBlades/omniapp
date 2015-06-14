@@ -1,12 +1,14 @@
 class Admin::Points::OptionsController < AdminController
   before_action :set_points_goal
-  before_action :set_points_option, only: [:edit, :update, :destroy]
+  before_action :set_points_option, only: [:edit, :update, :destroy, :quick_entry]
 
   def new
     @points_option = @points_goal.points_options.build
+    @form_path = admin_points_goal_options_path(@points_goal)
   end
 
   def edit
+    @form_path = admin_points_goal_option_path(@points_goal, @points_option)
   end
 
   def create
@@ -41,6 +43,11 @@ class Admin::Points::OptionsController < AdminController
       format.html { redirect_to admin_points_goal_url(@points_goal), notice: 'Option was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def quick_entry
+    @points_option.points_activities.create(entry_date: Time.zone.now)
+    redirect_to admin_points_goal_url(@points_goal)
   end
 
   private

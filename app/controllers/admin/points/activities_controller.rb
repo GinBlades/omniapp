@@ -8,9 +8,11 @@ class Admin::Points::ActivitiesController < AdminController
 
   def new
     @points_activity = ::Points::Activity.new
+    @form_path = @points_goal ? admin_points_goal_activities_path(@points_goal) : admin_points_activities_path
   end
 
   def edit
+    @form_path = admin_points_goal_activity_path(@points_goal, @points_activity)
   end
 
   def create

@@ -6,11 +6,19 @@ class Points::Activity < ActiveRecord::Base
 
   delegate :description, :points, to: :points_option
 
+  after_save :update_goal
+
   def direct_goal
     ::Points::Goal.joins(points_options: :points_activities).where('points_activities.id = ?', id).first
   end
 
   def direct_user
     User.joins(points_goals: { points_options: :points_activities }).where('points_activities.id = ?', id).first
+  end
+
+  protected
+
+  def update_goal
+    direct_goal.update_current_points
   end
 end

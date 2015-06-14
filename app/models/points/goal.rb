@@ -11,6 +11,11 @@ class Points::Goal < ActiveRecord::Base
     ((current_points / points_to_complete.to_f) * 100).to_i
   end
 
+  def update_current_points
+    self.current_points = self.points_activities.map(&:points).sum
+    save
+  end
+
   def to_s
     target
   end
