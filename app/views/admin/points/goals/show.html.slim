@@ -36,6 +36,9 @@
                 |/
                 '
                 = link_to 'Delete', admin_points_goal_activity_path(@points_goal, activity), method: :delete, data: { confirm: 'Are you sure?' }
+            - if activity.note
+              tr
+                td colspan=3 = activity.note
 
   .col-md-4
     .panel.panel-default
@@ -55,7 +58,7 @@
             tr
               td = option.description
               td = option.points
-              td = link_to '+', quick_entry_admin_points_goal_option_path(@points_goal, option), method: :post, class: 'btn btn-primary btn-sm'
+              td = link_to '+', quick_entry_admin_points_goal_option_path(@points_goal, option), method: :post, class: 'btn btn-xs btn-success'
               td
                 = link_to 'Edit', edit_admin_points_goal_option_path(@points_goal, option)
                 '
