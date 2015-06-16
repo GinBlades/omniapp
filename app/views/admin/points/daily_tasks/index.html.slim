@@ -1,7 +1,7 @@
 h1 
   Points Daily Tasks
   '
-  = link_to 'New Daily task', new_points_daily_task_path, class: 'btn btn-primary'
+  = link_to 'New Daily task', new_admin_points_daily_task_path, class: 'btn btn-primary'
 
 table.table.table-striped
   thead
@@ -18,10 +18,10 @@ table.table.table-striped
         td= points_daily_task.entry_date
         td= points_daily_task.task_display
         td= points_daily_task.success
-        td= link_to 'Show', points_daily_task
+        td= link_to 'Show', [:admin, points_daily_task]
         td
-          = link_to 'Edit', edit_points_daily_task_path(points_daily_task)
+          = link_to 'Edit', edit_admin_points_daily_task_path(points_daily_task)
           '
           |/
           '
-          = link_to 'Delete', points_daily_task, :method => :delete, :data => { :confirm => 'Are you sure?' }
+          = link_to 'Delete', [:admin, points_daily_task], method: :delete, data: { confirm: 'Are you sure?' }

@@ -212,12 +212,15 @@ ActiveRecord::Schema.define(version: 20150616140042) do
   add_index "points_activities", ["points_option_id"], name: "index_points_activities_on_points_option_id", using: :btree
 
   create_table "points_daily_tasks", force: :cascade do |t|
+    t.integer  "user_id"
     t.date     "entry_date"
     t.string   "tasks",      default: [],              array: true
     t.integer  "success",    default: 0
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end
+
+  add_index "points_daily_tasks", ["user_id"], name: "index_points_daily_tasks_on_user_id", using: :btree
 
   create_table "points_goals", force: :cascade do |t|
     t.integer  "user_id"
@@ -303,6 +306,7 @@ ActiveRecord::Schema.define(version: 20150616140042) do
   add_foreign_key "health_workouts", "users"
   add_foreign_key "notes_entries", "notes_categories"
   add_foreign_key "points_activities", "points_options"
+  add_foreign_key "points_daily_tasks", "users"
   add_foreign_key "points_goals", "users"
   add_foreign_key "points_options", "points_goals"
 end

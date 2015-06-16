@@ -52,3 +52,23 @@ root.initialize = ->
           subcategoryInput.val ui.item.label
           subcategoryId.val ui.item.value
     
+  # Task list updater
+  taskList = $('#task-list')
+  if taskList.length
+    successValue = $('td#success')
+    console.log successValue.text()
+    locationParts = window.location.href.split('/')
+    lastIndex = locationParts.length - 1
+    recordNumber = locationParts[lastIndex]
+    taskList.find('input').on 'click', (e) ->
+      task = @.name
+      completed = @.checked
+      $.ajax
+        type: 'PUT'
+        url: "/admin/points/daily_tasks/#{recordNumber}/task_update"
+        data:
+          task: task
+          completed: completed
+      .done (msg) ->
+        successValue.text("#{msg}%")
+        

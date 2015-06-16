@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Points::DailyTasksController, type: :controller do
-
-  
   describe 'Standard CRUD' do
     let(:instance_points_daily_task) { assigns(:points_daily_task) }
     let(:base_points_daily_task) { create(:points_daily_task) }
@@ -107,6 +105,5 @@ RSpec.describe Points::DailyTasksController, type: :controller do
         expect(response).to redirect_to(points_daily_tasks_url)
       end
     end
-
   end
 end

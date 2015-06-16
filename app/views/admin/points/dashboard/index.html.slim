@@ -30,28 +30,49 @@ h1 Point Tracker
                 = link_to 'Delete', [:admin, goal], method: :delete, data: { confirm: 'Are you sure?' }
 
   .col-md-6
-    .panel.panel-default
-      .panel-heading
-        h2.panel-title.clearfix
-          | My Recent Activities
-          .btn-group.pull-right
-            = link_to 'New Activity', new_admin_points_activity_path, class: 'btn btn-default btn-sm'
-            = link_to 'All Activities', admin_points_activities_path, class: 'btn btn-default btn-sm'
-      table.table.table-striped
-        thead
-          tr
-            th Entry Date
-            th Option
-            th
-        tbody
-          - @points_activities.each do |activity|
-            tr
-              td = activity.entry_date
-              td #{activity.description} (#{activity.points})
-              td
-                = link_to 'Edit', '#'
-                '
-                |/
-                '
-                = link_to 'Delete', '#', method: :delete, data: { confirm: 'Are you sure?' }
+    .row
+      .col-md-12
+        .panel.panel-default
+          .panel-heading
+            h2.panel-title.clearfix
+              | My Recent Activities
+              .btn-group.pull-right
+                = link_to 'New Activity', new_admin_points_activity_path, class: 'btn btn-default btn-sm'
+                = link_to 'All Activities', admin_points_activities_path, class: 'btn btn-default btn-sm'
+          table.table.table-striped
+            thead
+              tr
+                th Entry Date
+                th Option
+                th
+            tbody
+              - @points_activities.each do |activity|
+                tr
+                  td = activity.entry_date
+                  td #{activity.description} (#{activity.points})
+                  td
+                    = link_to 'Edit', '#'
+                    '
+                    |/
+                    '
+                    = link_to 'Delete', '#', method: :delete, data: { confirm: 'Are you sure?' }
+    .row
+      .col-md-12
+        .panel.panel-default
+          .panel-heading
+            h2.panel-title.clearfix
+              | My Daily Tasks
+              .btn-group.pull-right
+                = link_to 'New Entry', new_admin_points_daily_task_path, class: 'btn btn-default btn-sm'
+                = link_to 'All Entries', admin_points_daily_tasks_path, class: 'btn btn-default btn-sm'
+          table.table.table-striped
+            thead
+              tr
+                th Entry Date
+                th Success
+            - @points_daily_tasks.each do |daily_task|
+              tr
+                td = link_to daily_task.entry_date, [:admin, daily_task]
+                td = daily_task.success
+
 

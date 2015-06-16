@@ -1,0 +1,22 @@
+table.table.table-striped
+  tr
+    th Entry date:
+    td= @points_daily_task.entry_date
+  tr
+    th Tasks:
+    td.col-md-10
+      ul.list-unstyled#task-list
+        - @points_daily_task.tasks.each do |task|
+          - cleared_task = ::Points::DailyTask.clear(task)
+          li
+            label for=cleared_task
+              = check_box_tag cleared_task, 1, ::Points::DailyTask.completed?(task)
+              '
+              = cleared_task
+  tr
+    th Success:
+    td#success #{@points_daily_task.success}%
+
+.btn-group
+  = link_to 'Edit', edit_admin_points_daily_task_path(@points_daily_task), class: 'btn btn-default'
+  = link_to 'All Points Daily Tasks', admin_points_daily_tasks_path, class: 'btn btn-default'

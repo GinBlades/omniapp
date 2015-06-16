@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  namespace :points do
-    resources :daily_tasks
-  end
   mount Ckeditor::Engine => '/ckeditor'
   namespace :admin do
     get '/' => 'dashboard#index'
@@ -34,6 +31,11 @@ Rails.application.routes.draw do
     end
     namespace :points do
       get '/' => 'dashboard#index'
+      resources :daily_tasks do
+        member do
+          put :task_update
+        end
+      end
       resources :goals do
         resources :options, except: [:index, :show] do
           member do
