@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150614224917) do
+ActiveRecord::Schema.define(version: 20150616140042) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -210,6 +210,14 @@ ActiveRecord::Schema.define(version: 20150614224917) do
   end
 
   add_index "points_activities", ["points_option_id"], name: "index_points_activities_on_points_option_id", using: :btree
+
+  create_table "points_daily_tasks", force: :cascade do |t|
+    t.date     "entry_date"
+    t.string   "tasks",      default: [],              array: true
+    t.integer  "success",    default: 0
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
 
   create_table "points_goals", force: :cascade do |t|
     t.integer  "user_id"

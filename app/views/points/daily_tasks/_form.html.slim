@@ -1,0 +1,10 @@
+= simple_form_for(@points_daily_task) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :entry_date, as: :string,
+      input_html: { type: 'date', value: date_form(@points_daily_task.entry_date) || date_form(Time.now) }
+    = f.input :task_string, input_html: { placeholder: 'Comma separated list of tasks to complete', value: @points_daily_task.task_display }
+
+  .form-actions
+    = f.button :submit, class: 'btn btn-success'
