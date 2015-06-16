@@ -35,6 +35,9 @@ Style/BlockComments:
   Exclude:
     - 'spec/spec_helper.rb'
 
+Style/MultilineOperationIndentation:
+  Enabled: false
+
 Style/Documentation:
   Enabled: false
 

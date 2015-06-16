@@ -12,7 +12,7 @@ class Points::Goal < ActiveRecord::Base
   end
 
   def update_current_points
-    self.current_points = self.points_activities.map(&:points).sum
+    self.current_points = points_activities.map(&:points).sum
     save
   end
 
