@@ -7,6 +7,7 @@ class Points::Activity < ActiveRecord::Base
   delegate :description, :points, to: :points_option
 
   after_save :update_goal
+  after_destroy :update_goal
 
   def direct_goal
     ::Points::Goal.joins(points_options: :points_activities).where('points_activities.id = ?', id).first
@@ -19,6 +20,6 @@ class Points::Activity < ActiveRecord::Base
   protected
 
   def update_goal
-    direct_goal.update_current_points
+    points_option.points_goal.update_current_points
   end
 end

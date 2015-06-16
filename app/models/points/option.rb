@@ -4,6 +4,7 @@ class Points::Option < ActiveRecord::Base
     class_name: '::Points::Activity', foreign_key: 'points_option_id'
 
   after_save :update_goal
+  after_destroy :update_goal
 
   validates :points_goal_id, :points, :description, presence: true
   validates :description, length: { maximum: 100 }
