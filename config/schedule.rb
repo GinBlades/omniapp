@@ -25,7 +25,7 @@ RAILS_ROOT = File.dirname(__FILE__) + '/..'
 
 # Learn more: http://github.com/javan/whenever
 env :PATH, ENV['PATH']
-set :output, "#{RAILS_ROOT}/logs/cron.log"
+set :output, "#{RAILS_ROOT}/log/cron.log"
 set :environment, ENV['RAILS_ENV']
 
 every 1.week, at: '1:30am' do
