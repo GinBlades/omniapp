@@ -5,7 +5,7 @@
   .form-inputs
     = f.association :points_option, label: 'Option', collection: collection
     = f.input :entry_date, as: :string,
-      input_html: { type: 'date', value: date_form(@points_activity.entry_date) || date_form(Time.now) }
+      input_html: { type: 'date', value: date_form(@points_activity.entry_date) || date_form(Time.zone.today) }
     = f.input :note
 
   .form-actions

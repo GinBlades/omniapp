@@ -5,7 +5,7 @@
     = f.association :health_workout_category
     .row
       .col-md-4
-        = f.input :start, as: :string, input_html: { type: 'datetime-local', value: time_form(@health_workout.start) || time_form(Time.now) } 
+        = f.input :start, as: :string, input_html: { type: 'datetime-local', value: time_form(@health_workout.start) || time_form(Time.zone.now) } 
       .col-md-4
         = f.input :duration, label: "Duration (in minutes)"
       .col-md-4

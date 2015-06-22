@@ -2,7 +2,7 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :entry_date, as: :string, input_html: { type: 'date', value: date_form(@health_entry.entry_date) || date_form(Time.now) }
+    = f.input :entry_date, as: :string, input_html: { type: 'date', value: date_form(@health_entry.entry_date) || date_form(Time.zone.today) }
 
     #health_ratings
     .form-group

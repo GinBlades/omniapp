@@ -2,7 +2,7 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :time, as: :string, input_html: { type: 'datetime-local', value: time_form(@health_meal) || time_form(Time.now) }
+    = f.input :time, as: :string, input_html: { type: 'datetime-local', value: time_form(@health_meal) || time_form(Time.zone.now) }
     = f.input :meal_category, as: :radio_buttons, collection: Health::Meal.meal_categories.keys.to_a
     .row
       .col-sm-4

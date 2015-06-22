@@ -46,7 +46,7 @@ class Admin::Points::OptionsController < AdminController
   end
 
   def quick_entry
-    @points_option.points_activities.create(entry_date: Time.zone.now)
+    @points_option.points_activities.create(entry_date: Time.zone.today)
     redirect_to admin_points_goal_url(@points_goal)
   end
 
