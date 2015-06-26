@@ -1,11 +1,11 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Budget::CategoriesController, type: :controller do
   describe "Standard CRUD" do
     let(:instance_budget_category) { assigns(:budget_category) }
     let(:base_budget_category) { create(:budget_category) }
-    let(:static_budget_category) { create(:budget_category, name: 'spec-budget_category') }
-    let(:valid_attributes) { attributes_for(:budget_category, name: 'spec-budget_category') }
+    let(:static_budget_category) { create(:budget_category, name: "spec-budget_category") }
+    let(:valid_attributes) { attributes_for(:budget_category, name: "spec-budget_category") }
     let(:invalid_attributes) { attributes_for(:budget_category, name: nil) }
     describe "GET #index" do
       it "populates an array of all @budget_categories" do

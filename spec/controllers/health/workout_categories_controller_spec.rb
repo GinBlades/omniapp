@@ -1,11 +1,11 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Health::WorkoutCategoriesController, type: :controller do
   describe "Standard CRUD" do
     let(:instance_health_workout_category) { assigns(:health_workout_category) }
     let(:base_health_workout_category) { create(:health_workout_category) }
-    let(:static_health_workout_category) { create(:health_workout_category, name: 'spec-health_workout_category') }
-    let(:valid_attributes) { attributes_for(:health_workout_category, name: 'spec-health_workout_category') }
+    let(:static_health_workout_category) { create(:health_workout_category, name: "spec-health_workout_category") }
+    let(:valid_attributes) { attributes_for(:health_workout_category, name: "spec-health_workout_category") }
     let(:invalid_attributes) { attributes_for(:health_workout_category, name: nil) }
     describe "GET #index" do
       it "populates an array of all @health_workout_categories" do

@@ -1,11 +1,11 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Budget::PayeesController, type: :controller do
   describe "Standard CRUD" do
     let(:instance_budget_payee) { assigns(:budget_payee) }
     let(:base_budget_payee) { create(:budget_payee) }
-    let(:static_budget_payee) { create(:budget_payee, name: 'spec-budget_payee') }
-    let(:valid_attributes) { attributes_for(:budget_payee, name: 'spec-budget_payee') }
+    let(:static_budget_payee) { create(:budget_payee, name: "spec-budget_payee") }
+    let(:valid_attributes) { attributes_for(:budget_payee, name: "spec-budget_payee") }
     let(:invalid_attributes) { attributes_for(:budget_payee, name: nil) }
     describe "GET #index" do
       it "populates an array of all @budget_payees" do

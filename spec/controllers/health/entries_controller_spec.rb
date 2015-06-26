@@ -1,11 +1,11 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Health::EntriesController, type: :controller do
   describe "Standard CRUD" do
     let(:instance_health_entry) { assigns(:health_entry) }
     let(:base_health_entry) { create(:health_entry) }
-    let(:static_health_entry) { create(:health_entry, name: 'spec-health_entry') }
-    let(:valid_attributes) { attributes_for(:health_entry, name: 'spec-health_entry') }
+    let(:static_health_entry) { create(:health_entry, name: "spec-health_entry") }
+    let(:valid_attributes) { attributes_for(:health_entry, name: "spec-health_entry") }
     let(:invalid_attributes) { attributes_for(:health_entry, name: nil) }
     describe "GET #index" do
       it "populates an array of all @health_entries" do

@@ -20,7 +20,7 @@ class Admin::Points::DailyTasksController < AdminController
 
     respond_to do |format|
       if @points_daily_task.save
-        format.html { redirect_to [:admin, @points_daily_task], notice: 'Daily task was successfully created.' }
+        format.html { redirect_to [:admin, @points_daily_task], notice: "Daily task was successfully created." }
         format.json { render :show, status: :created, location: [:admin, @points_daily_task] }
       else
         format.html { render :new }
@@ -32,7 +32,7 @@ class Admin::Points::DailyTasksController < AdminController
   def update
     respond_to do |format|
       if @points_daily_task.update(points_daily_task_params)
-        format.html { redirect_to [:admin, @points_daily_task], notice: 'Daily task was successfully updated.' }
+        format.html { redirect_to [:admin, @points_daily_task], notice: "Daily task was successfully updated." }
         format.json { render :show, status: :ok, location: [:admin, @points_daily_task] }
       else
         format.html { render :edit }
@@ -44,7 +44,7 @@ class Admin::Points::DailyTasksController < AdminController
   def destroy
     @points_daily_task.destroy
     respond_to do |format|
-      format.html { redirect_to admin_points_daily_tasks_url, notice: 'Daily task was successfully destroyed.' }
+      format.html { redirect_to admin_points_daily_tasks_url, notice: "Daily task was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -52,7 +52,7 @@ class Admin::Points::DailyTasksController < AdminController
   def task_update
     task = params[:task]
     i = @points_daily_task.clear_tasks.index(task)
-    completed = params[:completed] == 'true' ? true : false
+    completed = params[:completed] == "true" ? true : false
     @points_daily_task.tasks[i] = ::Points::DailyTask.update_task(task, completed)
     if @points_daily_task.save
       render json: @points_daily_task.success, status: :ok

@@ -5,10 +5,10 @@ class Points::DailyTask < ActiveRecord::Base
 
   attr_accessor :task_string
 
-  COMPLETE_MARKER = '|'
+  COMPLETE_MARKER = "|"
 
   def task_display
-    tasks.present? ? clear_tasks.join(', ') : nil
+    tasks.present? ? clear_tasks.join(", ") : nil
   end
 
   def clear_tasks
@@ -18,7 +18,7 @@ class Points::DailyTask < ActiveRecord::Base
   def parse_tasks
     Rails.logger.info task_string
     return unless task_string.present?
-    self.tasks = task_string.split(',').map(&:strip)
+    self.tasks = task_string.split(",").map(&:strip)
   end
 
   def percent_completed
@@ -36,7 +36,7 @@ class Points::DailyTask < ActiveRecord::Base
     end
 
     def clear(task)
-      task.gsub(COMPLETE_MARKER, '')
+      task.gsub(COMPLETE_MARKER, "")
     end
 
     def completed?(task)

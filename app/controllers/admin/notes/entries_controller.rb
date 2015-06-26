@@ -21,7 +21,7 @@ class Admin::Notes::EntriesController < AdminController
 
     respond_to do |format|
       if @notes_entry.save
-        format.html { redirect_to [:admin, @notes_entry], notice: 'Entry was successfully created.' }
+        format.html { redirect_to [:admin, @notes_entry], notice: "Entry was successfully created." }
         format.json { render :show, status: :created, location: [:admin, @notes_entry] }
       else
         format.html { render :new }
@@ -33,7 +33,7 @@ class Admin::Notes::EntriesController < AdminController
   def update
     respond_to do |format|
       if @notes_entry.update(notes_entry_params)
-        format.html { redirect_to [:admin, @notes_entry], notice: 'Entry was successfully updated.' }
+        format.html { redirect_to [:admin, @notes_entry], notice: "Entry was successfully updated." }
         format.json { render :show, status: :ok, location: [:admin, @notes_entry] }
       else
         format.html { render :edit }
@@ -45,7 +45,7 @@ class Admin::Notes::EntriesController < AdminController
   def destroy
     @notes_entry.destroy
     respond_to do |format|
-      format.html { redirect_to admin_notes_entries_url, notice: 'Entry was successfully destroyed.' }
+      format.html { redirect_to admin_notes_entries_url, notice: "Entry was successfully destroyed." }
       format.json { head :no_content }
     end
   end

@@ -9,7 +9,7 @@ class Blog::CommentsController < ApplicationController
     @blog_comment = @post.blog_comments.build(blog_comment_params)
 
     if @blog_comment.save
-      redirect_to blog_post_path(@post), notice: 'Comment was successfully submitted.'
+      redirect_to blog_post_path(@post), notice: "Comment was successfully submitted."
     else
       render :new
     end

@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  mount Ckeditor::Engine => '/ckeditor'
+  mount Ckeditor::Engine => "/ckeditor"
   namespace :admin do
-    get '/' => 'dashboard#index'
+    get "/" => "dashboard#index"
     namespace :health do
-      get '/' => 'dashboard#index'
+      get "/" => "dashboard#index"
       resources :categories
       resources :entries
       resources :meals
@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       resources :workouts
     end
     namespace :budget do
-      get '/' => 'dashboard#index'
+      get "/" => "dashboard#index"
       resources :categories
       resources :entries
       resources :events
@@ -20,17 +20,17 @@ Rails.application.routes.draw do
       resources :subcategories
     end
     namespace :notes do
-      get '/' => 'dashboard#index'
+      get "/" => "dashboard#index"
       resources :entries
       resources :categories
     end
     namespace :blog do
-      get '/' => 'dashboard#index'
+      get "/" => "dashboard#index"
       resources :comments
       resources :posts
     end
     namespace :points do
-      get '/' => 'dashboard#index'
+      get "/" => "dashboard#index"
       resources :daily_tasks do
         member do
           put :task_update
@@ -53,11 +53,11 @@ Rails.application.routes.draw do
     resources :categories, only: [:index, :show]
   end
   namespace :blog do
-    get '/' => 'posts#index'
+    get "/" => "posts#index"
     resources :posts, only: [:show] do
       resources :comments, only: [:new, :create]
     end
   end
-  get '/jihye' => 'pages#jihye'
-  root 'pages#home'
+  get "/jihye" => "pages#jihye"
+  root "pages#home"
 end

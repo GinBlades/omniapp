@@ -1,11 +1,11 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Health::RatingsController, type: :controller do
   describe "Standard CRUD" do
     let(:instance_health_rating) { assigns(:health_rating) }
     let(:base_health_rating) { create(:health_rating) }
-    let(:static_health_rating) { create(:health_rating, name: 'spec-health_rating') }
-    let(:valid_attributes) { attributes_for(:health_rating, name: 'spec-health_rating') }
+    let(:static_health_rating) { create(:health_rating, name: "spec-health_rating") }
+    let(:valid_attributes) { attributes_for(:health_rating, name: "spec-health_rating") }
     let(:invalid_attributes) { attributes_for(:health_rating, name: nil) }
     describe "GET #index" do
       it "populates an array of all @health_ratings" do

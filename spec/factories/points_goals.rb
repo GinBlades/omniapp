@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :points_goal, class: 'Points::Goal' do
+  factory :points_goal, class: "Points::Goal" do
     user nil
     target "MyString"
     expiration "2015-06-12"

@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :blog_comment, class: 'Blog::Comment' do
+  factory :blog_comment, class: "Blog::Comment" do
     name "MyString"
     email "MyString"
     body "MyString"

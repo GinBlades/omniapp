@@ -20,7 +20,7 @@ class Admin::Points::ActivitiesController < AdminController
 
     respond_to do |format|
       if @points_activity.save
-        format.html { redirect_to admin_points_goal_url(@points_activity.direct_goal), notice: 'Activity was successfully created.' }
+        format.html { redirect_to admin_points_goal_url(@points_activity.direct_goal), notice: "Activity was successfully created." }
         format.json { render :show, status: :created, location: admin_points_goal_url(@points_activity.direct_goal) }
       else
         format.html { render :new }
@@ -32,7 +32,7 @@ class Admin::Points::ActivitiesController < AdminController
   def update
     respond_to do |format|
       if @points_activity.update(points_activity_params)
-        format.html { redirect_to admin_points_goal_url(@points_goal), notice: 'Activity was successfully updated.' }
+        format.html { redirect_to admin_points_goal_url(@points_goal), notice: "Activity was successfully updated." }
         format.json { render :show, status: :ok, location: admin_points_goal_url(@points_goal) }
       else
         format.html { render :edit }
@@ -44,7 +44,7 @@ class Admin::Points::ActivitiesController < AdminController
   def destroy
     @points_activity.destroy
     respond_to do |format|
-      format.html { redirect_to admin_points_goal_url(@points_goal), notice: 'Activity was successfully destroyed.' }
+      format.html { redirect_to admin_points_goal_url(@points_goal), notice: "Activity was successfully destroyed." }
       format.json { head :no_content }
     end
   end

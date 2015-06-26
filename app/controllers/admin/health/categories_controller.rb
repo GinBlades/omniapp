@@ -20,7 +20,7 @@ class Admin::Health::CategoriesController < AdminController
 
     respond_to do |format|
       if @health_category.save
-        format.html { redirect_to [:admin, @health_category], notice: 'Category was successfully created.' }
+        format.html { redirect_to [:admin, @health_category], notice: "Category was successfully created." }
         format.json { render :show, status: :created, location: [:admin, @health_category] }
       else
         format.html { render :new }
@@ -32,7 +32,7 @@ class Admin::Health::CategoriesController < AdminController
   def update
     respond_to do |format|
       if @health_category.update(health_category_params)
-        format.html { redirect_to [:admin, @health_category], notice: 'Category was successfully updated.' }
+        format.html { redirect_to [:admin, @health_category], notice: "Category was successfully updated." }
         format.json { render :show, status: :ok, location: [:admin, @health_category] }
       else
         format.html { render :edit }
@@ -44,7 +44,7 @@ class Admin::Health::CategoriesController < AdminController
   def destroy
     @health_category.destroy
     respond_to do |format|
-      format.html { redirect_to admin_health_categories_url, notice: 'Category was successfully destroyed.' }
+      format.html { redirect_to admin_health_categories_url, notice: "Category was successfully destroyed." }
       format.json { head :no_content }
     end
   end

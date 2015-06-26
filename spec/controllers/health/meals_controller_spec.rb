@@ -1,11 +1,11 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Health::MealsController, type: :controller do
   describe "Standard CRUD" do
     let(:instance_health_meal) { assigns(:health_meal) }
     let(:base_health_meal) { create(:health_meal) }
-    let(:static_health_meal) { create(:health_meal, name: 'spec-health_meal') }
-    let(:valid_attributes) { attributes_for(:health_meal, name: 'spec-health_meal') }
+    let(:static_health_meal) { create(:health_meal, name: "spec-health_meal") }
+    let(:valid_attributes) { attributes_for(:health_meal, name: "spec-health_meal") }
     let(:invalid_attributes) { attributes_for(:health_meal, name: nil) }
     describe "GET #index" do
       it "populates an array of all @health_meals" do

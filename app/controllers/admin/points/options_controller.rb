@@ -16,7 +16,7 @@ class Admin::Points::OptionsController < AdminController
 
     respond_to do |format|
       if @points_option.save
-        format.html { redirect_to admin_points_goal_url(@points_goal), notice: 'Option was successfully created.' }
+        format.html { redirect_to admin_points_goal_url(@points_goal), notice: "Option was successfully created." }
         format.json { render :show, status: :created, location: admin_points_goal_url(@points_goal) }
       else
         format.html { render :new }
@@ -28,7 +28,7 @@ class Admin::Points::OptionsController < AdminController
   def update
     respond_to do |format|
       if @points_option.update(points_option_params)
-        format.html { redirect_to admin_points_goal_url(@points_goal), notice: 'Option was successfully updated.' }
+        format.html { redirect_to admin_points_goal_url(@points_goal), notice: "Option was successfully updated." }
         format.json { render :show, status: :ok, location: admin_points_goal_url(@points_goal) }
       else
         format.html { render :edit }
@@ -40,7 +40,7 @@ class Admin::Points::OptionsController < AdminController
   def destroy
     @points_option.destroy
     respond_to do |format|
-      format.html { redirect_to admin_points_goal_url(@points_goal), notice: 'Option was successfully destroyed.' }
+      format.html { redirect_to admin_points_goal_url(@points_goal), notice: "Option was successfully destroyed." }
       format.json { head :no_content }
     end
   end

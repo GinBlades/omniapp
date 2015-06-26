@@ -21,7 +21,7 @@ class Admin::Health::WorkoutsController < AdminController
 
     respond_to do |format|
       if @health_workout.save
-        format.html { redirect_to [:admin, @health_workout], notice: 'Workout was successfully created.' }
+        format.html { redirect_to [:admin, @health_workout], notice: "Workout was successfully created." }
         format.json { render :show, status: :created, location: [:admin, @health_workout] }
       else
         format.html { render :new }
@@ -33,7 +33,7 @@ class Admin::Health::WorkoutsController < AdminController
   def update
     respond_to do |format|
       if @health_workout.update(health_workout_params)
-        format.html { redirect_to [:admin, @health_workout], notice: 'Workout was successfully updated.' }
+        format.html { redirect_to [:admin, @health_workout], notice: "Workout was successfully updated." }
         format.json { render :show, status: :ok, location: [:admin, @health_workout] }
       else
         format.html { render :edit }
@@ -45,7 +45,7 @@ class Admin::Health::WorkoutsController < AdminController
   def destroy
     @health_workout.destroy
     respond_to do |format|
-      format.html { redirect_to admin_health_workouts_url, notice: 'Workout was successfully destroyed.' }
+      format.html { redirect_to admin_health_workouts_url, notice: "Workout was successfully destroyed." }
       format.json { head :no_content }
     end
   end

@@ -21,7 +21,7 @@ class Admin::Health::MealsController < AdminController
 
     respond_to do |format|
       if @health_meal.save
-        format.html { redirect_to [:admin, @health_meal], notice: 'Meal was successfully created.' }
+        format.html { redirect_to [:admin, @health_meal], notice: "Meal was successfully created." }
         format.json { render :show, status: :created, location: [:admin, @health_meal] }
       else
         format.html { render :new }
@@ -33,7 +33,7 @@ class Admin::Health::MealsController < AdminController
   def update
     respond_to do |format|
       if @health_meal.update(health_meal_params)
-        format.html { redirect_to [:admin, @health_meal], notice: 'Meal was successfully updated.' }
+        format.html { redirect_to [:admin, @health_meal], notice: "Meal was successfully updated." }
         format.json { render :show, status: :ok, location: [:admin, @health_meal] }
       else
         format.html { render :edit }
@@ -45,7 +45,7 @@ class Admin::Health::MealsController < AdminController
   def destroy
     @health_meal.destroy
     respond_to do |format|
-      format.html { redirect_to admin_health_meals_url, notice: 'Meal was successfully destroyed.' }
+      format.html { redirect_to admin_health_meals_url, notice: "Meal was successfully destroyed." }
       format.json { head :no_content }
     end
   end

@@ -21,7 +21,7 @@ module Admin
 
       respond_to do |format|
         if @budget_subcategory.save
-          format.html { redirect_to [:admin, @budget_subcategory], notice: 'Subcategory was successfully created.' }
+          format.html { redirect_to [:admin, @budget_subcategory], notice: "Subcategory was successfully created." }
           format.json { render :show, status: :created, location: [:admin, @budget_subcategory] }
         else
           format.html { render :new }
@@ -33,7 +33,7 @@ module Admin
     def update
       respond_to do |format|
         if @budget_subcategory.update(budget_subcategory_params)
-          format.html { redirect_to [:admin, @budget_subcategory], notice: 'Subcategory was successfully updated.' }
+          format.html { redirect_to [:admin, @budget_subcategory], notice: "Subcategory was successfully updated." }
           format.json { render :show, status: :ok, location: [:admin, @budget_subcategory] }
         else
           format.html { render :edit }
@@ -45,7 +45,7 @@ module Admin
     def destroy
       @budget_subcategory.destroy
       respond_to do |format|
-        format.html { redirect_to admin_budget_subcategories_url, notice: 'Subcategory was successfully destroyed.' }
+        format.html { redirect_to admin_budget_subcategories_url, notice: "Subcategory was successfully destroyed." }
         format.json { head :no_content }
       end
     end

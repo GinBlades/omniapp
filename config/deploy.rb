@@ -1,8 +1,8 @@
-require 'mina/bundler'
-require 'mina/rails'
-require 'mina/git'
-require 'mina/rbenv'  # for rbenv support. (http://rbenv.org)
-require 'mina/whenever'
+require "mina/bundler"
+require "mina/rails"
+require "mina/git"
+require "mina/rbenv"  # for rbenv support. (http://rbenv.org)
+require "mina/whenever"
 # require 'mina/rvm'    # for rvm support. (http://rvm.io)
 
 # Basic settings:
@@ -11,19 +11,19 @@ require 'mina/whenever'
 #   repository   - Git repo to clone from. (needed by mina/git)
 #   branch       - Branch name to deploy. (needed by mina/git)
 
-set :domain, 'aws'
-set :repository, 'git@gitlab.com:GinBlades/omniapp.git'
+set :domain, "aws"
+set :repository, "git@gitlab.com:GinBlades/omniapp.git"
 
 # use `mina deploy` for staging OR mina deploy to=production
-case ENV['to']
-when 'production'
-  set :deploy_to, '/home/ubuntu/sites/production/omniapp'
-  set :branch, 'master'
-  set :rails_env, 'production'
+case ENV["to"]
+when "production"
+  set :deploy_to, "/home/ubuntu/sites/production/omniapp"
+  set :branch, "master"
+  set :rails_env, "production"
 else
-  set :deploy_to, '/home/ubuntu/sites/staging/omniapp'
-  set :branch, 'master'
-  set :rails_env, 'staging'
+  set :deploy_to, "/home/ubuntu/sites/staging/omniapp"
+  set :branch, "master"
+  set :rails_env, "staging"
 end
 
 # For system-wide RVM install.
@@ -31,7 +31,7 @@ end
 
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
 # They will be linked in the 'deploy:link_shared_paths' step.
-set :shared_paths, ['config/database.yml', 'config/secrets.yml', 'log']
+set :shared_paths, ["config/database.yml", "config/secrets.yml", "log"]
 
 # Optional settings:
 #   set :user, 'foobar'    # Username in the server to SSH to.
@@ -67,7 +67,7 @@ task setup: :environment do
   queue %(echo "-----> Be sure to edit '#{deploy_to}/#{shared_path}/config/secrets.yml'.")
 end
 
-desc 'Deploys the current version to the server.'
+desc "Deploys the current version to the server."
 task deploy: :environment do
   deploy do
     # Put things that will set up an empty directory into a fully set-up

@@ -20,7 +20,7 @@ class Admin::Blog::CommentsController < AdminController
 
     respond_to do |format|
       if @blog_comment.save
-        format.html { redirect_to [:admin, @blog_comment], notice: 'Comment was successfully created.' }
+        format.html { redirect_to [:admin, @blog_comment], notice: "Comment was successfully created." }
         format.json { render :show, status: :created, location: [:admin, @blog_comment] }
       else
         format.html { render :new }
@@ -32,7 +32,7 @@ class Admin::Blog::CommentsController < AdminController
   def update
     respond_to do |format|
       if @blog_comment.update(blog_comment_params)
-        format.html { redirect_to [:admin, @blog_comment], notice: 'Comment was successfully updated.' }
+        format.html { redirect_to [:admin, @blog_comment], notice: "Comment was successfully updated." }
         format.json { render :show, status: :ok, location: [:admin, @blog_comment] }
       else
         format.html { render :edit }
@@ -44,7 +44,7 @@ class Admin::Blog::CommentsController < AdminController
   def destroy
     @blog_comment.destroy
     respond_to do |format|
-      format.html { redirect_to admin_blog_comments_url, notice: 'Comment was successfully destroyed.' }
+      format.html { redirect_to admin_blog_comments_url, notice: "Comment was successfully destroyed." }
       format.json { head :no_content }
     end
   end

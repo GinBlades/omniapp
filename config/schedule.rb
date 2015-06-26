@@ -2,7 +2,7 @@
 # require File.expand_path(File.dirname(__FILE__) + '/environment')
 
 # For just rails root
-RAILS_ROOT = File.dirname(__FILE__) + '/..'
+RAILS_ROOT = File.dirname(__FILE__) + "/.."
 
 # Use this file to easily define all of your cron jobs.
 #
@@ -24,18 +24,18 @@ RAILS_ROOT = File.dirname(__FILE__) + '/..'
 # end
 
 # Learn more: http://github.com/javan/whenever
-env :PATH, ENV['PATH']
+env :PATH, ENV["PATH"]
 set :output, "#{RAILS_ROOT}/log/cron.log"
-set :environment, ENV['RAILS_ENV']
+set :environment, ENV["RAILS_ENV"]
 
-every 1.week, at: '6:00am' do
-  rake 'backup:db'
+every 1.week, at: "6:00am" do
+  rake "backup:db"
 end
 
-every 1.month, at: 'start of the month at 6am' do
-  rake 'budget:allowance'
+every 1.month, at: "start of the month at 6am" do
+  rake "budget:allowance"
 end
 
-every 1.day, at: '6:00am' do
-  rake 'points:daily_update'
+every 1.day, at: "6:00am" do
+  rake "points:daily_update"
 end

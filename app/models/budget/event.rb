@@ -1,12 +1,12 @@
 class Budget::Event < ActiveRecord::Base
-  belongs_to :budget_payee, class_name: '::Budget::Payee'
+  belongs_to :budget_payee, class_name: "::Budget::Payee"
   attr_accessor :alert_before
   enum recurring_interval: [:one_week, :two_weeks, :month, :year]
 
   before_save :set_alert_date
 
   def self.before_times
-    [['None', ''], ['On Time', 0], ['One Day', 1], ['One Week', 7], ['One Month', 30]]
+    [["None", ""], ["On Time", 0], ["One Day", 1], ["One Week", 7], ["One Month", 30]]
   end
 
   def alert_difference

@@ -1,11 +1,11 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Notes::EntriesController, type: :controller do
   describe "Standard CRUD" do
     let(:instance_notes_entry) { assigns(:notes_entry) }
     let(:base_notes_entry) { create(:notes_entry) }
-    let(:static_notes_entry) { create(:notes_entry, name: 'spec-notes_entry') }
-    let(:valid_attributes) { attributes_for(:notes_entry, name: 'spec-notes_entry') }
+    let(:static_notes_entry) { create(:notes_entry, name: "spec-notes_entry") }
+    let(:valid_attributes) { attributes_for(:notes_entry, name: "spec-notes_entry") }
     let(:invalid_attributes) { attributes_for(:notes_entry, name: nil) }
     describe "GET #index" do
       it "populates an array of all @notes_entries" do

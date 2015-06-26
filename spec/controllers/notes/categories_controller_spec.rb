@@ -1,11 +1,11 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Notes::CategoriesController, type: :controller do
   describe "Standard CRUD" do
     let(:instance_notes_category) { assigns(:notes_category) }
     let(:base_notes_category) { create(:notes_category) }
-    let(:static_notes_category) { create(:notes_category, name: 'spec-notes_category') }
-    let(:valid_attributes) { attributes_for(:notes_category, name: 'spec-notes_category') }
+    let(:static_notes_category) { create(:notes_category, name: "spec-notes_category") }
+    let(:valid_attributes) { attributes_for(:notes_category, name: "spec-notes_category") }
     let(:invalid_attributes) { attributes_for(:notes_category, name: nil) }
     describe "GET #index" do
       it "populates an array of all @notes_categories" do

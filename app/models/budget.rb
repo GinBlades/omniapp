@@ -1,5 +1,5 @@
 module Budget
   def self.table_name_prefix
-    'budget_'
+    "budget_"
   end
 end

@@ -20,7 +20,7 @@ class Admin::Blog::PostsController < AdminController
 
     respond_to do |format|
       if @blog_post.save
-        format.html { redirect_to [:admin, @blog_post], notice: 'Post was successfully created.' }
+        format.html { redirect_to [:admin, @blog_post], notice: "Post was successfully created." }
         format.json { render :show, status: :created, location: [:admin, @blog_post] }
       else
         format.html { render :new }
@@ -32,7 +32,7 @@ class Admin::Blog::PostsController < AdminController
   def update
     respond_to do |format|
       if @blog_post.update(blog_post_params)
-        format.html { redirect_to [:admin, @blog_post], notice: 'Post was successfully updated.' }
+        format.html { redirect_to [:admin, @blog_post], notice: "Post was successfully updated." }
         format.json { render :show, status: :ok, location: [:admin, @blog_post] }
       else
         format.html { render :edit }
@@ -44,7 +44,7 @@ class Admin::Blog::PostsController < AdminController
   def destroy
     @blog_post.destroy
     respond_to do |format|
-      format.html { redirect_to admin_blog_posts_url, notice: 'Post was successfully destroyed.' }
+      format.html { redirect_to admin_blog_posts_url, notice: "Post was successfully destroyed." }
       format.json { head :no_content }
     end
   end

@@ -1,12 +1,12 @@
 namespace :backup do
-  desc 'Backup Database'
+  desc "Backup Database"
   task db: :environment do
     backup_directory = "#{Rails.application.secrets.backup_directory}"
     config           = Rails.configuration.database_configuration
-    host             = config[Rails.env]['host']
-    database         = config[Rails.env]['database']
-    username         = config[Rails.env]['username']
-    password         = config[Rails.env]['password']
+    host             = config[Rails.env]["host"]
+    database         = config[Rails.env]["database"]
+    username         = config[Rails.env]["username"]
+    password         = config[Rails.env]["password"]
 
     puts "Dumping #{database} database..."
     backup_string = "#{database} > #{backup_directory}/#{Time.zone.now.strftime('%y%m%d')}-#{database}.sql"

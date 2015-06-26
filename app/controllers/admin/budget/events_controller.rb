@@ -21,7 +21,7 @@ module Admin
 
       respond_to do |format|
         if @budget_event.save
-          format.html { redirect_to [:admin, @budget_event], notice: 'Event was successfully created.' }
+          format.html { redirect_to [:admin, @budget_event], notice: "Event was successfully created." }
           format.json { render :show, status: :created, location: [:admin, @budget_event] }
         else
           format.html { render :new }
@@ -33,7 +33,7 @@ module Admin
     def update
       respond_to do |format|
         if @budget_event.update(budget_event_params)
-          format.html { redirect_to [:admin, @budget_event], notice: 'Event was successfully updated.' }
+          format.html { redirect_to [:admin, @budget_event], notice: "Event was successfully updated." }
           format.json { render :show, status: :ok, location: [:admin, @budget_event] }
         else
           format.html { render :edit }
@@ -45,7 +45,7 @@ module Admin
     def destroy
       @budget_event.destroy
       respond_to do |format|
-        format.html { redirect_to admin_budget_events_url, notice: 'Event was successfully destroyed.' }
+        format.html { redirect_to admin_budget_events_url, notice: "Event was successfully destroyed." }
         format.json { head :no_content }
       end
     end

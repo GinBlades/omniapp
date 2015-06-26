@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :budget_entry, class: 'Budget::Entry' do
+  factory :budget_entry, class: "Budget::Entry" do
     budget_payee nil
     budget_subcategory nil
     price "9.99"

@@ -1,5 +1,5 @@
 namespace :points do
-  desc 'Update todays tasks based on yesterdays'
+  desc "Update todays tasks based on yesterdays"
   task daily_update: :environment do
     yesterdays_tasks = ::Points::DailyTask.where(entry_date: 1.day.ago.to_date)
     return if yesterdays_tasks == 0

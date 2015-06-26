@@ -1,7 +1,7 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Notes::Entry, type: :model do
-  it 'has a valid factory' do
+  it "has a valid factory" do
     expect(create(:notes_entry)).to be_valid
   end
 end

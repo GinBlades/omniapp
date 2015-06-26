@@ -1,32 +1,32 @@
 class BaseConnection
   def self.connection_params
     {
-      adapter: 'postgresql',
-      database: 'points_temp'
+      adapter: "postgresql",
+      database: "points_temp"
     }
   end
 end
 class OldActivity < ActiveRecord::Base
   establish_connection(BaseConnection.connection_params)
   self.table_name = :points_activities
-  belongs_to :option, class_name: 'OldOption', foreign_key: 'points_option_id'
+  belongs_to :option, class_name: "OldOption", foreign_key: "points_option_id"
 end
 class OldGoal < ActiveRecord::Base
   establish_connection(BaseConnection.connection_params)
   self.table_name = :points_goals
-  has_many :options, class_name: 'OldOption', foreign_key: 'points_goal_id'
-  belongs_to :user, class_name: 'OldUser', foreign_key: 'user_id'
+  has_many :options, class_name: "OldOption", foreign_key: "points_goal_id"
+  belongs_to :user, class_name: "OldUser", foreign_key: "user_id"
 end
 class OldUser < ActiveRecord::Base
   establish_connection(BaseConnection.connection_params)
   self.table_name = :users
-  has_many :goals, class_name: 'OldGoal', foreign_key: 'user_id'
+  has_many :goals, class_name: "OldGoal", foreign_key: "user_id"
 end
 class OldOption < ActiveRecord::Base
   establish_connection(BaseConnection.connection_params)
   self.table_name = :points_options
-  belongs_to :goal, class_name: 'OldGoal', foreign_key: 'points_goal_id'
-  has_many :activities, class_name: 'OldActivity', foreign_key: 'points_option_id'
+  belongs_to :goal, class_name: "OldGoal", foreign_key: "points_goal_id"
+  has_many :activities, class_name: "OldActivity", foreign_key: "points_option_id"
 end
 class ImportOldPoints < ActiveRecord::Migration
   def up

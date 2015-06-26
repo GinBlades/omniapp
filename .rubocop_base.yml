@@ -51,9 +51,7 @@ Style/SpaceInsideBrackets:
     - 'config/initializers/devise.rb'
 
 Style/StringLiterals:
-  Exclude:
-    - 'db/migrate/**/*'
-    - 'spec/**/*'
+  EnforcedStyle: 'double_quotes'
 
 Metrics/ClassLength:
   Max: 120

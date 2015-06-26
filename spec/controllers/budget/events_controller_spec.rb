@@ -1,11 +1,11 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Budget::EventsController, type: :controller do
   describe "Standard CRUD" do
     let(:instance_budget_event) { assigns(:budget_event) }
     let(:base_budget_event) { create(:budget_event) }
-    let(:static_budget_event) { create(:budget_event, name: 'spec-budget_event') }
-    let(:valid_attributes) { attributes_for(:budget_event, name: 'spec-budget_event') }
+    let(:static_budget_event) { create(:budget_event, name: "spec-budget_event") }
+    let(:valid_attributes) { attributes_for(:budget_event, name: "spec-budget_event") }
     let(:invalid_attributes) { attributes_for(:budget_event, name: nil) }
     describe "GET #index" do
       it "populates an array of all @budget_events" do
