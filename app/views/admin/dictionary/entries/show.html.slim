@@ -1,0 +1,26 @@
+table.table.table-striped
+  tr
+    th Source:
+    td= @dictionary_entry.source
+  tr
+    th Word:
+    td= @dictionary_entry.word
+  tr
+    th Definition:
+    td= @dictionary_entry.definition
+  tr
+    th Target:
+    td= @dictionary_entry.target
+  tr
+    th Category:
+    td= @dictionary_entry.dictionary_category
+  tr
+    th Examples:
+    td= @dictionary_entry.examples
+  tr
+    th Notes:
+    td= @dictionary_entry.notes
+
+.btn-group
+  = link_to 'Edit', edit_admin_dictionary_entry_path(@dictionary_entry), class: 'btn btn-default'
+  = link_to 'All Dictionary Entries', admin_dictionary_entries_path, class: 'btn btn-default'

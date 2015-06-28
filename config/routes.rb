@@ -46,6 +46,12 @@ Rails.application.routes.draw do
       end
       resources :activities, only: [:index, :new, :create]
     end
+    namespace :dictionary do
+      get "/" => "dashboard#index"
+      resources :entries
+      resources :languages
+      resources :categories
+    end
   end
   devise_for :users
   namespace :notes do

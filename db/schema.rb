@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150616140042) do
+ActiveRecord::Schema.define(version: 20150628190023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -111,6 +111,30 @@ ActiveRecord::Schema.define(version: 20150616140042) do
 
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
+
+  create_table "dictionary_categories", force: :cascade do |t|
+    t.string "name"
+  end
+
+  create_table "dictionary_entries", force: :cascade do |t|
+    t.integer  "source_id"
+    t.integer  "target_id"
+    t.string   "word"
+    t.string   "definition"
+    t.integer  "dictionary_category_id"
+    t.string   "examples"
+    t.string   "notes"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "dictionary_entries", ["dictionary_category_id"], name: "index_dictionary_entries_on_dictionary_category_id", using: :btree
+  add_index "dictionary_entries", ["source_id"], name: "index_dictionary_entries_on_source_id", using: :btree
+  add_index "dictionary_entries", ["target_id"], name: "index_dictionary_entries_on_target_id", using: :btree
+
+  create_table "dictionary_languages", force: :cascade do |t|
+    t.string "name"
+  end
 
   create_table "health_categories", force: :cascade do |t|
     t.string   "name"
@@ -298,6 +322,9 @@ ActiveRecord::Schema.define(version: 20150616140042) do
   add_foreign_key "budget_entries", "users"
   add_foreign_key "budget_events", "budget_payees"
   add_foreign_key "budget_subcategories", "budget_categories"
+  add_foreign_key "dictionary_entries", "dictionary_categories"
+  add_foreign_key "dictionary_entries", "dictionary_languages", column: "source_id"
+  add_foreign_key "dictionary_entries", "dictionary_languages", column: "target_id"
   add_foreign_key "health_entries", "users"
   add_foreign_key "health_meals", "users"
   add_foreign_key "health_ratings", "health_categories"

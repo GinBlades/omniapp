@@ -1,0 +1,8 @@
+table.table.table-striped
+  tr
+    th Name:
+    td= @dictionary_category.name
+
+.btn-group
+  = link_to 'Edit', edit_admin_dictionary_category_path(@dictionary_category), class: 'btn btn-default'
+  = link_to 'All Dictionary Categories', admin_dictionary_categories_path, class: 'btn btn-default'

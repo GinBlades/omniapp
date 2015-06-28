@@ -1,0 +1,23 @@
+h1 
+  Dictionary Languages
+  '
+  = link_to 'New Language', new_admin_dictionary_language_path, class: 'btn btn-primary'
+
+table.table.table-striped
+  thead
+    tr
+      th Name
+      th
+      th
+      
+  tbody
+    - @dictionary_languages.each do |dictionary_language|
+      tr
+        td= dictionary_language.name
+        td= link_to 'Show', [:admin, dictionary_language]
+        td
+          = link_to 'Edit', edit_admin_dictionary_language_path(dictionary_language)
+          '
+          |/
+          '
+          = link_to 'Delete', [:admin, dictionary_language], method: :delete, data: { confirm: 'Are you sure?' }

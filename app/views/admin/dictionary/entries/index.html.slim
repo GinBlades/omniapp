@@ -1,0 +1,31 @@
+h1 
+  Dictionary Entries
+  '
+  = link_to 'New Entry', new_admin_dictionary_entry_path, class: 'btn btn-primary'
+
+table.table.table-striped
+  thead
+    tr
+      th Source
+      th Word
+      th Target
+      th Category
+      th Definition
+      th
+      th
+      
+  tbody
+    - @dictionary_entries.each do |dictionary_entry|
+      tr
+        td= dictionary_entry.source
+        td= dictionary_entry.word
+        td= dictionary_entry.target
+        td= dictionary_entry.dictionary_category
+        td= dictionary_entry.definition
+        td= link_to 'Show', [:admin, dictionary_entry]
+        td
+          = link_to 'Edit', edit_admin_dictionary_entry_path(dictionary_entry)
+          '
+          |/
+          '
+          = link_to 'Delete', [:admin, dictionary_entry], method: :delete, data: { confirm: 'Are you sure?' }

@@ -1,0 +1,8 @@
+table.table.table-striped
+  tr
+    th Name:
+    td= @dictionary_language.name
+
+.btn-group
+  = link_to 'Edit', edit_admin_dictionary_language_path(@dictionary_language), class: 'btn btn-default'
+  = link_to 'All Dictionary Languages', admin_dictionary_languages_path, class: 'btn btn-default'
