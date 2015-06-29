@@ -2,11 +2,17 @@
   = f.error_notification
 
   .form-inputs
-    = f.association :source
-    = f.input :word
-    = f.association :target
-    = f.input :definition
-    = f.association :dictionary_category
+    .row
+      .col-md-6
+        = f.association :source, include_blank: false,
+          selected: (@dictionary_entry.source_id || @last_entry.try(:source_id))
+        = f.input :word
+      .col-md-6
+        = f.association :target, include_blank: false,
+          selected: (@dictionary_entry.target_id || @last_entry.try(:target_id))
+        = f.input :definition
+    = f.association :dictionary_category, label: "Category", include_blank: false,
+      selected: (@dictionary_entry.dictionary_category_id || @last_entry.try(:dictionary_category_id))
     = f.input :examples, as: :text
     = f.input :notes, as: :text
 

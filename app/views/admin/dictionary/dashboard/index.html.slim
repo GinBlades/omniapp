@@ -5,15 +5,18 @@ h1 Dictionary Dashboard
       .panel-heading
         h2.panel-title.clearfix
           | Recent Entries
-          = link_to "New Entry", new_admin_dictionary_entry_path, class: 'pull-right btn btn-default btn-xs'
+          .btn-group.pull-right
+            = link_to "New", new_admin_dictionary_entry_path, class: 'btn btn-primary btn-sm'
+            = link_to "All", admin_dictionary_entries_path, class: 'btn btn-default btn-sm'
       table.table.table-striped
         thead
           tr
-            th 
+            th Languages
             th Word
             th Definition
+            th
         tbody
-          - ::Dictionary::Entry.order(created_at: :desc).limit(10).each do |entry|
+          - current_user.dictionary_entries.order(created_at: :desc).limit(10).each do |entry|
             tr
               td
                 = link_to entry.source, [:admin, entry.source]
@@ -23,30 +26,60 @@ h1 Dictionary Dashboard
                 = link_to entry.target, [:admin, entry.target]
               td = link_to entry.word, [:admin, entry]
               td = entry.definition
+              td
+                .btn-group
+                  = link_to edit_admin_dictionary_entry_path(entry), class: 'btn btn-default btn-xs' do
+                    span.glyphicon.glyphicon-pencil
+                  = link_to [:admin, entry], method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-default btn-xs' do
+                    span.glyphicon.glyphicon-trash
 
   .col-md-3
     .panel.panel-default
       .panel-heading
-        h2.panel-title
-        | Languages
-        = link_to "New Language", new_admin_dictionary_language_path, class: 'pull-right btn btn-default btn-xs'
+        h2.panel-title.clearfix
+          | Languages
+          .btn-group.pull-right
+            = link_to "New", new_admin_dictionary_language_path, class: 'btn btn-primary btn-sm'
+            = link_to "All", admin_dictionary_languages_path, class: 'btn btn-default btn-sm'
       table.table.table-striped
+        thead
+          tr
+            th Name
+            th Entries
+            th
         tbody
-          - ::Dictionary::Language.all.each do |language|
-            - if language.dictionary_entries.count > 0
-              tr
-                td = link_to language.name, [:admin, language]
-                td = language.dictionary_entries.count
+          - ::Dictionary::Language.where.not(entry_counter: 0).order(name: :asc).each do |language|
+            tr
+              td = link_to language.name, [:admin, language]
+              td = language.entry_counter
+              td
+                .btn-group
+                  = link_to edit_admin_dictionary_language_path(language), class: 'btn btn-default btn-xs' do
+                    span.glyphicon.glyphicon-pencil
+                  = link_to [:admin, language], method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-default btn-xs' do
+                    span.glyphicon.glyphicon-trash
   .col-md-3
     .panel.panel-default
       .panel-heading
-        h2.panel-title
-        | Categories
-        = link_to "New Category", new_admin_dictionary_category_path, class: 'pull-right btn btn-default btn-xs'
+        h2.panel-title.clearfix
+          | Categories
+          .btn-group.pull-right
+            = link_to "New", new_admin_dictionary_category_path, class: 'btn btn-primary btn-sm'
+            = link_to "All", admin_dictionary_categories_path, class: 'btn btn-default btn-sm'
       table.table.table-striped
+        thead
+          tr
+            th Name
+            th Entries
+            th
         tbody
-          - ::Dictionary::Category.all.each do |category|
-            - if category.dictionary_entries.count > 0
-              tr
-                td = link_to category.name, [:admin, category]
-                td = category.dictionary_entries.count
+          - ::Dictionary::Category.where.not(entry_counter: 0).order(name: :asc).each do |category|
+            tr
+              td = link_to category.name, [:admin, category]
+              td = category.entry_counter
+              td
+                .btn-group
+                  = link_to edit_admin_dictionary_category_path(category), class: 'btn btn-default btn-xs' do
+                    span.glyphicon.glyphicon-pencil
+                  = link_to [:admin, category], method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-default btn-xs' do
+                    span.glyphicon.glyphicon-trash

@@ -1,11 +1,12 @@
 class CreateDictionaryEntries < ActiveRecord::Migration
   def change
     create_table :dictionary_entries do |t|
+      t.belongs_to :user, index: true, foreign_key: true
       t.belongs_to :source, index: true
       t.belongs_to :target, index: true
+      t.belongs_to :dictionary_category, index: true, foreign_key: true
       t.string :word
       t.string :definition
-      t.belongs_to :dictionary_category, index: true, foreign_key: true
       t.string :examples
       t.string :notes
 

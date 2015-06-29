@@ -10,13 +10,14 @@ class Admin::Dictionary::EntriesController < AdminController
 
   def new
     @dictionary_entry = ::Dictionary::Entry.new
+    @last_entry = current_user.dictionary_entries.order(created_at: :desc).first
   end
 
   def edit
   end
 
   def create
-    @dictionary_entry = ::Dictionary::Entry.new(dictionary_entry_params)
+    @dictionary_entry = current_user.dictionary_entries.build(dictionary_entry_params)
 
     respond_to do |format|
       if @dictionary_entry.save
