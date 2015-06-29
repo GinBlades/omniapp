@@ -2,7 +2,8 @@ class Admin::Dictionary::EntriesController < AdminController
   before_action :set_dictionary_entry, only: [:show, :edit, :update, :destroy]
 
   def index
-    @dictionary_entries = ::Dictionary::Entry.all
+    @q = ::Dictionary::Entry.ransack(params[:q])
+    @dictionary_entries = @q.result(uniq: true).includes(:dictionary_category, :source, :target)
   end
 
   def show

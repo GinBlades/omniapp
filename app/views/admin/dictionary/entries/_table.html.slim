@@ -1,0 +1,27 @@
+table.table.table-striped
+  thead
+    tr
+      th Languages
+      th = sort_link q, :word
+      th = sort_link q, :definition
+      th = sort_link q, :dictionary_category_name, "Category"
+      th
+      
+  tbody
+    - entries.each do |dictionary_entry|
+      tr
+        td.col-md-2
+          = link_to dictionary_entry.source, [:admin, dictionary_entry.source]
+          '
+          span.glyphicon.glyphicon-arrow-right
+          '
+          = link_to dictionary_entry.target, [:admin, dictionary_entry.target]
+        td = link_to dictionary_entry.word, [:admin, dictionary_entry]
+        td.col-md-6 = dictionary_entry.definition
+        td = link_to dictionary_entry.dictionary_category, [:admin, dictionary_entry.dictionary_category]
+        td
+          = link_to 'Edit', edit_admin_dictionary_entry_path(dictionary_entry)
+          '
+          |/
+          '
+          = link_to 'Delete', [:admin, dictionary_entry], method: :delete, data: { confirm: 'Are you sure?' }

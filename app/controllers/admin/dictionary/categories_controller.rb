@@ -6,6 +6,8 @@ class Admin::Dictionary::CategoriesController < AdminController
   end
 
   def show
+    @q = ::Dictionary::Entry.ransack(params[:q])
+    @entries = @q.result(uniq: true).where(dictionary_category: @dictionary_category).includes(:dictionary_category, :source, :target)
   end
 
   def new

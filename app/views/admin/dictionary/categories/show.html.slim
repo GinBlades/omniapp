@@ -1,7 +1,6 @@
-table.table.table-striped
-  tr
-    th Name:
-    td= @dictionary_category.name
+h1 = @dictionary_category.name
+
+= render "admin/dictionary/entries/table", q: @q, entries: @entries
 
 .btn-group
   = link_to 'Edit', edit_admin_dictionary_category_path(@dictionary_category), class: 'btn btn-default'

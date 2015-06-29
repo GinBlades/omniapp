@@ -6,6 +6,8 @@ class Admin::Dictionary::LanguagesController < AdminController
   end
 
   def show
+    @q = ::Dictionary::Entry.ransack(params[:q])
+    @entries = @q.result(uniq: true).for_language(@dictionary_language).includes(:dictionary_category, :source, :target)
   end
 
   def new

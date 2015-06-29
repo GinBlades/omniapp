@@ -7,6 +7,8 @@ class Dictionary::Entry < ActiveRecord::Base
   after_save :update_counters
   after_destroy :update_counters
 
+  scope :for_language, -> (language) { where("source_id = :language OR target_id = :language", {language: language.id}) }
+
   protected
 
   def update_counters
