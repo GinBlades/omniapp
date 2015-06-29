@@ -1,2 +1,52 @@
-h1 Admin::Dictionary::Dashboard#index
-p Find me in app/views/admin/dictionary/dashboard/index.html.slim
+h1 Dictionary Dashboard
+.row
+  .col-md-6
+    .panel.panel-default
+      .panel-heading
+        h2.panel-title.clearfix
+          | Recent Entries
+          = link_to "New Entry", new_admin_dictionary_entry_path, class: 'pull-right btn btn-default btn-xs'
+      table.table.table-striped
+        thead
+          tr
+            th 
+            th Word
+            th Definition
+        tbody
+          - ::Dictionary::Entry.order(created_at: :desc).limit(10).each do |entry|
+            tr
+              td
+                = link_to entry.source, [:admin, entry.source]
+                '
+                span.glyphicon.glyphicon-arrow-right
+                '
+                = link_to entry.target, [:admin, entry.target]
+              td = link_to entry.word, [:admin, entry]
+              td = entry.definition
+
+  .col-md-3
+    .panel.panel-default
+      .panel-heading
+        h2.panel-title
+        | Languages
+        = link_to "New Language", new_admin_dictionary_language_path, class: 'pull-right btn btn-default btn-xs'
+      table.table.table-striped
+        tbody
+          - ::Dictionary::Language.all.each do |language|
+            - if language.dictionary_entries.count > 0
+              tr
+                td = link_to language.name, [:admin, language]
+                td = language.dictionary_entries.count
+  .col-md-3
+    .panel.panel-default
+      .panel-heading
+        h2.panel-title
+        | Categories
+        = link_to "New Category", new_admin_dictionary_category_path, class: 'pull-right btn btn-default btn-xs'
+      table.table.table-striped
+        tbody
+          - ::Dictionary::Category.all.each do |category|
+            - if category.dictionary_entries.count > 0
+              tr
+                td = link_to category.name, [:admin, category]
+                td = category.dictionary_entries.count

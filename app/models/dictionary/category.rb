@@ -1,5 +1,5 @@
 class Dictionary::Category < ActiveRecord::Base
-  has_many :dictionary_entries, class_name: "::Dictionary::Entry"
+  has_many :dictionary_entries, class_name: "::Dictionary::Entry", foreign_key: "dictionary_category_id"
 
   def to_s
     name
