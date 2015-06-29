@@ -2,7 +2,7 @@ class Admin::Points::DailyTasksController < AdminController
   before_action :set_points_daily_task, only: [:show, :edit, :update, :destroy, :task_update]
 
   def index
-    @points_daily_tasks = ::Points::DailyTask.all
+    @points_daily_tasks = ::Points::DailyTask.order(entry_date: :desc)
   end
 
   def show
