@@ -23,7 +23,7 @@ class ImportDictionary < ActiveRecord::Migration
     # jihye = User.find_by(first_name: "Jihye")
     # korean = Dictionary::Language.find_or_create_by(name: "Korean")
     # english = Dictionary::Language.find_or_create_by(name: "English")
-    # uncategorized = Dictionary::Category.find_or_create_by(name: "Uncategorized") 
+    # uncategorized = Dictionary::Category.find_or_create_by(name: "Uncategorized")
     # OldCategory.all.each do |category|
     #   puts "Creating category..."
     #   Dictionary::Category.create(name: category.name)
@@ -31,7 +31,7 @@ class ImportDictionary < ActiveRecord::Migration
 
     # OldEntry.all.each do |entry|
     #   category = if entry.category
-    #     Dictionary::Category.find_by(name: entry.category.name) 
+    #     Dictionary::Category.find_by(name: entry.category.name)
     #   else
     #     uncategorized
     #   end

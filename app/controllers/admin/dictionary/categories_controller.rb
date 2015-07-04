@@ -22,7 +22,7 @@ class Admin::Dictionary::CategoriesController < AdminController
 
     respond_to do |format|
       if @dictionary_category.save
-        format.html { redirect_to [:admin, @dictionary_category], notice: 'Category was successfully created.' }
+        format.html { redirect_to [:admin, @dictionary_category], notice: "Category was successfully created." }
         format.json { render :show, status: :created, location: [:admin, @dictionary_category] }
       else
         format.html { render :new }
@@ -34,7 +34,7 @@ class Admin::Dictionary::CategoriesController < AdminController
   def update
     respond_to do |format|
       if @dictionary_category.update(dictionary_category_params)
-        format.html { redirect_to [:admin, @dictionary_category], notice: 'Category was successfully updated.' }
+        format.html { redirect_to [:admin, @dictionary_category], notice: "Category was successfully updated." }
         format.json { render :show, status: :ok, location: [:admin, @dictionary_category] }
       else
         format.html { render :edit }
@@ -46,17 +46,18 @@ class Admin::Dictionary::CategoriesController < AdminController
   def destroy
     @dictionary_category.destroy
     respond_to do |format|
-      format.html { redirect_to admin_dictionary_categories_url, notice: 'Category was successfully destroyed.' }
+      format.html { redirect_to admin_dictionary_categories_url, notice: "Category was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
   private
-    def set_dictionary_category
-      @dictionary_category = ::Dictionary::Category.find(params[:id])
-    end
 
-    def dictionary_category_params
-      params.require(:dictionary_category).permit(:name)
-    end
+  def set_dictionary_category
+    @dictionary_category = ::Dictionary::Category.find(params[:id])
+  end
+
+  def dictionary_category_params
+    params.require(:dictionary_category).permit(:name)
+  end
 end

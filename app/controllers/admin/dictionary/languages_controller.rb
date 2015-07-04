@@ -22,7 +22,7 @@ class Admin::Dictionary::LanguagesController < AdminController
 
     respond_to do |format|
       if @dictionary_language.save
-        format.html { redirect_to [:admin, @dictionary_language], notice: 'Language was successfully created.' }
+        format.html { redirect_to [:admin, @dictionary_language], notice: "Language was successfully created." }
         format.json { render :show, status: :created, location: [:admin, @dictionary_language] }
       else
         format.html { render :new }
@@ -34,7 +34,7 @@ class Admin::Dictionary::LanguagesController < AdminController
   def update
     respond_to do |format|
       if @dictionary_language.update(dictionary_language_params)
-        format.html { redirect_to [:admin, @dictionary_language], notice: 'Language was successfully updated.' }
+        format.html { redirect_to [:admin, @dictionary_language], notice: "Language was successfully updated." }
         format.json { render :show, status: :ok, location: [:admin, @dictionary_language] }
       else
         format.html { render :edit }
@@ -46,17 +46,18 @@ class Admin::Dictionary::LanguagesController < AdminController
   def destroy
     @dictionary_language.destroy
     respond_to do |format|
-      format.html { redirect_to admin_dictionary_languages_url, notice: 'Language was successfully destroyed.' }
+      format.html { redirect_to admin_dictionary_languages_url, notice: "Language was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
   private
-    def set_dictionary_language
-      @dictionary_language = ::Dictionary::Language.find(params[:id])
-    end
 
-    def dictionary_language_params
-      params.require(:dictionary_language).permit(:name)
-    end
+  def set_dictionary_language
+    @dictionary_language = ::Dictionary::Language.find(params[:id])
+  end
+
+  def dictionary_language_params
+    params.require(:dictionary_language).permit(:name)
+  end
 end

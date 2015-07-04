@@ -1,5 +1,5 @@
 module Dictionary
   def self.table_name_prefix
-    'dictionary_'
+    "dictionary_"
   end
 end

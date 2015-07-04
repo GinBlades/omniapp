@@ -21,12 +21,12 @@
       .panel-body
 
 .row
-  .col-md-6
+  .col-md-4
     .panel.panel-default
       .panel-heading
         h3.panel-title Category Summaries
       .panel-body
-  .col-md-6
+  .col-md-8
     .panel.panel-default
       .panel-heading
         .row
@@ -37,13 +37,15 @@
       table.table.table-striped.table-index
         thead
           tr
+            th User
             th Payee
             th.extra Subcategory
             th Price
             th Date
         tbody
-          - ::Budget::Entry.all.each do |entry|
+          - @recent_entries.each do |entry|
             tr
+              td = entry.user
               td = entry.budget_payee
               td.extra = entry.budget_subcategory
               td = link_to number_to_currency(entry.price), [:admin,entry]

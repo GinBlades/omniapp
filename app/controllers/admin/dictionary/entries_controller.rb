@@ -22,7 +22,7 @@ class Admin::Dictionary::EntriesController < AdminController
 
     respond_to do |format|
       if @dictionary_entry.save
-        format.html { redirect_to [:admin, @dictionary_entry], notice: 'Entry was successfully created.' }
+        format.html { redirect_to [:admin, @dictionary_entry], notice: "Entry was successfully created." }
         format.json { render :show, status: :created, location: [:admin, @dictionary_entry] }
       else
         format.html { render :new }
@@ -34,7 +34,7 @@ class Admin::Dictionary::EntriesController < AdminController
   def update
     respond_to do |format|
       if @dictionary_entry.update(dictionary_entry_params)
-        format.html { redirect_to [:admin, @dictionary_entry], notice: 'Entry was successfully updated.' }
+        format.html { redirect_to [:admin, @dictionary_entry], notice: "Entry was successfully updated." }
         format.json { render :show, status: :ok, location: [:admin, @dictionary_entry] }
       else
         format.html { render :edit }
@@ -46,17 +46,18 @@ class Admin::Dictionary::EntriesController < AdminController
   def destroy
     @dictionary_entry.destroy
     respond_to do |format|
-      format.html { redirect_to admin_dictionary_entries_url, notice: 'Entry was successfully destroyed.' }
+      format.html { redirect_to admin_dictionary_entries_url, notice: "Entry was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
   private
-    def set_dictionary_entry
-      @dictionary_entry = ::Dictionary::Entry.find(params[:id])
-    end
 
-    def dictionary_entry_params
-      params.require(:dictionary_entry).permit(:source_id, :target_id, :dictionary_category_id, :definition, :examples, :word, :notes)
-    end
+  def set_dictionary_entry
+    @dictionary_entry = ::Dictionary::Entry.find(params[:id])
+  end
+
+  def dictionary_entry_params
+    params.require(:dictionary_entry).permit(:source_id, :target_id, :dictionary_category_id, :definition, :examples, :word, :notes)
+  end
 end
