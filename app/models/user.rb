@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   has_many :points_goals, class_name: "::Points::Goal", dependent: :destroy
   has_many :points_daily_tasks, class_name: "::Points::DailyTask", dependent: :destroy
   has_many :dictionary_entries, class_name: "::Dictionary::Entry", dependent: :destroy
+  has_many :blog_posts, class_name: "::Blog::Post", dependent: :destroy
 
   def budget_entries_for_month(date)
     month_start = date.beginning_of_month

@@ -5,7 +5,7 @@
     = f.input :name
     = f.input :body, as: :text
     #notes_entry_editor
-    = f.association :notes_category
+    = f.association :notes_category, selected: params[:notes_category], include_blank: true
 
   .form-actions
     = f.button :submit, class: 'btn btn-success'

@@ -3,6 +3,7 @@ h1
   '
   small 
     | (#{pluralize(@notes_category.notes_entries.size, 'Note')})
+  = link_to "New Entry", new_admin_notes_entry_path(notes_category: @notes_category), class: "btn btn-primary pull-right"
 table.table.table-striped
   thead
     tr

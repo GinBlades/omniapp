@@ -2,12 +2,19 @@
   = f.error_notification
 
   .form-inputs
-    = f.association :user
-    = f.input :title
+    .row
+      .col-md-8
+        = f.input :title
+      .col-md-4
+        = f.association :user, selected: (@blog_post.user_id || current_user.id)
     = f.input :excerpt
     = f.input :body, as: :ckeditor
-    = f.input :published_at, as: :string, input_html: { type: 'datetime-local', value: time_form(@blog_post.published_at) || time_form(Time.zone.now) } 
-    = f.input :tag_list
+    .row
+      .col-md-8
+        = f.input :tag_list
+      .col-md-4
+        = f.input :published_at, as: :string, input_html: {type: 'datetime-local', value: time_form(@blog_post.published_at) || time_form(Time.zone.now)}
+
 
   .form-actions
     = f.button :submit, class: 'btn btn-success'

@@ -5,6 +5,10 @@ h1 Admin Dashboard
       .panel-heading
         h2.panel-title Blog Posts
       table.table.table-striped
+        - @blog_posts.each do |post|
+          tr
+            td = link_to post.title, [:admin, post]
+            td = date_form(post.published_at)
   .col-md-4
     .panel.panel-default
       .panel-heading
