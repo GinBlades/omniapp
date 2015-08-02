@@ -58,6 +58,10 @@ Rails.application.routes.draw do
     resources :entries, only: [:index, :show]
     resources :categories, only: [:index, :show]
   end
+  namespace :games do
+    get "/" => "dashboard#index"
+    get "fallout_computer" => "fallout_computer#index"
+  end
   namespace :blog do
     get "/" => "posts#index"
     resources :posts, only: [:show] do

@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require angular
 //= require jquery-ui
 //= require moment
 //= require bootstrap-sprockets
@@ -27,6 +28,6 @@
 //= require_tree .
 
 $(document).ready(initialize);
-$(document).on('page:load', initialize);
+$(document).on("page:load", initialize);
 $(document).on('page:fetch', startSpinner);
 $(document).on('page:receive', stopSpinner);

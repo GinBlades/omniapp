@@ -47,11 +47,13 @@ nav.navbar.navbar-inverse role="navigation"
               li = link_to 'Comments', admin_blog_comments_path
           li = link_to 'Points', admin_points_path
           li = link_to 'Dictionary', admin_dictionary_path
+          li = link_to 'Games', games_path
         
         - else
           li = link_to 'Notes', notes_categories_path
           li = link_to 'Blog', blog_path
-        li = link_to '&#9536;'.html_safe, '#'
+          li = link_to 'Games', games_path
+        li = link_to '&#9536;'.html_safe, admin_path
       ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
           li = link_to 'Sign out', destroy_user_session_path, method: :delete

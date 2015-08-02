@@ -1,0 +1,12 @@
+div ng-controller="FalloutComputerCtrl"
+  form name="passcodes" ng-submit="remainingOptions()"
+    label for="options" Options
+    textarea#options.form-control ng-model="passcode.options"
+    .row
+      .col-md-8
+        label for="guess" Guess
+        input#guess.form-control ng-model="passcode.guess"
+      .col-md-4
+        label for="correct" Correct
+        input#correct.form-control ng-model="passcode.correct"
+    button.btn.btn-primary type="submit" Check

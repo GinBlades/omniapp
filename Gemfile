@@ -37,6 +37,7 @@ gem "jquery-ui-rails"
 gem "momentjs-rails"
 gem "fullcalendar-rails"
 gem "jquery-validation-rails"
+gem "angularjs-rails"
 
 gem "dotenv-rails"
 gem "mina"
