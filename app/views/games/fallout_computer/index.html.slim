@@ -1,12 +1,17 @@
 div ng-controller="FalloutComputerCtrl"
-  form name="passcodes" ng-submit="remainingOptions()"
-    label for="options" Options
-    textarea#options.form-control ng-model="passcode.options"
+  form name="passcodeForm" ng-submit="passcodeForm.$valid && remainingOptions()" novalidate=true
+    .form-group set-validation-class=true form-field="passcodeForm.options"
+      label.control-label for="options" Options
+      textarea#options.form-control name="options" ng-model="passcode.options" required=true
     .row
       .col-md-8
-        label for="guess" Guess
-        input#guess.form-control ng-model="passcode.guess"
+        .form-group set-validation-class=true form-field="passcodeForm.guess"
+          label.control-label for="guess" Guess
+          input#guess.form-control name="guess" ng-model="passcode.guess" required=true
       .col-md-4
-        label for="correct" Correct
-        input#correct.form-control ng-model="passcode.correct"
-    button.btn.btn-primary type="submit" Check
+        .form-group set-validation-class=true form-field="passcodeForm.correct"
+          label.control-label for="correct" Correct
+          input#correct.form-control name="correct" ng-model="passcode.correct" type="number" required=true 
+    .row
+      .col-md-12
+    button.btn.btn-primary ng-disabled="passcodeForm.$invalid" type="submit" Check
