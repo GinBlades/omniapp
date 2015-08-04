@@ -16,7 +16,6 @@
 //= require jquery-ui
 //= require moment
 //= require bootstrap-sprockets
-//= require ckeditor/init
 //= require ace/ace
 //= require ace/worker-html
 //= require ace/theme-github

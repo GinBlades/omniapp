@@ -8,7 +8,7 @@
     .form-group
       = link_to_add_association "#{add_icon} Add Rating".html_safe, f, :health_ratings, class: 'btn btn-primary'
 
-    = f.input :notes, as: :ckeditor
+    = f.input :notes, as: :text
 
   .form-actions
     = f.button :submit, class: 'btn btn-success'

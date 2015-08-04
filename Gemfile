@@ -47,7 +47,6 @@ gem "devise"
 
 gem "carrierwave"
 gem "mini_magick"
-gem "ckeditor"
 gem "ace-rails-ap"
 gem "redcarpet"
 

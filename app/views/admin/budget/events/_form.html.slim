@@ -5,7 +5,7 @@
     = f.association :budget_payee
     = f.input :event_date, as: :string, input_html: { type: 'date', value: date_form(@budget_event.event_date) || date_form(Time.now) }
     = f.input :price
-    = f.input :event_action, as: :ckeditor
+    = f.input :event_action, as: :text
     = f.input :url
     = f.input :recurring
     = f.input :recurring_interval, as: :radio_buttons, collection: Budget::Event.recurring_intervals.keys.map{|n| [n.titleize, n]}

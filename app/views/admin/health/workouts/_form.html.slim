@@ -11,7 +11,7 @@
       .col-md-4
         = f.input :distance
     = f.input :rating, as: :select, collection: 1..10
-    = f.input :notes, as: :ckeditor
+    = f.input :notes, as: :text
 
   .form-actions
     = f.button :submit, class: 'btn btn-success'

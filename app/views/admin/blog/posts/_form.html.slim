@@ -8,7 +8,7 @@
       .col-md-4
         = f.association :user, selected: (@blog_post.user_id || current_user.id)
     = f.input :excerpt
-    = f.input :body, as: :ckeditor
+    = f.input :body, as: :text
     .row
       .col-md-8
         = f.input :tag_list
