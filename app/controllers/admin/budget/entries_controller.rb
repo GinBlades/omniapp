@@ -3,7 +3,7 @@ module Admin
     before_action :set_budget_entry, only: [:show, :edit, :update, :destroy]
 
     def index
-      @budget_entries = ::Budget::Entry.all
+      @budget_entries = ::Budget::Entry.includes(:budget_payee, budget_subcategory: :budget_category)
     end
 
     def show
