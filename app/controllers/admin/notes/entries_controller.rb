@@ -17,7 +17,7 @@ class Admin::Notes::EntriesController < AdminController
   end
 
   def create
-    @notes_entry = ::Notes::Entry.new(notes_entry_params)
+    @notes_entry = current_user.notes_entries.build(notes_entry_params)
 
     respond_to do |format|
       if @notes_entry.save
