@@ -17,7 +17,11 @@ class User < ActiveRecord::Base
   def budget_entries_for_month(date)
     month_start = date.beginning_of_month
     month_end = date.end_of_month
-    budget_entries.where("entry_date < ?", month_end).where("entry_date > ?", month_start)
+    budget_entries.where("entry_date < ?", month_end).where("entry_date > ?", month_start).where(allowance: true)
+  end
+
+  def allowance_entries_for_month(date)
+    budget_entries_for_month(date).where(allowance: true)
   end
 
   def full_name
