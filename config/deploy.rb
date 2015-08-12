@@ -11,17 +11,17 @@ require "mina/whenever"
 #   repository   - Git repo to clone from. (needed by mina/git)
 #   branch       - Branch name to deploy. (needed by mina/git)
 
-set :domain, "aws"
+set :domain, "dende"
 set :repository, "git@gitlab.com:GinBlades/omniapp.git"
 
 # use `mina deploy` for staging OR mina deploy to=production
 case ENV["to"]
 when "production"
-  set :deploy_to, "/home/ubuntu/sites/production/omniapp"
+  set :deploy_to, "/home/deploy/sites/production/omniapp"
   set :branch, "master"
   set :rails_env, "production"
 else
-  set :deploy_to, "/home/ubuntu/sites/staging/omniapp"
+  set :deploy_to, "/home/deploy/sites/staging/omniapp"
   set :branch, "master"
   set :rails_env, "staging"
 end
