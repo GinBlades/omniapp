@@ -32,9 +32,9 @@ nav.navbar.navbar-inverse role="navigation"
               span.caret
 
             ul.dropdown-menu role='menu'
-              li = link_to 'Dashboard', admin_notes_path
-              li = link_to 'Entries', admin_notes_entries_path
-              li = link_to 'Categories', admin_notes_categories_path
+              li = link_to 'Dashboard', notes_path
+              li = link_to 'Entries', notes_entries_path
+              li = link_to 'Categories', notes_categories_path
           li.dropdown
             a.dropdown-toggle data-toggle='dropdown' role='button' aria-expanded='false'
               | Blog
@@ -50,7 +50,7 @@ nav.navbar.navbar-inverse role="navigation"
           li = link_to 'Games', games_path
         
         - else
-          li = link_to 'Notes', notes_categories_path
+          li = link_to 'Notes', notes_path
           li = link_to 'Blog', blog_path
           li = link_to 'Games', games_path
         li = link_to '&#9536;'.html_safe, admin_path

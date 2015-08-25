@@ -19,9 +19,8 @@ Rails.application.routes.draw do
       resources :subcategories
     end
     namespace :notes do
-      get "/" => "dashboard#index"
-      resources :entries
-      resources :categories
+      resources :entries, except: [:index, :show]
+      resources :categories, except: [:index, :show]
     end
     namespace :blog do
       get "/" => "dashboard#index"
@@ -54,6 +53,7 @@ Rails.application.routes.draw do
   end
   devise_for :users
   namespace :notes do
+    get "/" => "dashboard#index"
     resources :entries, only: [:index, :show]
     resources :categories, only: [:index, :show]
   end

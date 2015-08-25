@@ -1,6 +1,7 @@
 class Notes::EntriesController < ApplicationController
   def index
-    @notes_entries = ::Notes::Entry.all
+    @q = ::Notes::Entry.ransack(params[:q])
+    @notes_entries = @q.result(distinct: true).includes(:notes_category)
   end
 
   def show

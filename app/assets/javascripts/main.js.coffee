@@ -1,4 +1,4 @@
-root = global ? window
+root = exports ? this
 
 root.startSpinner = ->
   $('div#spinner').css('display', 'block')
@@ -6,7 +6,7 @@ root.stopSpinner = ->
   $('div#spinner').css('display', 'none')
 
 root.initialize = ->
-  root.angular.bootstrap("body", ["Games"])
+  root.angular.bootstrap("body", ["Games", "Notes"])
   root.renderFullCalendar()
 
   # Date/Time Picker for Desktop vs. Mobile
