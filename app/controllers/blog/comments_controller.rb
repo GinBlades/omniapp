@@ -1,17 +1,16 @@
 class Blog::CommentsController < ApplicationController
+  include SetupNegativeCaptcha
   before_action :set_post
 
-  def new
-    @blog_comment = ::Blog::Comment.new
-  end
-
   def create
-    @blog_comment = @post.blog_comments.build(blog_comment_params)
+    @blog_comment = @post.blog_comments.build(@captcha.values)
 
-    if @blog_comment.save
+    if @captcha.valid? && @blog_comment.save
       redirect_to blog_post_path(@post), notice: "Comment was successfully submitted."
     else
-      render :new
+      flash[:notice] = @captcha.error if @captcha.error
+      flash[:notice] = "Please correct the errors below" if @post.errors
+      render "blog/posts/show"
     end
   end
 

@@ -1,4 +1,6 @@
 class Blog::PostsController < ApplicationController
+  include SetupNegativeCaptcha
+
   def index
     if params[:tag]
       @posts = ::Blog::Post.published.tagged_with(params[:tag])
