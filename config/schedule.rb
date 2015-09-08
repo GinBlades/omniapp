@@ -35,7 +35,3 @@ end
 every 1.month, at: "start of the month at 6am" do
   rake "budget:allowance"
 end
-
-every 1.day, at: "6:00am" do
-  rake "points:daily_update"
-end

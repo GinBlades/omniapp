@@ -4,7 +4,7 @@
   .form-inputs
     = f.input :entry_date, as: :string,
       input_html: { type: 'date', value: date_form(@points_daily_task.entry_date) || date_form(Time.zone.today) }
-    = f.input :task_string, input_html: { placeholder: 'Comma separated list of tasks to complete', value: @points_daily_task.task_display }
+    = f.input :task_string, input_html: { placeholder: 'Comma separated list of tasks to complete', value: @points_daily_task.task_display || Points::DailyTask.last.task_display }
 
   .form-actions
     = f.button :submit, class: 'btn btn-success'
