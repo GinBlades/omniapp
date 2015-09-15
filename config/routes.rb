@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     namespace :notes do
       resources :entries, except: [:index, :show]
       resources :categories, except: [:index, :show]
+    resources :sequences, except: [:index, :show]
     end
     namespace :blog do
       get "/" => "dashboard#index"
@@ -56,6 +57,7 @@ Rails.application.routes.draw do
     get "/" => "dashboard#index"
     resources :entries, only: [:index, :show]
     resources :categories, only: [:index, :show]
+    resources :sequences, only: [:index, :show]
   end
   namespace :games do
     get "/" => "dashboard#index"

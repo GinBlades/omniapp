@@ -1,5 +1,21 @@
 div ng-controller="NotesListCtrl"
   .row
+    .col-md-9
+      .panel.panel-default
+        .panel-heading
+          h3.panel-title 
+            | Recent Notes
+            - if user_signed_in?
+              '
+              .btn-group.pull-right
+                = link_to "All Notes", notes_entries_path, class: "btn btn-default btn-xs"
+                = link_to 'New Note', new_admin_notes_entry_path, class: 'btn btn-primary btn-xs'
+        = render "notes/entries/table", notes: @recent_entries, q: @q, sortable: false
+    .col-md-3
+      .panel.panel-default
+        .panel-body
+          = render "notes/search_form", q: @q
+  .row
     .col-md-6
       .panel.panel-default
         .panel-heading
@@ -17,14 +33,14 @@ div ng-controller="NotesListCtrl"
     .col-md-6
       .panel.panel-default
         .panel-heading
-          h3.panel-title 
-            | Recent Notes
+          h3.panel-title
+            | Sequences
             - if user_signed_in?
               '
-              = link_to 'New Note', new_admin_notes_entry_path, class: 'btn btn-default btn-xs pull-right'
+              = link_to 'New Sequence', new_admin_notes_sequence_path, class: 'btn btn-default btn-xs pull-right'
         table.table.table-striped
           tbody
-            - @recent_entries.each do |entry|
+            - @sequences.each do |sequence|
               tr
-                td = link_to entry.name, entry
-                td = date_form(entry.updated_at)
+                td = link_to sequence.name, notes_sequence_path(sequence.id)
+                td = sequence.note_count

@@ -49,6 +49,6 @@ class Admin::Notes::EntriesController < AdminController
   end
 
   def notes_entry_params
-    params.require(:notes_entry).permit(:name, :slug, :body, :notes_category_id)
+    params.require(:notes_entry).permit(:name, :slug, :body, :notes_category_id, :notes_sequence_id)
   end
 end

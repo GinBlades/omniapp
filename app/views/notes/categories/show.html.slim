@@ -26,4 +26,4 @@ table.table.table-striped
 .btn-group
   - if user_signed_in?
     = link_to 'Edit', edit_admin_notes_category_path(@notes_category), class: 'btn btn-default'
-  = link_to 'All Notes Categories', notes_categories_path, class: 'btn btn-default'
+  = link_to 'All Notes', notes_entries_path, class: 'btn btn-default'

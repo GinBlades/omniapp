@@ -6,6 +6,7 @@
     = f.input :body, as: :text
     #notes_entry_editor
     = f.association :notes_category, selected: (@notes_entry.notes_category_id || params[:notes_category]), include_blank: true
+    = f.association :notes_sequence, selected: (@notes_entry.notes_sequence_id || params[:notes_sequence]), include_blank: true
 
   .form-actions
     = f.button :submit, class: 'btn btn-success'
