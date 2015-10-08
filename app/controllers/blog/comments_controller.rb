@@ -3,9 +3,9 @@ class Blog::CommentsController < ApplicationController
   before_action :set_post
 
   def create
-    @blog_comment = @post.blog_comments.build(@captcha.values)
+    @comment = @post.blog_comments.build(@captcha.values)
 
-    if @captcha.valid? && @blog_comment.save
+    if @captcha.valid? && @comment.save
       redirect_to blog_post_path(@post), notice: "Comment was successfully submitted."
     else
       flash[:notice] = @captcha.error if @captcha.error

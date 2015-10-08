@@ -1,30 +1,17 @@
-= form_tag blog_post_comments_path(@post) do
+= form_for @comment, url: blog_post_comments_path(@post) do |f|
   = raw negative_captcha(@captcha)
-  - if @blog_comment && @blog_comment.errors.any?
+  - if @comment && @comment.errors.any?
     ul.list-unstyled.has-error.alert.alert-danger
-      - @blog_comment.errors.full_messages.each do |message|
+      - @comment.errors.full_messages.each do |message|
         li = message
   ul.list-unstyled
-
     li.form-group
-      = negative_label_tag(@captcha, :name, "Name:")
-      = negative_text_field_tag(@captcha, :name, {class: "form-control"})
+      = f.negative_label(@captcha, :name, "Name:")
+      = f.negative_text_field(@captcha, :name, { class: "form-control" })
     li.form-group.required
-      = negative_label_tag(@captcha, :email, "* Email:")
-      = negative_text_field_tag(@captcha, :email, {class: "form-control"})
+      = f.negative_label(@captcha, :email, "* Email:")
+      = f.negative_text_field(@captcha, :email, { class: "form-control" })
     li.form-group.required
-      = negative_label_tag(@captcha, :body, "* Body:")
-      = negative_text_area_tag(@captcha, :body, {class: "form-control"})
-    li = submit_tag "Submit", {class: "btn btn-primary"}
-
-//
-  = simple_form_for([@post, @comment], url: blog_post_comments_path(@post)) do |f|
-    = f.error_notification
-
-    .form-inputs
-      = f.input :name
-      = f.input :email
-      = f.input :body, as: :text
-
-    .form-actions
-      = f.button :submit, class: 'btn btn-success'
+      = f.negative_label(@captcha, :body, "* Body:")
+      = f.negative_text_field(@captcha, :body, { class: "form-control" })
+    li = f.submit "Submit", { class: "btn btn-primary" }
