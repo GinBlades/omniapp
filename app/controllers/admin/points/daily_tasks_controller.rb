@@ -63,11 +63,11 @@ class Admin::Points::DailyTasksController < AdminController
 
   private
 
-  def set_points_daily_task
-    @points_daily_task = ::Points::DailyTask.find(params[:id])
-  end
+    def set_points_daily_task
+      @points_daily_task = ::Points::DailyTask.find(params[:id])
+    end
 
-  def points_daily_task_params
-    params.require(:points_daily_task).permit(:entry_date, :task_string)
-  end
+    def points_daily_task_params
+      params.require(:points_daily_task).permit(:entry_date, :task_string)
+    end
 end

@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     namespace :notes do
       resources :entries, except: [:index, :show]
       resources :categories, except: [:index, :show]
-    resources :sequences, except: [:index, :show]
+      resources :sequences, except: [:index, :show]
     end
     namespace :blog do
       get "/" => "dashboard#index"

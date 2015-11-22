@@ -44,11 +44,11 @@ class Admin::Notes::CategoriesController < AdminController
 
   private
 
-  def set_notes_category
-    @notes_category = ::Notes::Category.find(params[:id])
-  end
+    def set_notes_category
+      @notes_category = ::Notes::Category.find(params[:id])
+    end
 
-  def notes_category_params
-    params.require(:notes_category).permit(:name, :slug)
-  end
+    def notes_category_params
+      params.require(:notes_category).permit(:name, :slug)
+    end
 end

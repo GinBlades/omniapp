@@ -51,11 +51,11 @@ class Admin::Blog::CommentsController < AdminController
 
   private
 
-  def set_blog_comment
-    @blog_comment = ::Blog::Comment.find(params[:id])
-  end
+    def set_blog_comment
+      @blog_comment = ::Blog::Comment.find(params[:id])
+    end
 
-  def blog_comment_params
-    params.require(:blog_comment).permit(:name, :email, :body, :approved, :blog_post_id)
-  end
+    def blog_comment_params
+      params.require(:blog_comment).permit(:name, :email, :body, :approved, :blog_post_id)
+    end
 end

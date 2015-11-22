@@ -20,8 +20,8 @@ class Admin::Points::ActivitiesController < AdminController
 
     respond_to do |format|
       if @points_activity.save
-        format.html { redirect_to admin_points_goal_url(@points_activity.direct_goal), notice: "Activity was successfully created." }
-        format.json { render :show, status: :created, location: admin_points_goal_url(@points_activity.direct_goal) }
+        format.html { redirect_to admin_points_goal_url(@goal), notice: activity_notice("created") }
+        format.json { render :show, status: :created, location: admin_points_goal_url(@goal) }
       else
         format.html { render :new }
         format.json { render json: @points_activity.errors, status: :unprocessable_entity }
@@ -32,7 +32,7 @@ class Admin::Points::ActivitiesController < AdminController
   def update
     respond_to do |format|
       if @points_activity.update(points_activity_params)
-        format.html { redirect_to admin_points_goal_url(@points_goal), notice: "Activity was successfully updated." }
+        format.html { redirect_to admin_points_goal_url(@points_goal), notice: activity_notice("updated") }
         format.json { render :show, status: :ok, location: admin_points_goal_url(@points_goal) }
       else
         format.html { render :edit }
@@ -44,30 +44,35 @@ class Admin::Points::ActivitiesController < AdminController
   def destroy
     @points_activity.destroy
     respond_to do |format|
-      format.html { redirect_to admin_points_goal_url(@points_goal), notice: "Activity was successfully destroyed." }
+      format.html { redirect_to admin_points_goal_url(@points_goal), notice: activity_notice("destroyed") }
       format.json { head :no_content }
     end
   end
 
   private
 
-  def set_points_goal
-    @points_goal = params[:goal_id] ? ::Points::Goal.find(params[:goal_id]) : nil
-  end
-
-  def new_activity(goal_id)
-    if goal_id
-      ::Points::Goal.find(goal_id).points_activities.build(points_activity_params)
-    else
-      ::Points::Activity.new(points_activity_params)
+    def activity_notice(action)
+      "Activity was successfully #{action}."
     end
-  end
 
-  def set_points_activity
-    @points_activity = ::Points::Activity.find(params[:id])
-  end
+    def set_points_goal
+      @points_goal = params[:goal_id] ? ::Points::Goal.find(params[:goal_id]) : nil
+    end
 
-  def points_activity_params
-    params.require(:points_activity).permit(:points_goal_id, :points_option_id, :entry_date, :note)
-  end
+    def new_activity(goal_id)
+      if goal_id
+        ::Points::Goal.find(goal_id).points_activities.build(points_activity_params)
+      else
+        ::Points::Activity.new(points_activity_params)
+      end
+      @goal = @points_activity.direct_goal
+    end
+
+    def set_points_activity
+      @points_activity = ::Points::Activity.find(params[:id])
+    end
+
+    def points_activity_params
+      params.require(:points_activity).permit(:points_goal_id, :points_option_id, :entry_date, :note)
+    end
 end

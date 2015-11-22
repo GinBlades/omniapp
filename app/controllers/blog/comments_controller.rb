@@ -16,11 +16,11 @@ class Blog::CommentsController < ApplicationController
 
   private
 
-  def set_post
-    @post = ::Blog::Post.find(params[:post_id])
-  end
+    def set_post
+      @post = ::Blog::Post.find(params[:post_id])
+    end
 
-  def blog_comment_params
-    params.require(:blog_comment).permit(:name, :email, :body)
-  end
+    def blog_comment_params
+      params.require(:blog_comment).permit(:name, :email, :body)
+    end
 end

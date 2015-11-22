@@ -52,12 +52,12 @@ module Admin
 
     private
 
-    def set_budget_subcategory
-      @budget_subcategory = ::Budget::Subcategory.find(params[:id])
-    end
+      def set_budget_subcategory
+        @budget_subcategory = ::Budget::Subcategory.find(params[:id])
+      end
 
-    def budget_subcategory_params
-      params.require(:budget_subcategory).permit(:name, :slug, :budget_category_id)
-    end
+      def budget_subcategory_params
+        params.require(:budget_subcategory).permit(:name, :slug, :budget_category_id)
+      end
   end
 end

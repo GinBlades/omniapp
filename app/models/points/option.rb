@@ -1,7 +1,7 @@
 class Points::Option < ActiveRecord::Base
   belongs_to :points_goal, class_name: "::Points::Goal"
   has_many :points_activities, dependent: :destroy,
-    class_name: "::Points::Activity", foreign_key: "points_option_id"
+                               class_name: "::Points::Activity", foreign_key: "points_option_id"
 
   after_save :update_goal
   after_destroy :update_goal
@@ -15,7 +15,7 @@ class Points::Option < ActiveRecord::Base
 
   protected
 
-  def update_goal
-    points_goal.update_current_points
-  end
+    def update_goal
+      points_goal.update_current_points
+    end
 end

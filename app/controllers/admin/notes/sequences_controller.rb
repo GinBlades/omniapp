@@ -13,7 +13,7 @@ class Admin::Notes::SequencesController < AdminController
 
     respond_to do |format|
       if @notes_sequence.save
-        format.html { redirect_to @notes_sequence, notice: 'Sequence was successfully created.' }
+        format.html { redirect_to @notes_sequence, notice: "Sequence was successfully created." }
         format.json { render :show, status: :created, location: @notes_sequence }
       else
         format.html { render :new }
@@ -25,7 +25,7 @@ class Admin::Notes::SequencesController < AdminController
   def update
     respond_to do |format|
       if @notes_sequence.update(notes_sequence_params)
-        format.html { redirect_to @notes_sequence, notice: 'Sequence was successfully updated.' }
+        format.html { redirect_to @notes_sequence, notice: "Sequence was successfully updated." }
         format.json { render :show, status: :ok, location: @notes_sequence }
       else
         format.html { render :edit }
@@ -37,12 +37,13 @@ class Admin::Notes::SequencesController < AdminController
   def destroy
     @notes_sequence.destroy
     respond_to do |format|
-      format.html { redirect_to notes_sequences_url, notice: 'Sequence was successfully destroyed.' }
+      format.html { redirect_to notes_sequences_url, notice: "Sequence was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
   private
+
     def set_notes_sequence
       @notes_sequence = ::Notes::Sequence.find(params[:id])
     end

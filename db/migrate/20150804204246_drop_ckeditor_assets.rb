@@ -23,5 +23,4 @@ class DropCkeditorAssets < ActiveRecord::Migration
     add_index "ckeditor_assets", %w(assetable_type type assetable_id), name: "idx_ckeditor_assetable_type"
     add_index "ckeditor_assets", %w(assetable_type assetable_id), name: "idx_ckeditor_assetable"
   end
-
 end

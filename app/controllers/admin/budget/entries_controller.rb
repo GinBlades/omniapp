@@ -52,12 +52,13 @@ module Admin
 
     private
 
-    def set_budget_entry
-      @budget_entry = ::Budget::Entry.find(params[:id])
-    end
+      def set_budget_entry
+        @budget_entry = ::Budget::Entry.find(params[:id])
+      end
 
-    def budget_entry_params
-      params.require(:budget_entry).permit(:budget_payee_id, :budget_subcategory_id, :price, :notes, :entry_date, :allowance)
-    end
+      def budget_entry_params
+        params.require(:budget_entry).permit(:budget_payee_id, :budget_subcategory_id, :price,
+                                             :notes, :entry_date, :allowance)
+      end
   end
 end

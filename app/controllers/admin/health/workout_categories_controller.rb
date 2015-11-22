@@ -20,7 +20,7 @@ class Admin::Health::WorkoutCategoriesController < AdminController
 
     respond_to do |format|
       if @health_workout_category.save
-        format.html { redirect_to [:admin, @health_workout_category], notice: "Workout category was successfully created." }
+        format.html { redirect_to [:admin, @health_workout_category], notice: workout_notice("created") }
         format.json { render :show, status: :created, location: [:admin, @health_workout_category] }
       else
         format.html { render :new }
@@ -32,7 +32,7 @@ class Admin::Health::WorkoutCategoriesController < AdminController
   def update
     respond_to do |format|
       if @health_workout_category.update(health_workout_category_params)
-        format.html { redirect_to [:admin, @health_workout_category], notice: "Workout category was successfully updated." }
+        format.html { redirect_to [:admin, @health_workout_category], notice: workout_notice("updated") }
         format.json { render :show, status: :ok, location: [:admin, @health_workout_category] }
       else
         format.html { render :edit }
@@ -44,18 +44,22 @@ class Admin::Health::WorkoutCategoriesController < AdminController
   def destroy
     @health_workout_category.destroy
     respond_to do |format|
-      format.html { redirect_to admin_health_workout_categories_url, notice: "Workout category was successfully destroyed." }
+      format.html { redirect_to admin_health_workout_categories_url, notice: workout_notice("destroyed") }
       format.json { head :no_content }
     end
   end
 
   private
 
-  def set_health_workout_category
-    @health_workout_category = ::Health::WorkoutCategory.find(params[:id])
-  end
+    def workout_notice(action)
+      "Workout category was successfully #{action}."
+    end
 
-  def health_workout_category_params
-    params.require(:health_workout_category).permit(:name)
-  end
+    def set_health_workout_category
+      @health_workout_category = ::Health::WorkoutCategory.find(params[:id])
+    end
+
+    def health_workout_category_params
+      params.require(:health_workout_category).permit(:name)
+    end
 end

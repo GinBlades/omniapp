@@ -51,11 +51,11 @@ class Admin::Health::CategoriesController < AdminController
 
   private
 
-  def set_health_category
-    @health_category = ::Health::Category.find(params[:id])
-  end
+    def set_health_category
+      @health_category = ::Health::Category.find(params[:id])
+    end
 
-  def health_category_params
-    params.require(:health_category).permit(:name)
-  end
+    def health_category_params
+      params.require(:health_category).permit(:name)
+    end
 end

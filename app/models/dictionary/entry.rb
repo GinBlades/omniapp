@@ -11,13 +11,13 @@ class Dictionary::Entry < ActiveRecord::Base
 
   protected
 
-  def update_counters
-    source.entry_counter = source.dictionary_entries.count
-    target.entry_counter = target.dictionary_entries.count
-    dictionary_category.entry_counter = dictionary_category.dictionary_entries.count
+    def update_counters
+      source.entry_counter = source.dictionary_entries.count
+      target.entry_counter = target.dictionary_entries.count
+      dictionary_category.entry_counter = dictionary_category.dictionary_entries.count
 
-    source.save
-    target.save
-    dictionary_category.save
-  end
+      source.save
+      target.save
+      dictionary_category.save
+    end
 end

@@ -53,11 +53,11 @@ class Admin::Dictionary::LanguagesController < AdminController
 
   private
 
-  def set_dictionary_language
-    @dictionary_language = ::Dictionary::Language.find(params[:id])
-  end
+    def set_dictionary_language
+      @dictionary_language = ::Dictionary::Language.find(params[:id])
+    end
 
-  def dictionary_language_params
-    params.require(:dictionary_language).permit(:name)
-  end
+    def dictionary_language_params
+      params.require(:dictionary_language).permit(:name)
+    end
 end

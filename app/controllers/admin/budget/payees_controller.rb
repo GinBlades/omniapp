@@ -52,12 +52,12 @@ module Admin
 
     private
 
-    def set_budget_payee
-      @budget_payee = ::Budget::Payee.find(params[:id])
-    end
+      def set_budget_payee
+        @budget_payee = ::Budget::Payee.find(params[:id])
+      end
 
-    def budget_payee_params
-      params.require(:budget_payee).permit(:name, :slug)
-    end
+      def budget_payee_params
+        params.require(:budget_payee).permit(:name, :slug)
+      end
   end
 end

@@ -12,9 +12,9 @@ class Budget::Entry < ActiveRecord::Base
 
   protected
 
-  def update_user_allowance
-    monthly_spending = user.allowance_entries_for_month(Time.zone.now).sum(:price)
-    user.current_allowance = 100 - monthly_spending
-    user.save
-  end
+    def update_user_allowance
+      monthly_spending = user.allowance_entries_for_month(Time.zone.now).sum(:price)
+      user.current_allowance = 100 - monthly_spending
+      user.save
+    end
 end

@@ -44,11 +44,11 @@ class Admin::Notes::EntriesController < AdminController
 
   private
 
-  def set_notes_entry
-    @notes_entry = ::Notes::Entry.find(params[:id])
-  end
+    def set_notes_entry
+      @notes_entry = ::Notes::Entry.find(params[:id])
+    end
 
-  def notes_entry_params
-    params.require(:notes_entry).permit(:name, :slug, :body, :notes_category_id, :notes_sequence_id)
-  end
+    def notes_entry_params
+      params.require(:notes_entry).permit(:name, :slug, :body, :notes_category_id, :notes_sequence_id)
+    end
 end

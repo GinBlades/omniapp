@@ -19,7 +19,7 @@ class Points::Activity < ActiveRecord::Base
 
   protected
 
-  def update_goal
-    points_option.points_goal.update_current_points
-  end
+    def update_goal
+      points_option.points_goal.update_current_points
+    end
 end

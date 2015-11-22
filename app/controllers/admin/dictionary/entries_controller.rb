@@ -53,11 +53,12 @@ class Admin::Dictionary::EntriesController < AdminController
 
   private
 
-  def set_dictionary_entry
-    @dictionary_entry = ::Dictionary::Entry.find(params[:id])
-  end
+    def set_dictionary_entry
+      @dictionary_entry = ::Dictionary::Entry.find(params[:id])
+    end
 
-  def dictionary_entry_params
-    params.require(:dictionary_entry).permit(:source_id, :target_id, :dictionary_category_id, :definition, :examples, :word, :notes)
-  end
+    def dictionary_entry_params
+      params.require(:dictionary_entry).permit(:source_id, :target_id, :dictionary_category_id,
+                                               :definition, :examples, :word, :notes)
+    end
 end

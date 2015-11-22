@@ -11,7 +11,8 @@ RSpec.describe Health::WorkoutCategoriesController, type: :controller do
       it "populates an array of all @health_workout_categories" do
         second_health_workout_category = create :health_workout_category
         get :index
-        expect(assigns(:health_workout_categories)).to match_array([base_health_workout_category, second_health_workout_category])
+        expect(assigns(:health_workout_categories))
+          .to match_array([base_health_workout_category, second_health_workout_category])
       end
     end
     describe "GET show" do

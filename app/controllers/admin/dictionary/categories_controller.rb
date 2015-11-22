@@ -7,7 +7,8 @@ class Admin::Dictionary::CategoriesController < AdminController
 
   def show
     @q = ::Dictionary::Entry.ransack(params[:q])
-    @entries = @q.result(uniq: true).where(dictionary_category: @dictionary_category).includes(:dictionary_category, :source, :target)
+    @entries = @q.result(uniq: true).where(dictionary_category: @dictionary_category)
+               .includes(:dictionary_category, :source, :target)
   end
 
   def new
@@ -53,11 +54,11 @@ class Admin::Dictionary::CategoriesController < AdminController
 
   private
 
-  def set_dictionary_category
-    @dictionary_category = ::Dictionary::Category.find(params[:id])
-  end
+    def set_dictionary_category
+      @dictionary_category = ::Dictionary::Category.find(params[:id])
+    end
 
-  def dictionary_category_params
-    params.require(:dictionary_category).permit(:name)
-  end
+    def dictionary_category_params
+      params.require(:dictionary_category).permit(:name)
+    end
 end

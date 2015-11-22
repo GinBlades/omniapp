@@ -1,5 +1,5 @@
 class NotesEntry < ActiveRecord::Base
-  table_name = :notes_entries
+  table_name :notes_entries
 
   belongs_to :user
 end
@@ -12,6 +12,7 @@ class AddUserToNotesEntries < ActiveRecord::Migration
       entry.save
     end
   end
+
   def down
     remove_reference :notes_entries, :user, index: true, foreign_key: true
   end

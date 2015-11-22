@@ -52,11 +52,12 @@ class Admin::Health::WorkoutsController < AdminController
 
   private
 
-  def set_health_workout
-    @health_workout = ::Health::Workout.find(params[:id])
-  end
+    def set_health_workout
+      @health_workout = ::Health::Workout.find(params[:id])
+    end
 
-  def health_workout_params
-    params.require(:health_workout).permit(:health_workout_category_id, :user_id, :start, :duration, :distance, :rating, :notes)
-  end
+    def health_workout_params
+      params.require(:health_workout).permit(:health_workout_category_id, :user_id, :start,
+                                             :duration, :distance, :rating, :notes)
+    end
 end

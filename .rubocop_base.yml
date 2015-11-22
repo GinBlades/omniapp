@@ -18,25 +18,16 @@ Rails/Output:
     - 'db/seeds.rb'
 
 Metrics/LineLength:
-  Max: 160
+  Max: 120
   Exclude:
     - '**/*.jbuilder'
-
-Style/AlignParameters:
-  Enabled: false
-
-Style/AlignHash:
-  Enabled: false
-
-Style/AlignArray:
-  Enabled: false
 
 Style/BlockComments:
   Exclude:
     - 'spec/spec_helper.rb'
 
-Style/MultilineOperationIndentation:
-  Enabled: false
+Style/IndentationConsistency:
+  EnforcedStyle: "rails"
 
 Style/Documentation:
   Enabled: false
@@ -52,7 +43,3 @@ Style/SpaceInsideBrackets:
 
 Style/StringLiterals:
   EnforcedStyle: 'double_quotes'
-
-Metrics/ClassLength:
-  Max: 120
-

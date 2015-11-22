@@ -51,11 +51,11 @@ class Admin::Health::RatingsController < AdminController
 
   private
 
-  def set_health_rating
-    @health_rating = ::Health::Rating.find(params[:id])
-  end
+    def set_health_rating
+      @health_rating = ::Health::Rating.find(params[:id])
+    end
 
-  def health_rating_params
-    params.require(:health_rating).permit(:health_category_id, :health_entry_id)
-  end
+    def health_rating_params
+      params.require(:health_rating).permit(:health_category_id, :health_entry_id)
+    end
 end

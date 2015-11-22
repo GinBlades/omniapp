@@ -51,11 +51,11 @@ class Admin::Blog::PostsController < AdminController
 
   private
 
-  def set_blog_post
-    @blog_post = ::Blog::Post.find(params[:id])
-  end
+    def set_blog_post
+      @blog_post = ::Blog::Post.find(params[:id])
+    end
 
-  def blog_post_params
-    params.require(:blog_post).permit(:user_id, :title, :slug, :excerpt, :body, :published_at, :tag_list)
-  end
+    def blog_post_params
+      params.require(:blog_post).permit(:user_id, :title, :slug, :excerpt, :body, :published_at, :tag_list)
+    end
 end

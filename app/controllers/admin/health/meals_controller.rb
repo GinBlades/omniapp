@@ -52,11 +52,12 @@ class Admin::Health::MealsController < AdminController
 
   private
 
-  def set_health_meal
-    @health_meal = ::Health::Meal.find(params[:id])
-  end
+    def set_health_meal
+      @health_meal = ::Health::Meal.find(params[:id])
+    end
 
-  def health_meal_params
-    params.require(:health_meal).permit(:time, :meal_category, :calories, :quality, :healthiness, :home, :vegetarian, :cost, :notes)
-  end
+    def health_meal_params
+      params.require(:health_meal).permit(:time, :meal_category, :calories, :quality, :healthiness,
+                                          :home, :vegetarian, :cost, :notes)
+    end
 end

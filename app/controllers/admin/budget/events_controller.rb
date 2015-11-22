@@ -52,13 +52,13 @@ module Admin
 
     private
 
-    def set_budget_event
-      @budget_event = ::Budget::Event.find(params[:id])
-    end
+      def set_budget_event
+        @budget_event = ::Budget::Event.find(params[:id])
+      end
 
-    def budget_event_params
-      params.require(:budget_event).permit(:budget_payee_id, :event_date,
-        :price, :recurring, :event_action, :url, :alert_date, :alert_before, :recurring_interval)
-    end
+      def budget_event_params
+        params.require(:budget_event).permit(:budget_payee_id, :event_date, :price, :recurring,
+                                             :event_action, :url, :alert_date, :alert_before, :recurring_interval)
+      end
   end
 end

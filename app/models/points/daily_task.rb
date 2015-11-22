@@ -46,7 +46,7 @@ class Points::DailyTask < ActiveRecord::Base
 
   protected
 
-  def update_success
-    self.success = (percent_completed).to_i
-  end
+    def update_success
+      self.success = (percent_completed).to_i
+    end
 end
