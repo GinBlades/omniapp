@@ -1,0 +1,15 @@
+table.table.table-striped
+  thead
+    tr
+      th Entry Date
+      th Age
+  tbody
+    tr
+      td= @dog_entry.entry_date.try(:strftime, "%Y-%m-%d")
+      td= distance_of_time_in_words(Dog::Entry.birthday, @dog_entry.entry_date) if @dog_entry.entry_date.present?
+
+= simple_format @dog_entry.notes
+
+.btn-group
+  = link_to 'Edit', edit_admin_dog_entry_path(@dog_entry), class: 'btn btn-default'
+  = link_to 'All Dog Entries', admin_dog_entries_path, class: 'btn btn-default'

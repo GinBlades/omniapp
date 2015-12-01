@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150915190708) do
+ActiveRecord::Schema.define(version: 20151212214235) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "allowance_entries", force: :cascade do |t|
+    t.integer  "user_id",                             null: false
+    t.date     "entry_date",                          null: false
+    t.decimal  "price",      precision: 12, scale: 2, null: false
+    t.string   "payee"
+    t.string   "category"
+    t.string   "notes"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
+  add_index "allowance_entries", ["user_id"], name: "index_allowance_entries_on_user_id", using: :btree
 
   create_table "blog_comments", force: :cascade do |t|
     t.string   "name"
@@ -122,6 +135,13 @@ ActiveRecord::Schema.define(version: 20150915190708) do
   create_table "dictionary_languages", force: :cascade do |t|
     t.string  "name"
     t.integer "entry_counter"
+  end
+
+  create_table "dog_entries", force: :cascade do |t|
+    t.datetime "entry_date"
+    t.string   "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "health_categories", force: :cascade do |t|
@@ -317,6 +337,7 @@ ActiveRecord::Schema.define(version: 20150915190708) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
+  add_foreign_key "allowance_entries", "users"
   add_foreign_key "blog_comments", "blog_posts"
   add_foreign_key "blog_posts", "users"
   add_foreign_key "budget_entries", "budget_payees"
@@ -332,7 +353,6 @@ ActiveRecord::Schema.define(version: 20150915190708) do
   add_foreign_key "health_ratings", "health_categories"
   add_foreign_key "health_ratings", "health_entries"
   add_foreign_key "health_workouts", "health_workout_categories"
-  add_foreign_key "health_workouts", "users"
   add_foreign_key "health_workouts", "users"
   add_foreign_key "notes_entries", "notes_categories"
   add_foreign_key "notes_entries", "notes_sequences"

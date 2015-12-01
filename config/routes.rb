@@ -51,6 +51,12 @@ Rails.application.routes.draw do
       resources :languages
       resources :categories
     end
+    namespace :dog do
+      resources :entries
+    end
+    namespace :allowance do
+      resources :entries
+    end
   end
   devise_for :users
   namespace :notes do

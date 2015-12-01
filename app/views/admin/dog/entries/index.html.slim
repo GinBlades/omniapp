@@ -1,0 +1,25 @@
+h1 
+  Dog Entries
+  '
+  = link_to 'New Entry', new_admin_dog_entry_path, class: 'btn btn-primary'
+
+table.table.table-striped
+  thead
+    tr
+      th Entry date
+      th Age
+      th Notes
+      th
+      
+  tbody
+    - @dog_entries.each do |dog_entry|
+      tr
+        td= link_to dog_entry.entry_date.try(:strftime, "%Y-%m-%d"), [:admin, dog_entry]
+        td= distance_of_time_in_words(Dog::Entry.birthday, dog_entry.entry_date) if dog_entry.entry_date.present?
+        td= dog_entry.notes.truncate(30)
+        td
+          = link_to 'Edit', edit_admin_dog_entry_path(dog_entry)
+          '
+          |/
+          '
+          = link_to 'Delete', [:admin, dog_entry], :method => :delete, :data => { :confirm => 'Are you sure?' }

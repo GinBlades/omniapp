@@ -23,7 +23,7 @@ nav.navbar.navbar-inverse role="navigation"
               li = link_to 'Workout Categories', admin_health_workout_categories_path
               li = link_to 'Workouts', admin_health_workouts_path
               li = link_to 'Meals', admin_health_meals_path
-          li = link_to 'Budget', admin_budget_path
+          li = link_to 'Allowance', admin_allowance_entries_path
         
           li = link_to 'Notes', notes_path
           li.dropdown
@@ -39,6 +39,7 @@ nav.navbar.navbar-inverse role="navigation"
           li = link_to 'Points', admin_points_path
           li = link_to 'Dictionary', admin_dictionary_path
           li = link_to 'Games', games_path
+          li = link_to 'Dog', admin_dog_entries_path
         
         - else
           li = link_to 'Notes', notes_path

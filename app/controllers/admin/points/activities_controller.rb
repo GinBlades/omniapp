@@ -17,6 +17,7 @@ class Admin::Points::ActivitiesController < AdminController
 
   def create
     @points_activity = new_activity(params[:goal])
+    @goal = @points_activity.direct_goal
 
     respond_to do |format|
       if @points_activity.save
@@ -65,7 +66,6 @@ class Admin::Points::ActivitiesController < AdminController
       else
         ::Points::Activity.new(points_activity_params)
       end
-      @goal = @points_activity.direct_goal
     end
 
     def set_points_activity
