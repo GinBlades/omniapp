@@ -55,7 +55,13 @@ Rails.application.routes.draw do
       resources :entries
     end
     namespace :allowance do
-      resources :entries
+      resources :entries do
+        collection do
+          get :autocompleter
+          get :merge
+          put :merger
+        end
+      end
     end
   end
   devise_for :users

@@ -29,6 +29,10 @@ class User < ActiveRecord::Base
     [first_name, last_name].select(&:present?).join(" ")
   end
 
+  def allowance_balance
+    ::Allowance::Entry.balance(allowance_entries)
+  end
+
   def to_s
     full_name || email
   end

@@ -9,7 +9,7 @@
       .panel-heading
         h3.panel-title Balance
       .panel-body
-        = number_to_currency(::Allowance::Entry.balance(@allowance_entries))
+        = number_to_currency(current_user.allowance_balance)
 
 table.table.table-striped
   thead

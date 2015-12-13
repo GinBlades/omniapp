@@ -51,6 +51,16 @@ root.initialize = ->
           event.preventDefault()
           subcategoryInput.val ui.item.label
           subcategoryId.val ui.item.value
+
+  # Autocomplete for allowance categories
+  allowancePayeeInput = $("#allowance_entry_payee")
+  if allowancePayeeInput.length
+    allowanceCategoryInput = $("#allowance_entry_category")
+    $.getJSON "/admin/allowance/entries/autocompleter.json", (data) ->
+      allowancePayeeInput.autocomplete
+        source: data.payees
+      allowanceCategoryInput.autocomplete
+        source: data.categories
     
   # Task list updater
   taskList = $('#task-list')
