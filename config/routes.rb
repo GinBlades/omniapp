@@ -55,7 +55,7 @@ Rails.application.routes.draw do
       resources :entries
     end
     namespace :allowance do
-      resources :entries do
+      resources :entries, path: "/" do
         collection do
           get :autocompleter
           get :merge

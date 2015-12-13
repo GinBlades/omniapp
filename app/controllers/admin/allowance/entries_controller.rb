@@ -4,7 +4,7 @@ module Admin
 
     def index
       @q = ::Allowance::Entry.ransack(params[:q])
-      @allowance_entries = @q.result(uniq: true).where(user: current_user)
+      @allowance_entries = @q.result(uniq: true)
     end
 
     def show
@@ -52,8 +52,8 @@ module Admin
     end
 
     def autocompleter
-      @payees = ::Allowance::Entry.all.map(&:payee).uniq
-      @categories = ::Allowance::Entry.all.map(&:category).uniq
+      @payees = ::Allowance::Entry.all.map(&:payee).reject(&:blank?).uniq
+      @categories = ::Allowance::Entry.all.map(&:category).reject(&:blank?).uniq
       respond_to do |format|
         format.json { render json: {payees: @payees, categories: @categories}.to_json }
       end

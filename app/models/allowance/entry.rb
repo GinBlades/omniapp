@@ -1,6 +1,8 @@
 class Allowance::Entry < ActiveRecord::Base
   belongs_to :user
 
+  validates :price, :entry_date, :user_id, presence: true
+
   class << self
     def balance(entries)
       -(entries.map(&:price).inject(:+))
@@ -8,6 +10,13 @@ class Allowance::Entry < ActiveRecord::Base
 
     def merge(field, from, to)
       where(field => from).update_all(field => to)
+    end
+
+    def monthly_spending(date, entries)
+      first, last = [date.beginning_of_month, date.end_of_month]
+      month_entries = entries.where("entry_date >= ? AND entry_date <= ?", first, last)
+        .where("price >= 0")
+      month_entries.map(&:price).inject(&:+) unless month_entries.empty?
     end
   end
 end

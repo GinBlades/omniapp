@@ -56,7 +56,7 @@ root.initialize = ->
   allowancePayeeInput = $("#allowance_entry_payee")
   if allowancePayeeInput.length
     allowanceCategoryInput = $("#allowance_entry_category")
-    $.getJSON "/admin/allowance/entries/autocompleter.json", (data) ->
+    $.getJSON "/admin/allowance/autocompleter.json", (data) ->
       allowancePayeeInput.autocomplete
         source: data.payees
       allowanceCategoryInput.autocomplete

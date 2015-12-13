@@ -12,7 +12,7 @@ require "mina/whenever"
 #   branch       - Branch name to deploy. (needed by mina/git)
 
 set :domain, "dende"
-set :repository, "git@gitlab.com:GinBlades/omniapp.git"
+set :repository, "git@bitbucket.org:GinBlades/omniapp.git"
 
 # use `mina deploy` for staging OR mina deploy to=production
 case ENV["to"]
