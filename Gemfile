@@ -55,5 +55,6 @@ gem "cocoon"
 gem "ransack"
 gem "negative_captcha"
 gem "acts-as-taggable-on"
+gem "will_paginate"
 
 gem "whenever", require: false

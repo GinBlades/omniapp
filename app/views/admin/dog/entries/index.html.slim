@@ -16,10 +16,11 @@ table.table.table-striped
       tr
         td= link_to dog_entry.entry_date.try(:strftime, "%Y-%m-%d"), [:admin, dog_entry]
         td= distance_of_time_in_words(Dog::Entry.birthday, dog_entry.entry_date) if dog_entry.entry_date.present?
-        td= dog_entry.notes.truncate(30)
+        td= dog_entry.notes
         td
           = link_to 'Edit', edit_admin_dog_entry_path(dog_entry)
           '
           |/
           '
           = link_to 'Delete', [:admin, dog_entry], :method => :delete, :data => { :confirm => 'Are you sure?' }
+= will_paginate @dog_entries
