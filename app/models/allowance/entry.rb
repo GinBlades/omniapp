@@ -13,9 +13,10 @@ class Allowance::Entry < ActiveRecord::Base
     end
 
     def monthly_spending(date, entries)
-      first, last = [date.beginning_of_month, date.end_of_month]
+      first = date.beginning_of_month
+      last = date.end_of_month
       month_entries = entries.where("entry_date >= ? AND entry_date <= ?", first, last)
-        .where("price >= 0")
+                      .where("price >= 0")
       month_entries.map(&:price).inject(&:+) unless month_entries.empty?
     end
   end

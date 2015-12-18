@@ -21,7 +21,7 @@ module Admin
 
       respond_to do |format|
         if @dog_entry.save
-          format.html { redirect_to [:admin, @dog_entry], notice: 'Entry was successfully created.' }
+          format.html { redirect_to [:admin, @dog_entry], notice: "Entry was successfully created." }
           format.json { render :show, status: :created, location: [:admin, @dog_entry] }
         else
           format.html { render :new }
@@ -33,7 +33,7 @@ module Admin
     def update
       respond_to do |format|
         if @dog_entry.update(dog_entry_params)
-          format.html { redirect_to [:admin, @dog_entry], notice: 'Entry was successfully updated.' }
+          format.html { redirect_to [:admin, @dog_entry], notice: "Entry was successfully updated." }
           format.json { render :show, status: :ok, location: [:admin, @dog_entry] }
         else
           format.html { render :edit }
@@ -45,12 +45,13 @@ module Admin
     def destroy
       @dog_entry.destroy
       respond_to do |format|
-        format.html { redirect_to admin_dog_entries_url, notice: 'Entry was successfully destroyed.' }
+        format.html { redirect_to admin_dog_entries_url, notice: "Entry was successfully destroyed." }
         format.json { head :no_content }
       end
     end
 
     private
+
       def set_dog_entry
         @dog_entry = ::Dog::Entry.find(params[:id])
       end

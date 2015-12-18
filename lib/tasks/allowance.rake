@@ -24,5 +24,4 @@ namespace :allowance do
       )
     end
   end
-
 end

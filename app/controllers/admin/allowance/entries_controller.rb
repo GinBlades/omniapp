@@ -22,7 +22,7 @@ module Admin
 
       respond_to do |format|
         if @allowance_entry.save
-          format.html { redirect_to [:admin, @allowance_entry], notice: 'Entry was successfully created.' }
+          format.html { redirect_to [:admin, @allowance_entry], notice: "Entry was successfully created." }
           format.json { render :show, status: :created, location: @allowance_entry }
         else
           format.html { render :new }
@@ -34,7 +34,7 @@ module Admin
     def update
       respond_to do |format|
         if @allowance_entry.update(allowance_entry_params)
-          format.html { redirect_to [:admin, @allowance_entry], notice: 'Entry was successfully updated.' }
+          format.html { redirect_to [:admin, @allowance_entry], notice: "Entry was successfully updated." }
           format.json { render :show, status: :ok, location: @allowance_entry }
         else
           format.html { render :edit }
@@ -46,7 +46,7 @@ module Admin
     def destroy
       @allowance_entry.destroy
       respond_to do |format|
-        format.html { redirect_to admin_allowance_entries_url, notice: 'Entry was successfully destroyed.' }
+        format.html { redirect_to admin_allowance_entries_url, notice: "Entry was successfully destroyed." }
         format.json { head :no_content }
       end
     end
@@ -55,7 +55,7 @@ module Admin
       @payees = ::Allowance::Entry.all.map(&:payee).reject(&:blank?).uniq
       @categories = ::Allowance::Entry.all.map(&:category).reject(&:blank?).uniq
       respond_to do |format|
-        format.json { render json: {payees: @payees, categories: @categories}.to_json }
+        format.json { render json: { payees: @payees, categories: @categories }.to_json }
       end
     end
 
@@ -64,8 +64,8 @@ module Admin
     end
 
     def merger
-      valid_params = {category: params[:category], payee: params[:payee]}
-      valid_params.reject! { |k, v| v[:to].blank? || v[:from].blank? }
+      valid_params = { category: params[:category], payee: params[:payee] }
+      valid_params.reject! { |_k, v| v[:to].blank? || v[:from].blank? }
       valid_params.each do |key, value|
         ::Allowance::Entry.merge(key, value[:from], value[:to])
       end
@@ -73,6 +73,7 @@ module Admin
     end
 
     private
+
       def set_allowance_entry
         @allowance_entry = ::Allowance::Entry.find(params[:id])
       end
