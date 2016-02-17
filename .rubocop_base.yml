@@ -1,9 +1,10 @@
 AllCops:
-  RunRailsCops: true
   Exclude:
     - 'bin/**/*'
     - 'db/schema.rb'
     - 'lib/templates/**/*'
+Rails:
+  Enabled: true
 
 Metrics/AbcSize:
   Exclude:
@@ -31,15 +32,6 @@ Style/IndentationConsistency:
 
 Style/Documentation:
   Enabled: false
-
-Style/SingleSpaceBeforeFirstArg:
-  Exclude:
-    - 'db/migrate/**/*'
-    - 'config/application.rb'
-
-Style/SpaceInsideBrackets:
-  Exclude:
-    - 'config/initializers/devise.rb'
 
 Style/StringLiterals:
   EnforcedStyle: 'double_quotes'

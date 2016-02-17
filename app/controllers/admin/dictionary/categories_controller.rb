@@ -8,7 +8,7 @@ class Admin::Dictionary::CategoriesController < AdminController
   def show
     @q = ::Dictionary::Entry.ransack(params[:q])
     @entries = @q.result(uniq: true).where(dictionary_category: @dictionary_category)
-               .includes(:dictionary_category, :source, :target)
+                 .includes(:dictionary_category, :source, :target)
   end
 
   def new

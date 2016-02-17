@@ -5,7 +5,7 @@ class Points::DailyTask < ActiveRecord::Base
 
   attr_accessor :task_string
 
-  COMPLETE_MARKER = "|"
+  COMPLETE_MARKER = "|".freeze
 
   def task_display
     tasks.present? ? clear_tasks.join(", ") : nil
@@ -47,6 +47,6 @@ class Points::DailyTask < ActiveRecord::Base
   protected
 
     def update_success
-      self.success = (percent_completed).to_i
+      self.success = percent_completed.to_i
     end
 end

@@ -1,7 +1,7 @@
 namespace :backup do
   desc "Backup Database"
   task db: :environment do
-    backup_directory = "#{Rails.application.secrets.backup_directory}"
+    backup_directory = Rails.application.secrets.backup_directory.to_s
     config           = Rails.configuration.database_configuration
     host             = config[Rails.env]["host"]
     database         = config[Rails.env]["database"]

@@ -2,11 +2,11 @@ class Blog::PostsController < ApplicationController
   include SetupNegativeCaptcha
 
   def index
-    if params[:tag]
-      @posts = ::Blog::Post.published.tagged_with(params[:tag])
-    else
-      @posts = ::Blog::Post.published
-    end
+    @posts = if params[:tag]
+               ::Blog::Post.published.tagged_with(params[:tag])
+             else
+               ::Blog::Post.published
+             end
   end
 
   def show

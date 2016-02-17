@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  # rubocop:disable MethodLength
   def home
     quotes = [
       "reinvent wireless initiatives", "visualize dynamic niches",
@@ -29,6 +30,7 @@ class PagesController < ApplicationController
     ]
     @quote = quotes.sample.capitalize
   end
+  # rubocop:enable MethodLength
 
   def jihye
     @arrive = Time.zone.new(2015, 04, 28, 15, 49, 00, "-05:00")

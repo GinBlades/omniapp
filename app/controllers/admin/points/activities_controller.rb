@@ -16,8 +16,7 @@ class Admin::Points::ActivitiesController < AdminController
   end
 
   def create
-    @points_activity = new_activity(params[:goal])
-    @goal = @points_activity.direct_goal
+    make_activity(params[:goal])
 
     respond_to do |format|
       if @points_activity.save
@@ -74,5 +73,10 @@ class Admin::Points::ActivitiesController < AdminController
 
     def points_activity_params
       params.require(:points_activity).permit(:points_goal_id, :points_option_id, :entry_date, :note)
+    end
+
+    def make_activity(goal)
+      @points_activity = new_activity(goal)
+      @goal = @points_activity.direct_goal
     end
 end

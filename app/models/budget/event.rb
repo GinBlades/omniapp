@@ -16,10 +16,10 @@ class Budget::Event < ActiveRecord::Base
   private
 
     def set_alert_date
-      if alert_before.blank?
-        self.alert_date = nil
-      else
-        self.alert_date = event_date - alert_before.to_i.days
-      end
+      self.alert_date = if alert_before.blank?
+                          nil
+                        else
+                          event_date - alert_before.to_i.days
+                        end
     end
 end
