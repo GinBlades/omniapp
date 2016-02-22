@@ -4,7 +4,7 @@ module Admin
 
     def index
       @q = ::Allowance::Entry.ransack(params[:q])
-      @allowance_entries = @q.result(uniq: true)
+      @allowance_entries = @q.result(uniq: true).includes(:user)
     end
 
     def show
