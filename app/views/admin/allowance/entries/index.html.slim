@@ -50,6 +50,20 @@
             th Spending for #{Time.zone.now.strftime("%B")}
             td= number_to_currency(Allowance::Entry.monthly_spending(Time.zone.now, current_user.allowance_entries))
 
+    .panel.panel-default
+      .panel-heading
+        h3.panel-title Allowance Task
+      .panel-body
+        dl
+          - current_user.allowance_tasks.each do |task|
+            dt= task.goal
+            dd
+              = task.reward
+              .btn-group
+                = link_to "Update", [:edit, :admin, task], class: "btn btn-xs btn-default"
+                = link_to "Delete", [:admin, task], method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-xs btn-default"
+        = link_to "Add", new_admin_allowance_task_path, class: "btn btn-default"
+
 table.table.table-striped
   thead
     tr

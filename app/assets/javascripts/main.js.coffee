@@ -34,24 +34,6 @@ root.initialize = ->
     editor.getSession().on 'change', ->
       textarea.val(editor.getSession().getValue())
 
-  # Autocomplete for budget entries
-  subcategoryInput = $('#budget_entry_budget_subcategory')
-  if subcategoryInput.length > 0
-    subcategoryId = $('#budget_entry_budget_subcategory_id')
-
-    $.getJSON '/admin/budget/subcategories.json', (data) ->
-      labels = []
-      $.each data, (idx, obj) ->
-        labels.push
-          label: obj.label
-          value: obj.id
-      subcategoryInput.autocomplete
-        source: labels
-        select: (event, ui) ->
-          event.preventDefault()
-          subcategoryInput.val ui.item.label
-          subcategoryId.val ui.item.value
-
   # Autocomplete for allowance categories
   allowancePayeeInput = $("#allowance_entry_payee")
   if allowancePayeeInput.length
@@ -66,7 +48,6 @@ root.initialize = ->
   taskList = $('#task-list')
   if taskList.length
     successValue = $('td#success')
-    console.log successValue.text()
     locationParts = window.location.href.split('/')
     lastIndex = locationParts.length - 1
     recordNumber = locationParts[lastIndex]
@@ -82,3 +63,30 @@ root.initialize = ->
       .done (msg) ->
         successValue.text("#{msg}%")
         
+  # Allowance task updater
+  allowanceTaskForm = $(".edit_allowance_task")
+  if allowanceTaskForm.length > 0
+    days = []
+    allowanceTaskForm.find("input[type=checkbox]").each (index, box) ->
+      if $(box).prop("checked")
+        days.push $(box).val()
+      $(box).closest("label").on "click", (event) ->
+        input = $(@).find("input")
+        checked = input.prop("checked")
+        if checked
+          if days.indexOf(input.val()) < 0
+            days.push(input.val())
+        else
+          index = days.indexOf(input.val())
+          days.splice(index, 1)
+
+        $.ajax
+          type: "PUT"
+          url: allowanceTaskForm.prop("action")
+          dataType: "json"
+          data:
+            allowance_task:
+              days: days
+          success: ->
+            if days.length == 7
+              window.location = "/admin/allowance"

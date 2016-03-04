@@ -1,0 +1,10 @@
+= simple_form_for([:admin, @task]) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :goal
+    = f.input :reward
+
+  .form-actions
+    = f.button :submit, class: 'btn btn-success'
+

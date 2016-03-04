@@ -62,6 +62,7 @@ Rails.application.routes.draw do
           put :merger
         end
       end
+      resources :tasks, except: [:index, :show]
     end
   end
   devise_for :users

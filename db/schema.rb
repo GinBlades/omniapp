@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151212214235) do
+ActiveRecord::Schema.define(version: 20160304194601) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,18 @@ ActiveRecord::Schema.define(version: 20151212214235) do
   end
 
   add_index "allowance_entries", ["user_id"], name: "index_allowance_entries_on_user_id", using: :btree
+
+  create_table "allowance_tasks", force: :cascade do |t|
+    t.integer  "user_id",                    null: false
+    t.string   "goal",                       null: false
+    t.string   "reward",                     null: false
+    t.integer  "days",       default: [],                 array: true
+    t.boolean  "complete",   default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "allowance_tasks", ["user_id"], name: "index_allowance_tasks_on_user_id", using: :btree
 
   create_table "blog_comments", force: :cascade do |t|
     t.string   "name"
@@ -338,6 +350,7 @@ ActiveRecord::Schema.define(version: 20151212214235) do
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
   add_foreign_key "allowance_entries", "users"
+  add_foreign_key "allowance_tasks", "users"
   add_foreign_key "blog_comments", "blog_posts"
   add_foreign_key "blog_posts", "users"
   add_foreign_key "budget_entries", "budget_payees"
@@ -353,6 +366,7 @@ ActiveRecord::Schema.define(version: 20151212214235) do
   add_foreign_key "health_ratings", "health_categories"
   add_foreign_key "health_ratings", "health_entries"
   add_foreign_key "health_workouts", "health_workout_categories"
+  add_foreign_key "health_workouts", "users"
   add_foreign_key "health_workouts", "users"
   add_foreign_key "notes_entries", "notes_categories"
   add_foreign_key "notes_entries", "notes_sequences"
