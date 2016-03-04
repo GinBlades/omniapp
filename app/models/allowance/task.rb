@@ -1,17 +1,17 @@
 class Allowance::Task < ActiveRecord::Base
   belongs_to :user
   validates :user_id, :goal, :reward, presence: true
-  after_save :pay_up
 
   def pay_up
-    return unless days.sort == [0, 1, 2, 3, 4, 5, 6]
+    pay_out = days.length > 3 ? ((days.length / 7.0).round(2) * 10) : 0
+    update_attributes(days: [])
+    return if pay_out == 0
 
     user.allowance_entries.create(
       payee: user.first_name,
       category: "Allowance Task",
       entry_date: Time.zone.now,
-      price: -10
+      price: pay_out
     )
-    update_attributes(days: [])
   end
 end

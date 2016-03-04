@@ -32,6 +32,10 @@ every 1.week, at: "6:00am" do
   rake "backup:db"
 end
 
+every :sunday, at: "6:00am" do
+  rake "allowance:tasks"
+end
+
 every 1.month, at: "start of the month at 6am" do
   rake "allowance:monthly"
 end

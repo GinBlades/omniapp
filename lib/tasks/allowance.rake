@@ -24,4 +24,11 @@ namespace :allowance do
       )
     end
   end
+
+  desc "allowance tasks"
+  task tasks: :environment do
+    Allowance::Task.all.each do |allowance_task|
+      allowance_task.pay_up
+    end
+  end
 end
