@@ -367,7 +367,6 @@ ActiveRecord::Schema.define(version: 20160304194601) do
   add_foreign_key "health_ratings", "health_entries"
   add_foreign_key "health_workouts", "health_workout_categories"
   add_foreign_key "health_workouts", "users"
-  add_foreign_key "health_workouts", "users"
   add_foreign_key "notes_entries", "notes_categories"
   add_foreign_key "notes_entries", "notes_sequences"
   add_foreign_key "notes_entries", "users"

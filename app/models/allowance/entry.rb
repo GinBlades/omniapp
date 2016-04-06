@@ -5,6 +5,7 @@ class Allowance::Entry < ActiveRecord::Base
 
   class << self
     def balance(entries)
+      return 0 if entries.empty?
       -entries.map(&:price).inject(:+)
     end
 
@@ -17,7 +18,7 @@ class Allowance::Entry < ActiveRecord::Base
       last = date.end_of_month
       month_entries = entries.where("entry_date >= ? AND entry_date <= ?", first, last)
                              .where("price >= 0")
-      month_entries.map(&:price).inject(&:+) unless month_entries.empty?
+      month_entries.empty? ? 0 : month_entries.map(&:price).inject(&:+)
     end
   end
 end

@@ -3,6 +3,9 @@
  *= require jquery.datetimepicker
  *= require fullcalendar
  */
+
+$navbar-border-radius: 0;
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "animation";

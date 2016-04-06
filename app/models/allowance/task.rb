@@ -3,7 +3,7 @@ class Allowance::Task < ActiveRecord::Base
   validates :user_id, :goal, :reward, presence: true
 
   def pay_up
-    pay_out = days.length > 3 ? ((days.length / 7.0).round(2) * 10) : 0
+    pay_out = days.length > 3 ? ((days.length / 7.0).round(2) * -10) : 0
     update_attributes(days: [])
     return if pay_out == 0
 
