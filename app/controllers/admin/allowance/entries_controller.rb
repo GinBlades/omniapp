@@ -5,7 +5,7 @@ module Admin
     def index
       @q = ::Allowance::Entry.ransack(params[:q])
       @q.sorts = "entry_date desc" if @q.sorts.empty?
-      @allowance_entries = @q.result(uniq: true).includes(:user)
+      @allowance_entries = @q.result(uniq: true).includes(:user).paginate(page: params[:page], per_page: 20)
     end
 
     def show

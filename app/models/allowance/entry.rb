@@ -3,6 +3,8 @@ class Allowance::Entry < ActiveRecord::Base
 
   validates :price, :entry_date, :user_id, presence: true
 
+  scope :cache_update, -> { unscoped.order(updated_at: :desc).first }
+
   class << self
     def balance(entries)
       return 0 if entries.empty?

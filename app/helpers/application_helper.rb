@@ -36,4 +36,13 @@ module ApplicationHelper
     markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, tables: true)
     markdown.render(content).html_safe
   end
+
+  def ransack_params(q)
+    return unless q
+    q.each_with_object([]) do |hash, obj|
+      next if hash[1].empty?
+      obj << hash[0]
+      obj << hash[1]
+    end.join("-").parameterize
+  end
 end

@@ -6,6 +6,7 @@ class Notes::Entry < ActiveRecord::Base
 
   validates :user_id, :name, :body, presence: :true
 
+  scope :cache_update, -> { unscoped.order(updated_at: :desc).first }
   scope :category_select, lambda {
     joins(:notes_category)
       .select("notes_categories.id, notes_categories.name, count(*) AS note_count")

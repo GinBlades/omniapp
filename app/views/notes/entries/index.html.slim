@@ -6,7 +6,8 @@ h1
 
 .row
   .col-sm-9
-    = render "table", notes: @notes_entries, q: @q, sortable: true
+    - cache [Notes::Entry.cache_update, ransack_params(params[:q])] do
+      = render "table", notes: @notes_entries, q: @q, sortable: true
   .col-sm-3
     .panel.panel-default
       .panel-body

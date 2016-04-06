@@ -64,31 +64,33 @@
                 = link_to "Delete", [:admin, task], method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-xs btn-default"
         = link_to "Add", new_admin_allowance_task_path, class: "btn btn-default"
 
-table.table.table-striped
-  thead
-    tr
-      th= sort_link @q, :user_first_name, "Name"
-      th= sort_link @q, :entry_date
-      th= sort_link @q, :price
-      th= sort_link @q, :payee
-      th= sort_link @q, :category
-      th= sort_link @q, :notes
-      th
-      th
-      
-  tbody
-    - @allowance_entries.each do |allowance_entry|
+- cache [Allowance::Entry.cache_update, ransack_params(params[:q]), params[:page]] do
+  table.table.table-striped
+    thead
       tr
-        td= allowance_entry.user
-        td= allowance_entry.entry_date
-        td= number_to_currency(allowance_entry.price)
-        td= allowance_entry.payee
-        td= allowance_entry.category
-        td= allowance_entry.notes.try(:truncate, 20)
-        td= link_to 'Show', [:admin, allowance_entry]
-        td
-          = link_to 'Edit', edit_admin_allowance_entry_path(allowance_entry)
-          '
-          |/
-          '
-          = link_to 'Delete', [:admin, allowance_entry], method: :delete, data: { confirm: 'Are you sure?' }
+        th= sort_link @q, :user_first_name, "Name"
+        th= sort_link @q, :entry_date
+        th= sort_link @q, :price
+        th= sort_link @q, :payee
+        th= sort_link @q, :category
+        th= sort_link @q, :notes
+        th
+        th
+        
+    tbody
+      - @allowance_entries.each do |allowance_entry|
+        tr
+          td= allowance_entry.user
+          td= allowance_entry.entry_date
+          td= number_to_currency(allowance_entry.price)
+          td= allowance_entry.payee
+          td= allowance_entry.category
+          td= allowance_entry.notes.try(:truncate, 20)
+          td= link_to 'Show', [:admin, allowance_entry]
+          td
+            = link_to 'Edit', edit_admin_allowance_entry_path(allowance_entry)
+            '
+            |/
+            '
+            = link_to 'Delete', [:admin, allowance_entry], method: :delete, data: { confirm: 'Are you sure?' }
+  = will_paginate @allowance_entries

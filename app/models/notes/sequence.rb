@@ -3,6 +3,7 @@ class Notes::Sequence < ActiveRecord::Base
   has_many :notes_entries, class_name: "::Notes::Entry", foreign_key: "notes_sequence_id"
 
   validates :name, :notes_category_id, presence: true
+  scope :cache_update, -> { unscoped.order(updated_at: :desc).first }
 
   def to_s
     name
