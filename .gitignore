@@ -10,6 +10,9 @@
 /config/database.yml
 /config/secrets.yml
 
+/db/*.sql
+!/db/structure.sql
+
 /public/uploads/
 /lib/assets/data/
 .idea/
