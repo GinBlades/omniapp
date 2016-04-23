@@ -1,0 +1,44 @@
+.row
+  .col-md-9
+    .panel.panel-default
+      .panel-heading
+        h2.panel-title Groupings
+      .panel-body
+        .row
+          - ::Art::Category.find_each do |ac|
+            .col-md-3
+              ul
+                li
+                  b= ac.name
+                li
+                  - ac.art_subcategories.each do |as|
+                    ul
+                      li
+                        b= as.name
+                      li
+                        ul
+                          - as.art_details.each do |ad|
+                            li= ad.name
+  .col-md-3
+    .panel.panel-default
+      .panel-heading
+        h2.panel-title New Grouping
+      .panel-body
+        = form_tag admin_art_new_grouping_path do
+          .form-group
+            = label_tag :category
+            = text_field_tag :category, nil, class: "form-control"
+          .form-group
+            = label_tag :subcategory
+            = text_field_tag :subcategory, nil, class: "form-control"
+          .form-group
+            = label_tag :detail
+            = text_field_tag :detail, nil, class: "form-control"
+          .form-group
+            = label_tag :mood
+            = text_field_tag :mood, nil, class: "form-control"
+          .form-group
+            = label_tag :genre
+            = text_field_tag :genre, nil, class: "form-control"
+          .form-group
+            = submit_tag nil, class: "btn btn-primary"

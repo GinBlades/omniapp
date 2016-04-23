@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   namespace :admin do
     get "/" => "dashboard#index"
+    namespace :art do
+      get "/" => "dashboard#index"
+      post "new_group" => "dashboard#new_grouping", as: :new_grouping
+    end
     namespace :health do
       get "/" => "dashboard#index"
       resources :categories

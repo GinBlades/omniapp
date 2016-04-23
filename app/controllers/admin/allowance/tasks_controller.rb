@@ -1,5 +1,5 @@
 module Admin
-  class Allowance::TasksController < ApplicationController
+  class Allowance::TasksController < AdminController
     before_action :set_allowance_task, only: [:edit, :update, :destroy]
     def new
       @task = current_user.allowance_tasks.build

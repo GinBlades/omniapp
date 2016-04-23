@@ -1,5 +1,5 @@
 module Admin
-  class Allowance::EntriesController < ApplicationController
+  class Allowance::EntriesController < AdminController
     before_action :set_allowance_entry, only: [:show, :edit, :update, :destroy]
 
     def index
