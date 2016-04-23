@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160304194601) do
+ActiveRecord::Schema.define(version: 20160423163917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,42 @@ ActiveRecord::Schema.define(version: 20160304194601) do
   end
 
   add_index "allowance_tasks", ["user_id"], name: "index_allowance_tasks_on_user_id", using: :btree
+
+  create_table "art_categories", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "art_details", force: :cascade do |t|
+    t.integer  "art_subcategory_id", null: false
+    t.string   "name",               null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "art_details", ["art_subcategory_id"], name: "index_art_details_on_art_subcategory_id", using: :btree
+
+  create_table "art_genres", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "art_moods", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "art_subcategories", force: :cascade do |t|
+    t.integer  "art_category_id", null: false
+    t.string   "name",            null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "art_subcategories", ["art_category_id"], name: "index_art_subcategories_on_art_category_id", using: :btree
 
   create_table "blog_comments", force: :cascade do |t|
     t.string   "name"
@@ -351,6 +387,8 @@ ActiveRecord::Schema.define(version: 20160304194601) do
 
   add_foreign_key "allowance_entries", "users"
   add_foreign_key "allowance_tasks", "users"
+  add_foreign_key "art_details", "art_subcategories"
+  add_foreign_key "art_subcategories", "art_categories"
   add_foreign_key "blog_comments", "blog_posts"
   add_foreign_key "blog_posts", "users"
   add_foreign_key "budget_entries", "budget_payees"
@@ -366,6 +404,7 @@ ActiveRecord::Schema.define(version: 20160304194601) do
   add_foreign_key "health_ratings", "health_categories"
   add_foreign_key "health_ratings", "health_entries"
   add_foreign_key "health_workouts", "health_workout_categories"
+  add_foreign_key "health_workouts", "users"
   add_foreign_key "health_workouts", "users"
   add_foreign_key "notes_entries", "notes_categories"
   add_foreign_key "notes_entries", "notes_sequences"
