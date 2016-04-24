@@ -1,4 +1,4 @@
 class Art::Detail < ActiveRecord::Base
-  belongs_to :art_subcategory, class_name: "::Art::Subcategory"
+  has_many :art_detailings, class_name: "::Art::Detailing"
   scope :random, -> { order("RANDOM()").first }
 end

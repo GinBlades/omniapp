@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160424013909) do
+ActiveRecord::Schema.define(version: 20160424200335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,14 +62,23 @@ ActiveRecord::Schema.define(version: 20160424013909) do
   add_index "art_concepts", ["art_mood_id"], name: "index_art_concepts_on_art_mood_id", using: :btree
   add_index "art_concepts", ["art_subcategory_id"], name: "index_art_concepts_on_art_subcategory_id", using: :btree
 
-  create_table "art_details", force: :cascade do |t|
-    t.integer  "art_subcategory_id", null: false
-    t.string   "name",               null: false
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+  create_table "art_detailings", force: :cascade do |t|
+    t.integer  "detailable_id",   null: false
+    t.string   "detailable_type", null: false
+    t.integer  "art_detail_id",   null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
-  add_index "art_details", ["art_subcategory_id"], name: "index_art_details_on_art_subcategory_id", using: :btree
+  add_index "art_detailings", ["art_detail_id"], name: "index_art_detailings_on_art_detail_id", using: :btree
+  add_index "art_detailings", ["detailable_type", "detailable_id", "art_detail_id"], name: "art_detailings_unique_index", unique: true, using: :btree
+  add_index "art_detailings", ["detailable_type", "detailable_id"], name: "index_art_detailings_on_detailable_type_and_detailable_id", using: :btree
+
+  create_table "art_details", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "art_genres", force: :cascade do |t|
     t.string   "name"
@@ -416,7 +425,7 @@ ActiveRecord::Schema.define(version: 20160424013909) do
   add_foreign_key "art_concepts", "art_genres"
   add_foreign_key "art_concepts", "art_moods"
   add_foreign_key "art_concepts", "art_subcategories"
-  add_foreign_key "art_details", "art_subcategories"
+  add_foreign_key "art_detailings", "art_details"
   add_foreign_key "art_revisions", "art_concepts"
   add_foreign_key "art_subcategories", "art_categories"
   add_foreign_key "blog_comments", "blog_posts"

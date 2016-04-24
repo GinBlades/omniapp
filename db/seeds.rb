@@ -1,4 +1,5 @@
 require "#{Rails.root}/db/seeds/budget_categories.rb"
+require "#{Rails.root}/db/seeds/art_concepts.rb"
 
 if Health::Category.count < 1
   ["Anxiety", "BM", "Diet", "Exercise", "Energy Level", "Stress", "Stomach Discomfort"].each do |cat|
@@ -26,3 +27,4 @@ if Notes::Entry.count < 1
 end
 
 budget_categories if Budget::Category.count < 1
+art_concepts if Art::Category.count < 1
