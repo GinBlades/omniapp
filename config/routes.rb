@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     namespace :art do
       get "/" => "dashboard#index"
       post "new_group" => "dashboard#new_grouping", as: :new_grouping
+      resources :concepts
     end
     namespace :health do
       get "/" => "dashboard#index"

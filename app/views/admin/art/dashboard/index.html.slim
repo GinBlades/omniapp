@@ -7,18 +7,30 @@
         .row
           - ::Art::Category.find_each do |ac|
             .col-md-3
-              ul
+              ul.list-unstyled
                 li
                   b= ac.name
                 li
                   - ac.art_subcategories.each do |as|
                     ul
-                      li
-                        b= as.name
-                      li
-                        ul
-                          - as.art_details.each do |ad|
-                            li= ad.name
+                      li= as.name
+        .row
+          .col-md-6
+            ul.list-unstyled
+              li
+                b Moods
+              li
+                ul
+                  - ::Art::Mood.find_each do |am|
+                    li= am.name
+          .col-md-6
+            ul.list-unstyled
+              li
+                b Genres
+              li
+                ul
+                  - ::Art::Genre.find_each do |ag|
+                    li= ag.name
   .col-md-3
     .panel.panel-default
       .panel-heading
@@ -42,3 +54,19 @@
             = text_field_tag :genre, nil, class: "form-control"
           .form-group
             = submit_tag nil, class: "btn btn-primary"
+.row
+  .col-md-9
+    .panel.panel-default
+      .panel-heading
+        h2.panel-title Random Concept
+      .panel-body
+        = simple_form_for [:admin, @random_concept] do |f|
+          .row
+            .col-md-3
+              = f.association :art_subcategory
+            .col-md-3
+              = f.association :art_mood
+            .col-md-3
+              = f.association :art_genre
+            .col-md-3
+              = f.button :submit

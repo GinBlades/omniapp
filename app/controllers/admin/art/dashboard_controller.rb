@@ -1,6 +1,9 @@
 module Admin
-  class Admin::Art::DashboardController < ApplicationController
+  class Art::DashboardController < AdminController
     def index
+      @random_concept = ::Art::Concept.new(art_subcategory: ::Art::Subcategory.random,
+                                           art_mood: ::Art::Mood.random,
+                                           art_genre: ::Art::Genre.random)
     end
     
     def new_grouping

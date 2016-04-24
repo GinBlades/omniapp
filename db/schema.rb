@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160423163917) do
+ActiveRecord::Schema.define(version: 20160424013909) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,21 @@ ActiveRecord::Schema.define(version: 20160423163917) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "art_concepts", force: :cascade do |t|
+    t.integer  "art_subcategory_id"
+    t.integer  "art_mood_id"
+    t.integer  "art_genre_id"
+    t.string   "name"
+    t.string   "description"
+    t.string   "sources"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "art_concepts", ["art_genre_id"], name: "index_art_concepts_on_art_genre_id", using: :btree
+  add_index "art_concepts", ["art_mood_id"], name: "index_art_concepts_on_art_mood_id", using: :btree
+  add_index "art_concepts", ["art_subcategory_id"], name: "index_art_concepts_on_art_subcategory_id", using: :btree
+
   create_table "art_details", force: :cascade do |t|
     t.integer  "art_subcategory_id", null: false
     t.string   "name",               null: false
@@ -67,6 +82,17 @@ ActiveRecord::Schema.define(version: 20160423163917) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "art_revisions", force: :cascade do |t|
+    t.integer  "art_concept_id",               null: false
+    t.float    "version",        default: 0.1
+    t.string   "image"
+    t.string   "notes"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "art_revisions", ["art_concept_id"], name: "index_art_revisions_on_art_concept_id", using: :btree
 
   create_table "art_subcategories", force: :cascade do |t|
     t.integer  "art_category_id", null: false
@@ -387,7 +413,11 @@ ActiveRecord::Schema.define(version: 20160423163917) do
 
   add_foreign_key "allowance_entries", "users"
   add_foreign_key "allowance_tasks", "users"
+  add_foreign_key "art_concepts", "art_genres"
+  add_foreign_key "art_concepts", "art_moods"
+  add_foreign_key "art_concepts", "art_subcategories"
   add_foreign_key "art_details", "art_subcategories"
+  add_foreign_key "art_revisions", "art_concepts"
   add_foreign_key "art_subcategories", "art_categories"
   add_foreign_key "blog_comments", "blog_posts"
   add_foreign_key "blog_posts", "users"
