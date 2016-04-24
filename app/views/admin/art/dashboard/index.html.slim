@@ -7,30 +7,38 @@
         .row
           - ::Art::Category.find_each do |ac|
             .col-md-3
-              ul.list-unstyled
-                li
-                  b= ac.name
-                li
-                  - ac.art_subcategories.each do |as|
-                    ul
-                      li= as.name
+              p
+                b= ac.name
+              ul
+                - ac.art_subcategories.each do |as|
+                  li= as.name
         .row
-          .col-md-6
+          .col-md-3
+            p
+              b Moods
             ul.list-unstyled
-              li
-                b Moods
-              li
-                ul
-                  - ::Art::Mood.find_each do |am|
-                    li= am.name
-          .col-md-6
+              - ::Art::Mood.find_each do |am|
+                li= am.name
+          .col-md-3
+            p
+              b Genres
             ul.list-unstyled
-              li
-                b Genres
-              li
-                ul
-                  - ::Art::Genre.find_each do |ag|
-                    li= ag.name
+              - ::Art::Genre.find_each do |ag|
+                li= ag.name
+          - details = ::Art::Detail.all
+          - first_half = details[0...(details.size/2)]
+          - second_half = details[(details.size/2)..-1]
+          .col-md-3
+            p
+              b Details
+            ul
+              - first_half.each do |ad|
+                li= ad.name 
+          .col-md-3
+            ul
+              - second_half.each do |ad|
+                li= ad.name 
+
   .col-md-3
     .panel.panel-default
       .panel-heading

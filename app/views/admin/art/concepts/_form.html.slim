@@ -1,0 +1,9 @@
+= simple_form_for [:admin, @concept] do |f|
+  = f.error_notification
+  = f.association :art_subcategory
+  = f.association :art_mood
+  = f.association :art_genre
+  = f.input :name
+  = f.input :sources
+  = f.input :description
+  = f.button :submit, class: "btn btn-success"

@@ -1,0 +1,49 @@
+.row
+  .col-md-6
+    .panel.panel-primary
+      .panel-heading
+        h2.panel-title
+          | Information
+          = link_to "Edit", [:edit, :admin, @concept], class: "btn btn-primary btn-xs pull-right"
+            
+      table.table.table-striped
+        tbody
+          - %w(category subcategory mood genre).each do |assoc|
+            tr
+              th= assoc.titleize
+              td= @concept.send("art_#{assoc}").name
+          - %w(name sources description).each do |field|
+            tr
+              th= field.titleize
+              td= @concept.send(field)
+          tr
+            th
+              ' Details
+              = link_to "Add", "#", class: "btn btn-default btn-xs"
+            td
+              ul.list-inline
+                - @concept.art_details.each do |detail|
+                  li= detail.name
+  .col-md-6
+    .panel.panel-default
+      .panel-heading
+        h2.panel-title
+          | Most Recent Revision
+          = link_to "New", "#", class: "btn btn-default btn-xs pull-right"
+.row
+  .col-md-12
+    .panel.panel-default
+      .panel-heading
+        h2.panel-title Past Revisions
+      table.table.table-striped
+        thead
+          tr
+            th Version
+            th Image
+            th Notes
+        tbody
+          - @concept.art_revisions.each do |revision|
+            tr
+              td= revision.version
+              td= revision.image
+              td= revision.notes
