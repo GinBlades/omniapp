@@ -2,6 +2,66 @@
   .col-md-9
     .panel.panel-default
       .panel-heading
+        h2.panel-title
+          | Recent Concepts
+          = link_to "All Concepts", admin_art_concepts_path, class: "btn btn-default btn-xs pull-right"
+      table.table.table-striped
+        thead
+          tr
+            th Category
+            th Subcategory
+            th Mood
+            th Genre
+            th Name
+        tbody
+          - Art::Concept.unscoped.order(updated_at: :desc).limit(5).each do |concept|
+            tr
+              td= concept.art_category.name
+              td= concept.art_subcategory.name
+              td= concept.art_mood.name
+              td= concept.art_genre.name
+              td= link_to concept.name, [:admin, concept]
+    .panel.panel-default
+      .panel-heading
+        h2.panel-title Random Concept
+      .panel-body
+        = simple_form_for [:admin, @random_concept] do |f|
+          .row
+            .col-md-3
+              = f.association :art_subcategory
+            .col-md-3
+              = f.association :art_mood
+            .col-md-3
+              = f.association :art_genre
+            .col-md-3
+              = f.button :submit
+  .col-md-3
+    .panel.panel-default
+      .panel-heading
+        h2.panel-title New Grouping
+      .panel-body
+        = form_tag admin_art_new_grouping_path do
+          .form-group
+            = label_tag :category
+            = text_field_tag :category, nil, class: "form-control"
+          .form-group
+            = label_tag :subcategory
+            = text_field_tag :subcategory, nil, class: "form-control"
+          .form-group
+            = label_tag :detail
+            = text_field_tag :detail, nil, class: "form-control"
+          .form-group
+            = label_tag :mood
+            = text_field_tag :mood, nil, class: "form-control"
+          .form-group
+            = label_tag :genre
+            = text_field_tag :genre, nil, class: "form-control"
+          .form-group
+            = submit_tag nil, class: "btn btn-primary"
+.row
+  .col-md-12
+    .panel.panel-default
+      .panel-heading
         h2.panel-title Groupings
       .panel-body
         .row
@@ -11,7 +71,7 @@
                 b= ac.name
               ul
                 - ac.art_subcategories.each do |as|
-                  li= as.name
+                  li= link_to as.name, [:admin, as]
         .row
           .col-md-3
             p
@@ -38,43 +98,3 @@
             ul
               - second_half.each do |ad|
                 li= ad.name 
-
-  .col-md-3
-    .panel.panel-default
-      .panel-heading
-        h2.panel-title New Grouping
-      .panel-body
-        = form_tag admin_art_new_grouping_path do
-          .form-group
-            = label_tag :category
-            = text_field_tag :category, nil, class: "form-control"
-          .form-group
-            = label_tag :subcategory
-            = text_field_tag :subcategory, nil, class: "form-control"
-          .form-group
-            = label_tag :detail
-            = text_field_tag :detail, nil, class: "form-control"
-          .form-group
-            = label_tag :mood
-            = text_field_tag :mood, nil, class: "form-control"
-          .form-group
-            = label_tag :genre
-            = text_field_tag :genre, nil, class: "form-control"
-          .form-group
-            = submit_tag nil, class: "btn btn-primary"
-.row
-  .col-md-9
-    .panel.panel-default
-      .panel-heading
-        h2.panel-title Random Concept
-      .panel-body
-        = simple_form_for [:admin, @random_concept] do |f|
-          .row
-            .col-md-3
-              = f.association :art_subcategory
-            .col-md-3
-              = f.association :art_mood
-            .col-md-3
-              = f.association :art_genre
-            .col-md-3
-              = f.button :submit

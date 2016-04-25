@@ -1,8 +1,8 @@
 module Admin
   class Art::ConceptsController < AdminController
-    before_action :set_concept, only: [:show, :edit, :update, :destroy]
+    before_action :set_concept, except: [:index, :new, :create]
     def index
-      @concepts = ::Art::Concept.all
+      @concepts = ::Art::Concept.includes(:art_mood, :art_genre, art_subcategory: :art_category)
     end
 
     def new
@@ -35,6 +35,16 @@ module Admin
     def destroy
       @concept.destroy
       redirect_to admin_art_concepts_path
+    end
+
+    def add_detail
+      @concept.art_details << ::Art::Detail.find(params[:detail])
+      redirect_to [:admin, @concept]
+    end
+
+    def remove_detail
+      @concept.art_details.delete(::Art::Detail.find(params[:detail]))
+      redirect_to [:admin, @concept]
     end
 
     private

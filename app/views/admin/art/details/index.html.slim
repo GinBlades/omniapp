@@ -1,0 +1,14 @@
+= form_tag add_to_admin_art_details_path, method: :put do
+  table.table.table-striped
+    tbody
+      - @details.each_slice(6) do |row|
+        tr
+          - row.each do |item|
+            td
+              .checkbox
+                label
+                  input type="checkbox" name="details[]" value=item.id = item.name
+          - if row.size < 6
+            td colspan=(6 - row.size)
+  = select_tag :resource, grouped_options_for_select(@groups, @selected), class: "form-control" 
+  = submit_tag "Apply"

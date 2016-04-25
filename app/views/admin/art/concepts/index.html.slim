@@ -1,0 +1,22 @@
+table.table.table-striped
+  thead
+    tr
+      th Name
+      th Category
+      th Subcategory
+      th Mood
+      th Genre
+      th
+  tbody
+    - @concepts.each do |concept|
+      tr
+        td= link_to concept.name, [:admin, concept]
+        td= concept.art_category.name
+        td= concept.art_subcategory.name
+        td= concept.art_mood.name
+        td= concept.art_genre.name
+        td
+          = link_to "Edit", [:edit, :admin, concept]
+          '
+          ' /
+          = link_to "Delete", [:admin, concept], method: :delete, data: { confirm: "Are you sure?" }

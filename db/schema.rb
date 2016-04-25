@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160424200335) do
+ActiveRecord::Schema.define(version: 20160427141034) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,15 +47,17 @@ ActiveRecord::Schema.define(version: 20160424200335) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "art_categories", ["name"], name: "index_art_categories_on_name", unique: true, using: :btree
+
   create_table "art_concepts", force: :cascade do |t|
     t.integer  "art_subcategory_id"
     t.integer  "art_mood_id"
     t.integer  "art_genre_id"
-    t.string   "name"
+    t.string   "name",               default: "Untitled", null: false
     t.string   "description"
     t.string   "sources"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
   end
 
   add_index "art_concepts", ["art_genre_id"], name: "index_art_concepts_on_art_genre_id", using: :btree
@@ -80,17 +82,23 @@ ActiveRecord::Schema.define(version: 20160424200335) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "art_details", ["name"], name: "index_art_details_on_name", unique: true, using: :btree
+
   create_table "art_genres", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_index "art_genres", ["name"], name: "index_art_genres_on_name", unique: true, using: :btree
+
   create_table "art_moods", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "art_moods", ["name"], name: "index_art_moods_on_name", unique: true, using: :btree
 
   create_table "art_revisions", force: :cascade do |t|
     t.integer  "art_concept_id",               null: false
@@ -110,6 +118,7 @@ ActiveRecord::Schema.define(version: 20160424200335) do
     t.datetime "updated_at",      null: false
   end
 
+  add_index "art_subcategories", ["art_category_id", "name"], name: "index_art_subcategories_on_art_category_id_and_name", unique: true, using: :btree
   add_index "art_subcategories", ["art_category_id"], name: "index_art_subcategories_on_art_category_id", using: :btree
 
   create_table "blog_comments", force: :cascade do |t|

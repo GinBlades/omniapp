@@ -1,0 +1,24 @@
+h1= @subcategory.name
+
+h3 Concepts
+table.table.table-striped
+  thead
+    tr
+      th Name
+      th Mood
+      th Genre
+  tbody
+    - @subcategory.art_concepts.each do |concept|
+      tr
+        td= link_to concept.name, [:admin, concept]
+        td= concept.art_mood.name
+        td= concept.art_genre.name
+h3
+  ' Available Details
+  = link_to "Add", admin_art_details_path(selected: "subcategory-#{@subcategory.id}"), class: "btn btn-default btn-sm"
+table.table.table-striped
+  tbody
+    - @subcategory.art_details.each_slice(6) do |row|
+      tr
+        - row.each do |item|
+          td= item.name

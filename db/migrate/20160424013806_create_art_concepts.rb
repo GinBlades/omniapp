@@ -4,7 +4,7 @@ class CreateArtConcepts < ActiveRecord::Migration
       t.belongs_to :art_subcategory, index: true, foreign_key: true
       t.belongs_to :art_mood, index: true, foreign_key: true
       t.belongs_to :art_genre, index: true, foreign_key: true
-      t.string :name
+      t.string :name, default: "Untitled", null: false
       t.string :description
       t.string :sources
 

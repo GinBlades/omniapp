@@ -17,19 +17,26 @@
               th= field.titleize
               td= @concept.send(field)
           tr
-            th
-              ' Details
-              = link_to "Add", "#", class: "btn btn-default btn-xs"
+            td
+              b Details
+              '
+              = link_to "Add", admin_art_details_path(selected: "concept-#{@concept.id}"), class: "btn btn-default btn-sm"
             td
               ul.list-inline
                 - @concept.art_details.each do |detail|
-                  li= detail.name
+                  li
+                    = detail.name
+                    '
+                    = link_to "X", remove_detail_admin_art_concept_path(@concept, detail: detail.id), method: :put
   .col-md-6
     .panel.panel-default
       .panel-heading
         h2.panel-title
           | Most Recent Revision
-          = link_to "New", "#", class: "btn btn-default btn-xs pull-right"
+          = link_to "New", new_admin_art_concept_revision_path(@concept), class: "btn btn-default btn-xs pull-right"
+      - if @concept.art_revisions.size > 0
+        .panel-body
+          img.img-responsive src=@concept.art_revisions.most_recent.image.url
 .row
   .col-md-12
     .panel.panel-default
@@ -41,9 +48,15 @@
             th Version
             th Image
             th Notes
+            th
         tbody
           - @concept.art_revisions.each do |revision|
             tr
               td= revision.version
               td= revision.image
               td= revision.notes
+              td
+                = link_to "Edit", edit_admin_art_concept_revision_path(@concept, revision)
+                '
+                ' /
+                = link_to "Delete", admin_art_concept_revision_path(@concept, revision), method: :delete, data: { confirm: "Are you sure?" }

@@ -1,0 +1,7 @@
+- submit_path = controller.action_name == "edit" ? admin_art_concept_revision_path(@concept, @revision) : admin_art_concept_revisions_path(@concept)
+= simple_form_for [:admin, @concept, @revision], url: submit_path do |f|
+  = f.error_notification
+  = f.input :version
+  = f.input :image
+  = f.input :notes
+  = f.button :submit, class: "btn btn-success"

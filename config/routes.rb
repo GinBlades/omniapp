@@ -4,8 +4,21 @@ Rails.application.routes.draw do
     namespace :art do
       get "/" => "dashboard#index"
       post "new_group" => "dashboard#new_grouping", as: :new_grouping
-      resources :concepts
+      resources :concepts do
+        resources :revisions
+        member do
+          put :add_detail
+          put :remove_detail
+        end
+      end
+      resources :details do
+        collection do
+          put :add_to
+        end
+      end
+      resources :subcategories, only: [:show]
     end
+
     namespace :health do
       get "/" => "dashboard#index"
       resources :categories
@@ -88,5 +101,6 @@ Rails.application.routes.draw do
     end
   end
   get "/jihye" => "pages#jihye"
+  get "/resume" => "pages#resume"
   root "pages#home"
 end

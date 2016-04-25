@@ -35,4 +35,7 @@ class PagesController < ApplicationController
   def jihye
     @arrive = Time.zone.new(2015, 04, 28, 15, 49, 00, "-05:00")
   end
+
+  def resume
+  end
 end
