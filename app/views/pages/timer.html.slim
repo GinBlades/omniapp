@@ -1,0 +1,6 @@
+div ng-controller="WorkTimerCtrl"
+  div ng-if="time <= 0"
+    h1 Get Up, Slacker!
+    a.btn.btn-success ng-click="reset()" Reset
+  div ng-if="time > 0"
+    h1 {{ time | timeFilter }}

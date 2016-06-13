@@ -6,7 +6,7 @@ root.stopSpinner = ->
   $('div#spinner').css('display', 'none')
 
 root.initialize = ->
-  root.angular.bootstrap("body", ["Games", "Notes"])
+  root.angular.bootstrap("body", ["Games", "Notes", "WorkTimer"])
   root.renderFullCalendar()
 
   # Date/Time Picker for Desktop vs. Mobile

@@ -101,6 +101,7 @@ Rails.application.routes.draw do
     end
   end
   get "/jihye" => "pages#jihye"
+  get "/timer" => "pages#timer"
   get "/resume" => "pages#resume"
   root "pages#home"
 end

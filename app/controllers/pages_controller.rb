@@ -38,4 +38,7 @@ class PagesController < ApplicationController
 
   def resume
   end
+
+  def timer
+  end
 end
