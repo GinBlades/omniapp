@@ -31,7 +31,8 @@ end
 
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
 # They will be linked in the 'deploy:link_shared_paths' step.
-set :shared_paths, ["config/database.yml", "config/secrets.yml", "log", "public/uploads"]
+set :shared_dirs, ["log", "public/uploads"]
+set :shared_files, ["config/database.yml", "config/secrets.yml"]
 
 # Optional settings:
 #   set :user, 'foobar'    # Username in the server to SSH to.
@@ -54,20 +55,20 @@ end
 # For Rails apps, we'll make some of the shared paths that are shared between
 # all releases.
 task setup: :environment do
-  queue! %(mkdir -p "#{deploy_to}/#{shared_path}/log")
-  queue! %(chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/log")
+  command %(mkdir -p "#{fetch(:shared_path)}/log")
+  command %(chmod g+rx,u+rwx "#{fetch(:shared_path)}/log")
 
-  queue! %(mkdir -p "#{deploy_to}/#{shared_path}/config")
-  queue! %(chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/config")
+  command %(mkdir -p "#{fetch(:shared_path)}/config")
+  command %(chmod g+rx,u+rwx "#{fetch(:shared_path)}/config")
 
-  queue! %(mkdir -p "#{deploy_to}/#{shared_path}/public/uploads")
-  queue! %(chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/public/uploads")
+  command %(mkdir -p "#{fetch(:shared_path)}/public/uploads")
+  command %(chmod g+rx,u+rwx "#{fetch(:shared_path)}/public/uploads")
 
-  queue! %(touch "#{deploy_to}/#{shared_path}/config/database.yml")
-  queue %(echo "-----> Be sure to edit '#{deploy_to}/#{shared_path}/config/database.yml'.")
+  command %(touch "#{fetch(:shared_path)}/config/database.yml")
+  command %(echo "-----> Be sure to edit '#{fetch(:shared_path)}/config/database.yml'.")
 
-  queue! %(touch "#{deploy_to}/#{shared_path}/config/secrets.yml")
-  queue %(echo "-----> Be sure to edit '#{deploy_to}/#{shared_path}/config/secrets.yml'.")
+  command %(touch "#{fetch(:shared_path)}/config/secrets.yml")
+  command %(echo "-----> Be sure to edit '#{fetch(:shared_path)}/config/secrets.yml'.")
 end
 
 desc "Deploys the current version to the server."
@@ -83,9 +84,9 @@ task deploy: :environment do
     invoke :'whenever:update'
     invoke :'deploy:cleanup'
 
-    to :launch do
-      queue "mkdir -p #{deploy_to}/#{current_path}/tmp/"
-      queue "touch #{deploy_to}/#{current_path}/tmp/restart.txt"
+    on :launch do
+      command "mkdir -p #{fetch(:current_path)}/tmp/"
+      command "touch #{fetch(:current_path)}/tmp/restart.txt"
     end
   end
 end
