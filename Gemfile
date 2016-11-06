@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem "rails", "~> 4.2.6"
+gem "rails", "~> 4.2.7.1"
 gem "pg"
 gem "sass-rails"
 gem "uglifier"
@@ -40,7 +40,7 @@ gem "jquery-validation-rails"
 gem "angularjs-rails"
 
 gem "dotenv-rails"
-gem "mina"
+gem "mina", "~> 0.3.8"
 gem "quiet_assets"
 gem "slim-rails"
 gem "devise"
