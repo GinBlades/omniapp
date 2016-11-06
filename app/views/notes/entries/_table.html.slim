@@ -5,7 +5,7 @@ table.table.table-striped
         th= sort_link q, :name
         th= sort_link q, :notes_sequence_name, "Sequence"
         th= sort_link q, :notes_category_name, "Category"
-        th= sort_link q, :entry_date
+        th= sort_link q, :updated_at, "Last Updated"
         th
     - else
       tr

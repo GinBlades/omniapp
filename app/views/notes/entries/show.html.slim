@@ -1,9 +1,9 @@
-ul.list-unstyled
-  - if @notes_entry.notes_category
-    li= link_to "&larr; Back to #{@notes_entry.notes_category} notes".html_safe, @notes_entry.notes_category
-  - if @notes_entry.notes_sequence
-    li= link_to "&larr; Back to #{@notes_entry.notes_sequence} notes".html_safe, @notes_entry.notes_sequence
-- cache [@notes_entry] do
+- cache [@notes_entry, user_signed_in?] do
+  ul.list-unstyled
+    - if @notes_entry.notes_category
+      li= link_to "&larr; Back to #{@notes_entry.notes_category} notes".html_safe, @notes_entry.notes_category
+    - if @notes_entry.notes_sequence
+      li= link_to "&larr; Back to #{@notes_entry.notes_sequence} notes".html_safe, @notes_entry.notes_sequence
   h1
     = @notes_entry.name
     '
